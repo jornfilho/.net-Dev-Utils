@@ -7,7 +7,7 @@ namespace DevUtils.Hash
     /// <summary>
     /// Randon util class
     /// </summary>
-    public static class Randon
+    public static class GetRandom
     {
         /// <summary>
         /// Create randon hash with letter, number and symbols
