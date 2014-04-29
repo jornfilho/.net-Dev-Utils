@@ -1,0 +1,3342 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DevUtils</name>
+    </assembly>
+    <members>
+        <member name="T:DevUtils.DateTimeExtensions.BaseDateTimeExtensions">
+            <summary>
+            Base datetime extensions default data
+            </summary>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetTimezoneInfoDictionary">
+            <summary>
+            Populate TimezoneInfoDictionary With available options
+            </summary>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.BaseDateTimeExtensions.TryConvertTimezoneName(System.String)">
+            <summary>
+            Try get TimezoneInfo from timezone name
+            </summary>
+            <param name="name">timezone name</param>
+            <returns>Timezone info from name</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultDays">
+            <summary>
+            Set default business days
+            </summary>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfoDictionary">
+            <summary>
+            Get TimezoneInfo dictionary
+            </summary>
+            <returns>Dictionary with available timezoneinfo</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo(System.String)">
+            <summary>
+            Get TimezoneInfo
+            </summary>
+            <param name="name">Timezone name to serarch</param>
+            <returns>Dictionary with available timezoneinfo</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultBusinessDays(System.DayOfWeek[])">
+            <summary>
+            Set default business days list
+            </summary>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultBusinessDays">
+            <summary>
+            Get default business days list
+            </summary>
+            <returns>business days list</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultFirstDay(System.DayOfWeek,System.DayOfWeek)">
+            <summary>
+            Set default first week day and week business day
+            </summary>
+            <param name="firstWeekDay">first week day</param>
+            <param name="firstBusinessWeekDay">first week business day</param>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultFirstWeekDay">
+            <summary>
+            Get default first week day
+            </summary>
+            <returns>first week day</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultFirstWeekBusinessDay">
+            <summary>
+            Get default first week business day
+            </summary>
+            <returns>first week business day</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultLastDay(System.DayOfWeek,System.DayOfWeek)">
+            <summary>
+            Set default last week day and week business day
+            </summary>
+            <param name="lastWeekDay">last week day</param>
+            <param name="lastBusinessWeekDay">last week business day</param>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultLastWeekDay">
+            <summary>
+            Get default last week day
+            </summary>
+            <returns>last week day</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultLastWeekBusinessDay">
+            <summary>
+            Get default last week business day
+            </summary>
+            <returns>last week business day</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultToDateDateTimeStyles">
+            <summary>
+            Get default datetime styles to TryParseDate methods
+            </summary>
+            <returns>DateTimeStyles</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetCurrentCulture">
+            <summary>
+            Get current system culture
+            </summary>
+            <returns>Current CultureInfo</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetCurrentDateTime">
+            <summary>
+            Get current datetime
+            </summary>
+            <returns>Current DateTime</returns>
+        </member>
+        <member name="T:DevUtils.DateTimeExtensions.Month">
+            <summary>
+            Months enum
+            </summary>
+        </member>
+        <member name="F:DevUtils.DateTimeExtensions.Month.January">
+            <summary>
+            January month: 1
+            </summary>
+        </member>
+        <member name="F:DevUtils.DateTimeExtensions.Month.February">
+            <summary>
+            February month: 2
+            </summary>
+        </member>
+        <member name="F:DevUtils.DateTimeExtensions.Month.March">
+            <summary>
+            March month: 3
+            </summary>
+        </member>
+        <member name="F:DevUtils.DateTimeExtensions.Month.April">
+            <summary>
+            April month: 4
+            </summary>
+        </member>
+        <member name="F:DevUtils.DateTimeExtensions.Month.May">
+            <summary>
+            May month: 5
+            </summary>
+        </member>
+        <member name="F:DevUtils.DateTimeExtensions.Month.June">
+            <summary>
+            June month: 6
+            </summary>
+        </member>
+        <member name="F:DevUtils.DateTimeExtensions.Month.July">
+            <summary>
+            July month: 7
+            </summary>
+        </member>
+        <member name="F:DevUtils.DateTimeExtensions.Month.August">
+            <summary>
+            August month: 8
+            </summary>
+        </member>
+        <member name="F:DevUtils.DateTimeExtensions.Month.September">
+            <summary>
+            September month: 9
+            </summary>
+        </member>
+        <member name="F:DevUtils.DateTimeExtensions.Month.October">
+            <summary>
+            October month: 10
+            </summary>
+        </member>
+        <member name="F:DevUtils.DateTimeExtensions.Month.November">
+            <summary>
+            November month: 11
+            </summary>
+        </member>
+        <member name="F:DevUtils.DateTimeExtensions.Month.December">
+            <summary>
+            December month: 12
+            </summary>
+        </member>
+        <member name="T:DevUtils.DateTimeExtensions.Offset">
+            <summary>
+            Datetime offset utils class
+            </summary>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Offset.GetDateTimeOffsetMinutes(System.DateTime,System.TimeZoneInfo)">
+            <summary>
+            Get datetime offset minutes from utc
+            </summary>
+            <param name="date">Datetime</param>
+            <param name="timezoneInfo">Timezoneinfo</param>
+            <returns>Minutes from utc</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Offset.GetDateTimeOffsetMinutes(System.DateTime,System.String)">
+            <summary>
+            Get datetime offset minutes from utc
+            </summary>
+            <param name="date">Datetime</param>
+            <param name="timezoneName">timezone name</param>
+            <returns>Minutes from utc</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Offset.GetDateTimeOffsetMinutes(System.DateTime)">
+            <summary>
+            Get datetime offset minutes from utc
+            </summary>
+            <param name="date">Datetime</param>
+            <returns>Minutes from utc</returns>
+        </member>
+        <member name="T:DevUtils.DateTimeExtensions.DateExtensions">
+            <summary>
+            Convert values to date
+            </summary>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.DateExtensions.TryParseDate(System.String,System.DateTime,System.Globalization.CultureInfo,System.Globalization.DateTimeStyles)">
+            <summary>
+            Convert string date to datetime
+            </summary>
+            <param name="strValue">string to convert</param>
+            <param name="defaultValue">default value when invalid date</param>
+            <param name="culture">date culture</param>
+            <param name="dateTimeStyle">datetime style</param>
+            <returns>datetime</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.DateExtensions.TryParseDate(System.String,System.Globalization.CultureInfo,System.Globalization.DateTimeStyles)">
+            <summary>
+            <para>Convert string date to datetime</para>
+            <para>Return BaseDateTimeExtensions.GetCurrentDateTime() on error</para>
+            </summary>
+            <param name="strValue">string to convert</param>
+            <param name="culture">date culture</param>
+            <param name="dateTimeStyle">datetime style</param>
+            <returns>datetime</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.DateExtensions.TryParseDate(System.String,System.DateTime)">
+            <summary>
+            <para>Convert string date to datetime</para>
+            </summary>
+            <param name="strValue">string to convert</param>
+            <param name="defaultValue">default value when invalid date</param>
+            <returns>datetime</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.DateExtensions.TryParseDate(System.String)">
+            <summary>
+            <para>Convert string date to datetime</para>
+            <para>Return BaseDateTimeExtensions.GetCurrentDateTime() on error</para>
+            </summary>
+            <param name="strValue">string to convert</param>
+            <returns>datetime</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.DateExtensions.TryParseDate(System.Double,System.DateTime,System.Globalization.CultureInfo,System.Globalization.DateTimeStyles)">
+            <summary>
+            Convert string date to datetime
+            </summary>
+            <param name="doubleValue">string to convert</param>
+            <param name="defaultValue">default value when invalid date</param>
+            <param name="culture">date culture</param>
+            <param name="dateTimeStyle">datetime style</param>
+            <returns>datetime</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.DateExtensions.TryParseDate(System.Double,System.Globalization.CultureInfo,System.Globalization.DateTimeStyles)">
+            <summary>
+            <para>Convert string date to datetime</para>
+            <para>Return BaseDateTimeExtensions.GetCurrentDateTime() on error</para>
+            </summary>
+            <param name="doubleValue">string to convert</param>
+            <param name="culture">date culture</param>
+            <param name="dateTimeStyle">datetime style</param>
+            <returns>datetime</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.DateExtensions.TryParseDate(System.Double,System.DateTime)">
+            <summary>
+            <para>Convert string date to datetime</para>
+            </summary>
+            <param name="doubleValue">string to convert</param>
+            <param name="defaultValue">default value when invalid date</param>
+            <returns>datetime</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.DateExtensions.TryParseDate(System.Double)">
+            <summary>
+            <para>Convert string date to datetime</para>
+            <para>Return BaseDateTimeExtensions.GetCurrentDateTime() on error</para>
+            </summary>
+            <param name="doubleValue">string to convert</param>
+            <returns>datetime</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.DateExtensions.TryParseDate(System.Nullable{System.Double},System.DateTime,System.Globalization.CultureInfo,System.Globalization.DateTimeStyles)">
+            <summary>
+            Convert string date to datetime
+            </summary>
+            <param name="doubleValue">string to convert</param>
+            <param name="defaultValue">default value when invalid date</param>
+            <param name="culture">date culture</param>
+            <param name="dateTimeStyle">datetime style</param>
+            <returns>datetime</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.DateExtensions.TryParseDate(System.Nullable{System.Double},System.Globalization.CultureInfo,System.Globalization.DateTimeStyles)">
+            <summary>
+            <para>Convert string date to datetime</para>
+            <para>Return BaseDateTimeExtensions.GetCurrentDateTime() on error</para>
+            </summary>
+            <param name="doubleValue">string to convert</param>
+            <param name="culture">date culture</param>
+            <param name="dateTimeStyle">datetime style</param>
+            <returns>datetime</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.DateExtensions.TryParseDate(System.Nullable{System.Double},System.DateTime)">
+            <summary>
+            <para>Convert string date to datetime</para>
+            </summary>
+            <param name="doubleValue">string to convert</param>
+            <param name="defaultValue">default value when invalid date</param>
+            <returns>datetime</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.DateExtensions.TryParseDate(System.Nullable{System.Double})">
+            <summary>
+            <para>Convert string date to datetime</para>
+            <para>Return BaseDateTimeExtensions.GetCurrentDateTime() on error</para>
+            </summary>
+            <param name="doubleValue">string to convert</param>
+            <returns>datetime</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.DateExtensions.IsValidDate(System.String,System.Globalization.CultureInfo,System.Globalization.DateTimeStyles)">
+            <summary>
+            Test if string value is a valid date value
+            </summary>
+            <param name="strValue">string value</param>
+            <param name="culture">culture origin</param>
+            <param name="dateTimeStyle">date style to convert</param>
+            <returns>true/false</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.DateExtensions.IsValidDate(System.String)">
+            <summary>
+            Test if string value is a valid date value
+            </summary>
+            <param name="strValue">string value</param>
+            <returns>true/false</returns>
+        </member>
+        <member name="T:DevUtils.DateTimeExtensions.Utils">
+            <summary>
+            Date urils class
+            </summary>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.AddBusinessDays(System.DateTime,System.Int32,System.DayOfWeek[])">
+            <summary>
+            Add business days on a DateTime
+            </summary>
+            <param name="date">Date to add days</param>
+            <param name="days">Days to add</param>
+            <param name="businessDays">Business days</param>
+            <returns>date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.AddBusinessDays(System.DateTime,System.Int32)">
+            <summary>
+            Add business days on a DateTime
+            </summary>
+            <param name="date">Date to add days</param>
+            <param name="days">Days to add</param>
+            <returns>date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.RemoveBusinessDays(System.DateTime,System.Int32,System.DayOfWeek[])">
+            <summary>
+            Remove business days on a DateTime
+            </summary>
+            <param name="date">Date to remove days</param>
+            <param name="days">Days to remove</param>
+            <param name="businessDays">Business days</param>
+            <returns>date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.RemoveBusinessDays(System.DateTime,System.Int32)">
+            <summary>
+            Remove business days on a DateTime
+            </summary>
+            <param name="date">Date to remove days</param>
+            <param name="days">Days to remove</param>
+            <returns>date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.SetDate(System.DateTime,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Set date of datetime
+            </summary>
+            <param name="date">Date to set date</param>
+            <param name="year">Year to set</param>
+            <param name="month">Month to set</param>
+            <param name="day">Day to set</param>
+            <returns>new date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.SetYear(System.DateTime,System.Int32)">
+            <summary>
+            Set year of date
+            </summary>
+            <param name="date">Date to set date</param>
+            <param name="year">Year to set</param>
+            <returns>new date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.SetMonth(System.DateTime,System.Int32)">
+            <summary>
+            Set month of date
+            </summary>
+            <param name="date">Date to set date</param>
+            <param name="month">Month to set</param>
+            <returns>new date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.SetDay(System.DateTime,System.Int32)">
+            <summary>
+            Set day of date
+            </summary>
+            <param name="date">Date to set date</param>
+            <param name="day">Day to set</param>
+            <returns>new date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.SetTime(System.DateTime,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Set time of date
+            </summary>
+            <param name="date">Date to add time</param>
+            <param name="hour">Hours to add</param>
+            <param name="minute">Minutes to add</param>
+            <param name="second">Seconds to add</param>
+            <param name="millisecond">Milliseconds to add</param>
+            <returns>Date with new time</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.SetTime(System.DateTime,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Set time of date
+            </summary>
+            <param name="date">Date to add time</param>
+            <param name="hour">Hours to add</param>
+            <param name="minute">Minutes to add</param>
+            <param name="second">Seconds to add</param>
+            <returns>Date with new time</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.SetTime(System.DateTime,System.Int32,System.Int32)">
+            <summary>
+            Set time of date
+            </summary>
+            <param name="date">Date to add time</param>
+            <param name="hour">Hours to add</param>
+            <param name="minute">Minutes to add</param>
+            <returns>Date with new time</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.SetHour(System.DateTime,System.Int32)">
+            <summary>
+            Set hour of date
+            </summary>
+            <param name="date">Date to set time</param>
+            <param name="hour">Hours to set</param>
+            <returns>Date with new time</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.SetMinute(System.DateTime,System.Int32)">
+            <summary>
+            Set minute of date
+            </summary>
+            <param name="date">Date to set time</param>
+            <param name="minute">Minute to set</param>
+            <returns>Date with new time</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.SetSecond(System.DateTime,System.Int32)">
+            <summary>
+            Set second of date
+            </summary>
+            <param name="date">Date to set time</param>
+            <param name="second">Second to set</param>
+            <returns>Date with new time</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.SetMillisecond(System.DateTime,System.Int32)">
+            <summary>
+            Set millisecond of date
+            </summary>
+            <param name="date">Date to set time</param>
+            <param name="millisecond">Millisecond to set</param>
+            <returns>Date with new time</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.StartOfYear(System.DateTime)">
+            <summary>
+            Get start of year
+            </summary>
+            <param name="date">base date</param>
+            <returns>Start of year from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.StartOfYear(System.Int32)">
+            <summary>
+            Get start of year
+            </summary>
+            <param name="year">year reference</param>
+            <returns>start of year from reference year</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.StartOfBusinessYear(System.DateTime,System.DayOfWeek[])">
+            <summary>
+            Get start of business year
+            </summary>
+            <param name="date">base date</param>
+            <param name="businessDays">business days list</param>
+            <returns>Start of business year from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.StartOfBusinessYear(System.DateTime)">
+            <summary>
+            Get start of business year
+            </summary>
+            <param name="date">base date</param>
+            <returns>Start of business year from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.StartOfBusinessYear(System.Int32,System.DayOfWeek[])">
+            <summary>
+            Get start of business year
+            </summary>
+            <param name="year">year reference</param>
+            <param name="businessDays">business days list</param>
+            <returns>start of business year from reference year</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.StartOfBusinessYear(System.Int32)">
+            <summary>
+            Get start of business year
+            </summary>
+            <param name="year">year reference</param>
+            <returns>start of business year from reference year</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.EndOfYear(System.DateTime)">
+            <summary>
+            Get end of year
+            </summary>
+            <param name="date">base date</param>
+            <returns>End of year from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.EndOfYear(System.Int32)">
+            <summary>
+            Get end of year
+            </summary>
+            <param name="year">reference year</param>
+            <returns>End of year from reference year</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.EndOfBusinessYear(System.DateTime,System.DayOfWeek[])">
+            <summary>
+            Get end of business year
+            </summary>
+            <param name="date">base date</param>
+            <param name="businessDays">business days list</param>
+            <returns>End of business year from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.EndOfBusinessYear(System.DateTime)">
+            <summary>
+            Get end of business year
+            </summary>
+            <param name="date">base date</param>
+            <returns>End of business year from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.EndOfBusinessYear(System.Int32,System.DayOfWeek[])">
+            <summary>
+            Get end of business year
+            </summary>
+            <param name="year">reference year</param>
+            <param name="businessDays">business days list</param>
+            <returns>End of business year from reference year</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.EndOfBusinessYear(System.Int32)">
+            <summary>
+            Get end of business year
+            </summary>
+            <param name="year">reference year</param>
+            <returns>End of business year from reference year</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.StartOfMonth(System.DateTime)">
+            <summary>
+            Get start of month
+            </summary>
+            <param name="date">base date</param>
+            <returns>Start of month from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.StartOfMonth(DevUtils.DateTimeExtensions.Month,System.Int32)">
+            <summary>
+            Get start of month from year/month
+            </summary>
+            <param name="month">month reference</param>
+            <param name="year">year reference</param>
+            <returns>start of month from reference year and month</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.StartOfBusinessMonth(System.DateTime,System.DayOfWeek[])">
+            <summary>
+            Get start of business month
+            </summary>
+            <param name="date">base date</param>
+            <param name="businessDays">business days list</param>
+            <returns>Start of business month from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.StartOfBusinessMonth(System.DateTime)">
+            <summary>
+            Get start of business month
+            </summary>
+            <param name="date">base date</param>
+            <returns>Start of business month from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.StartOfBusinessMonth(DevUtils.DateTimeExtensions.Month,System.Int32,System.DayOfWeek[])">
+            <summary>
+            Get start of month from year/month
+            </summary>
+            <param name="month">month reference</param>
+            <param name="year">year reference</param>
+            <param name="businessDays">business days list</param>
+            <returns>start of business month from reference year and month</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.StartOfBusinessMonth(DevUtils.DateTimeExtensions.Month,System.Int32)">
+            <summary>
+            Get start of month from year/month
+            </summary>
+            <param name="month">month reference</param>
+            <param name="year">year reference</param>
+            <returns>start of business month from reference year and month</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.EndOfMonth(System.DateTime)">
+            <summary>
+            Get end of month
+            </summary>
+            <param name="date">base date</param>
+            <returns>End of month from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.EndOfMonth(DevUtils.DateTimeExtensions.Month,System.Int32)">
+            <summary>
+            Get end of month from year/month
+            </summary>
+            <param name="month">month reference</param>
+            <param name="year">year reference</param>
+            <returns>end of month from reference year and month</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.EndOfBusinessMonth(System.DateTime,System.DayOfWeek[])">
+            <summary>
+            Get end of business month
+            </summary>
+            <param name="date">base date</param>
+            <param name="businessDays">business days list</param>
+            <returns>End of business month from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.EndOfBusinessMonth(System.DateTime)">
+            <summary>
+            Get end of business month
+            </summary>
+            <param name="date">base date</param>
+            <returns>End of business month from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.EndOfBusinessMonth(DevUtils.DateTimeExtensions.Month,System.Int32,System.DayOfWeek[])">
+            <summary>
+            Get end of month from year/month
+            </summary>
+            <param name="month">month reference</param>
+            <param name="year">year reference</param>
+            <param name="businessDays">business days list</param>
+            <returns>End of business month from reference year and month</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.EndOfBusinessMonth(DevUtils.DateTimeExtensions.Month,System.Int32)">
+            <summary>
+            Get end of month from year/month
+            </summary>
+            <param name="month">month reference</param>
+            <param name="year">year reference</param>
+            <returns>End of business month from reference year and month</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.StartOfWeek(System.DateTime,System.DayOfWeek)">
+            <summary>
+            Get start of week
+            </summary>
+            <param name="date">base date</param>
+            <param name="firstDay">first week day</param>
+            <returns>Start of week from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.StartOfWeek(System.DateTime)">
+            <summary>
+            Get start of week
+            </summary>
+            <param name="date">base date</param>
+            <returns>Start of week from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.StartOfBusinessWeek(System.DateTime,System.DayOfWeek)">
+            <summary>
+            Get start of business week
+            </summary>
+            <param name="date">base date</param>
+            <param name="firstBusinessDay">first week business day</param>
+            <returns>Start of business week from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.StartOfBusinessWeek(System.DateTime)">
+            <summary>
+            Get start of business week
+            </summary>
+            <param name="date">base date</param>
+            <returns>Start of business week from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.EndOfWeek(System.DateTime,System.DayOfWeek)">
+            <summary>
+            Get end of week
+            </summary>
+            <param name="date">base date</param>
+            <param name="lastDay">last week day</param>
+            <returns>End of week from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.EndOfWeek(System.DateTime)">
+            <summary>
+            Get end of week
+            </summary>
+            <param name="date">base date</param>
+            <returns>End of week from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.EndOfBusinessWeek(System.DateTime,System.DayOfWeek)">
+            <summary>
+            Get end of business week
+            </summary>
+            <param name="date">base date</param>
+            <param name="lastBusinessDay">last week business day</param>
+            <returns>End of business week from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.EndOfBusinessWeek(System.DateTime)">
+            <summary>
+            Get end of business week
+            </summary>
+            <param name="date">base date</param>
+            <returns>End of business week from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.StartOfDay(System.DateTime)">
+            <summary>
+            Get start of day
+            </summary>
+            <param name="date">base date</param>
+            <returns>Start of day from date</returns>
+        </member>
+        <member name="M:DevUtils.DateTimeExtensions.Utils.EndOfDay(System.DateTime)">
+            <summary>
+            Get end of day
+            </summary>
+            <param name="date">base date</param>
+            <returns>End of day from date</returns>
+        </member>
+        <member name="T:DevUtils.Hash.Base64">
+            <summary>
+            Base64 utils class
+            </summary>
+        </member>
+        <member name="M:DevUtils.Hash.Base64.ToBase64(System.String)">
+            <summary>
+            Convert string to base64 hash
+            </summary>
+            <param name="data">string to convert</param>
+            <returns>base64 hash or null</returns>
+        </member>
+        <member name="M:DevUtils.Hash.Base64.FromBase64(System.String)">
+            <summary>
+            Convert hash base64 string to plain
+            </summary>
+            <param name="data">base64 string</param>
+            <returns>plain string or null</returns>
+        </member>
+        <member name="T:DevUtils.Hash.Md5">
+            <summary>
+            Md5 utils class
+            </summary>
+        </member>
+        <member name="M:DevUtils.Hash.Md5.ToMd5(System.String)">
+            <summary>
+            Convert string to md5 hash
+            </summary>
+            <param name="data">string to convert</param>
+            <returns>md5 hash or null</returns>
+        </member>
+        <member name="T:DevUtils.Hash.Randon">
+            <summary>
+            Randon util class
+            </summary>
+        </member>
+        <member name="M:DevUtils.Hash.Randon.CreateRandonHash(System.Int32)">
+            <summary>
+            Create randon hash with letter, number and symbols
+            </summary>
+            <param name="size">hash size</param>
+            <returns>randon hash</returns>
+        </member>
+        <member name="T:DevUtils.Hash.Sha256">
+            <summary>
+            Sha256 utils class
+            </summary>
+        </member>
+        <member name="M:DevUtils.Hash.Sha256.ToSha256(System.String)">
+            <summary>
+            Convert string to sha256 hash
+            </summary>
+            <param name="data">string to convert</param>
+            <returns>sha256 hash or null</returns>
+        </member>
+        <member name="T:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions">
+            <summary>
+            Base primitive extensions default data
+            </summary>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultBoolConversionValue">
+            <summary>
+            Get default bool conversion value
+            </summary>
+            <returns>DefaultBoolConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultBoolArrayAllowDefaultConversion">
+            <summary>
+            Get default bool array allow default conversion value
+            </summary>
+            <returns>DefaultBoolArrayAllowDefaultConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultByteNumberStyle">
+            <summary>
+            Get default byte number style
+            </summary>
+            <returns>Byte NumberStyles</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultByteConversionValue">
+            <summary>
+            Get default byte conversion value
+            </summary>
+            <returns>DefaultByteConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultByteAllowDefaultConversion">
+            <summary>
+            Get default byte allow default conversion
+            </summary>
+            <returns>DefaultByteAllowDefaultConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultByteArrayAllowDefaultConversion">
+            <summary>
+            Get default byte array allow default conversion value
+            </summary>
+            <returns>DefaultByteArrayAllowDefaultConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultShortNumberStyle">
+            <summary>
+            Get default short number style
+            </summary>
+            <returns>Short NumberStyles</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultShortConversionValue">
+            <summary>
+            Get default short conversion value
+            </summary>
+            <returns>DefaultShortConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultShortAllowDefaultConversion">
+            <summary>
+            Get default short allow default conversion
+            </summary>
+            <returns>DefaultShortAllowDefaultConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultShortArrayAllowDefaultConversion">
+            <summary>
+            Get default short array allow default conversion value
+            </summary>
+            <returns>DefaultShortArrayAllowDefaultConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultIntNumberStyle">
+            <summary>
+            Get default int number style
+            </summary>
+            <returns>Int NumberStyles</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultIntConversionValue">
+            <summary>
+            Get default int conversion value
+            </summary>
+            <returns>DefaultIntConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultIntAllowDefaultConversion">
+            <summary>
+            Get default int allow default conversion
+            </summary>
+            <returns>DefaultIntAllowDefaultConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultIntArrayAllowDefaultConversion">
+            <summary>
+            Get default int array allow default conversion value
+            </summary>
+            <returns>DefaultIntArrayAllowDefaultConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultLongNumberStyle">
+            <summary>
+            Get default long number style
+            </summary>
+            <returns>Long NumberStyles</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultLongConversionValue">
+            <summary>
+            Get default long conversion value
+            </summary>
+            <returns>DefaultDecimalConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultLongAllowDefaultConversion">
+            <summary>
+            Get default long allow default conversion
+            </summary>
+            <returns>DefaultLongAllowDefaultConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultLongArrayAllowDefaultConversion">
+            <summary>
+            Get default long array allow default conversion value
+            </summary>
+            <returns>DefaultLongArrayAllowDefaultConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultDecimalNumberStyle">
+            <summary>
+            Get default decimal number style
+            </summary>
+            <returns>Decimal NumberStyles</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultDecimalConversionValue">
+            <summary>
+            Get default decimal conversion value
+            </summary>
+            <returns>DefaultDecimalConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultDecimalAllowDefaultConversion">
+            <summary>
+            Get default decimal allow default conversion
+            </summary>
+            <returns>DefaultDecimalAllowDefaultConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultDecimalArrayAllowDefaultConversion">
+            <summary>
+            Get default decimal array allow default conversion value
+            </summary>
+            <returns>DefaultDecimalArrayAllowDefaultConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultDoubleNumberStyle">
+            <summary>
+            Get default Double number style
+            </summary>
+            <returns>Double NumberStyles</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultDoubleConversionValue">
+            <summary>
+            Get default Double conversion value
+            </summary>
+            <returns>DefaultDoubleConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultDoubleAllowDefaultConversion">
+            <summary>
+            Get default Double allow default conversion
+            </summary>
+            <returns>DefaultDoubleAllowDefaultConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultDoubleArrayAllowDefaultConversion">
+            <summary>
+            Get default Double array allow default conversion value
+            </summary>
+            <returns>DefaultDoubleArrayAllowDefaultConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultFloatNumberStyle">
+            <summary>
+            Get default float number style
+            </summary>
+            <returns>Float NumberStyles</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultFloatConversionValue">
+            <summary>
+            Get default float conversion value
+            </summary>
+            <returns>DefaultFloatConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultFloatAllowDefaultConversion">
+            <summary>
+            Get default float allow default conversion
+            </summary>
+            <returns>DefaultFloatAllowDefaultConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetDefaultFloatArrayAllowDefaultConversion">
+            <summary>
+            Get default float array allow default conversion value
+            </summary>
+            <returns>DefaultFloatArrayAllowDefaultConversion</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BasePrimitivesExtensions.GetCurrentCulture">
+            <summary>
+            Get current system culture
+            </summary>
+            <returns>Current CultureInfo</returns>
+        </member>
+        <member name="T:DevUtils.PrimitivesExtensions.BoolExtensions">
+            <summary>
+            Static bool extension
+            </summary>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BoolExtensions.TryParseBool(System.String,System.Boolean)">
+            <summary>
+            <para>Try parse string bool (true,false,0,1) to boolean value</para>
+            </summary>
+            <param name="strValue">string to convert</param>
+            <param name="defaultValue">default return value</param>
+            <returns>bool result</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BoolExtensions.TryParseBool(System.String)">
+            <summary>
+            <para>Try parse string bool (true,false,0,1) to boolean value</para>
+            <para>Default value is false</para>
+            </summary>
+            <param name="strValue">string to convert</param>
+            <returns>bool result</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BoolExtensions.TryParseBoolArray(System.String,System.Boolean[],System.Boolean)">
+            <summary>
+            Parse string array in bool array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="allowDefaultConversion">Allow default tryparse values</param>
+            <returns>bool array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BoolExtensions.TryParseBoolArray(System.String,System.Boolean[])">
+            <summary>
+            Parse string array in bool array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <returns>bool array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BoolExtensions.TryParseBoolArray(System.String)">
+            <summary>
+            Parse string array in bool array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <returns>bool array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.BoolExtensions.IsValidBool(System.String)">
+            <summary>
+            Test if string value is a valid boolean value
+            </summary>
+            <param name="strValue">string value</param>
+            <returns>true/false</returns>
+        </member>
+        <member name="T:DevUtils.PrimitivesExtensions.ByteExtensions">
+            <summary>
+            Static byte extension
+            </summary>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.String,System.Byte,System.Boolean,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            <para>Convert string byte value to byte value</para>
+            <para>Set default value on invalid convertion</para>
+            <para>Allow 0 as converted value flag</para>
+            </summary>
+            <param name="strValue">string value</param>
+            <param name="defaultValue">default value</param>
+            <param name="allowZero">Allow 0</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.String,System.Byte,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            <para>Convert string byte value to byte value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="strValue">string value</param>
+            <param name="defaultValue">default value</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Convert string byte value to byte value
+            </summary>
+            <param name="strValue">string value</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.String,System.Byte,System.Boolean)">
+            <summary>
+            <para>Convert string byte value to byte value</para>
+            <para>Set default value on invalid convertion</para>
+            <para>Allow 0 as converted value flag</para>
+            </summary>
+            <param name="strValue">string value</param>
+            <param name="defaultValue">default value</param>
+            <param name="allowZero">Allow 0</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.String,System.Byte)">
+            <summary>
+            <para>Convert string byte value to byte value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="strValue">string value</param>
+            <param name="defaultValue">default value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.String)">
+            <summary>
+            Convert string byte value to byte value
+            </summary>
+            <param name="strValue">string value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Nullable{System.Byte},System.Byte)">
+            <summary>
+            <para>Convert nullable byte value to byte value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="byteValue">nullable byte value</param>
+            <param name="defaultValue">default value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Nullable{System.Byte})">
+            <summary>
+            Convert nullable byte value to byte value
+            </summary>
+            <param name="byteValue">nullable byte value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Int16,System.Byte)">
+            <summary>
+            <para>Convert short value to byte value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="shortValue">short value</param>
+            <param name="defaultValue">default value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Int16)">
+            <summary>
+            Convert short value to byte value
+            </summary>
+            <param name="shortValue">short value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Nullable{System.Int16},System.Byte)">
+            <summary>
+            <para>Convert nullable short value to byte value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="shortValue">nullable short value</param>
+            <param name="defaultValue">default value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Nullable{System.Int16})">
+            <summary>
+            Convert nullable short value to byte value
+            </summary>
+            <param name="shortValue">nullable short value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Int32,System.Byte)">
+            <summary>
+            <para>Convert int value to byte value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="intValue">int value</param>
+            <param name="defaultValue">default value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Int32)">
+            <summary>
+            Convert int value to byte value
+            </summary>
+            <param name="intValue">int value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Nullable{System.Int32},System.Byte)">
+            <summary>
+            <para>Convert nullable int value to byte value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="intValue">nullable int value</param>
+            <param name="defaultValue">default value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Nullable{System.Int32})">
+            <summary>
+            Convert nullable int value to byte value
+            </summary>
+            <param name="intValue">nullable int value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Int64,System.Byte)">
+            <summary>
+            <para>Convert long value to byte value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="longValue">long value</param>
+            <param name="defaultValue">default value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Int64)">
+            <summary>
+            Convert long value to byte value
+            </summary>
+            <param name="longValue">long value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Nullable{System.Int64},System.Byte)">
+            <summary>
+            <para>Convert nullable long value to byte value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="longValue">nullable long value</param>
+            <param name="defaultValue">default value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Nullable{System.Int64})">
+            <summary>
+            Convert nullable long value to byte value
+            </summary>
+            <param name="longValue">nullable long value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Decimal,System.Byte)">
+            <summary>
+            <para>Convert decimal value to byte value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="decimalValue">decimal value</param>
+            <param name="defaultValue">default value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Decimal)">
+            <summary>
+            Convert decimal value to byte value
+            </summary>
+            <param name="decimalValue">decimal value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Nullable{System.Decimal},System.Byte)">
+            <summary>
+            <para>Convert nullable decimal value to byte value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="decimalValue">nullable decimal value</param>
+            <param name="defaultValue">default value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Nullable{System.Decimal})">
+            <summary>
+            Convert nullable decimal value to byte value
+            </summary>
+            <param name="decimalValue">nullable decimal value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Double,System.Byte)">
+            <summary>
+            <para>Convert double value to byte value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="doubleValue">double value</param>
+            <param name="defaultValue">default value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Double)">
+            <summary>
+            Convert double value to byte value
+            </summary>
+            <param name="doubleValue">double value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Nullable{System.Double},System.Byte)">
+            <summary>
+            <para>Convert nullable double value to byte value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="doubleValue">nullable double value</param>
+            <param name="defaultValue">default value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Nullable{System.Double})">
+            <summary>
+            Convert nullable double value to byte value
+            </summary>
+            <param name="doubleValue">nullable double value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Single,System.Byte)">
+            <summary>
+            <para>Convert float value to byte value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="floatValue">float value</param>
+            <param name="defaultValue">default value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Single)">
+            <summary>
+            Convert float value to byte value
+            </summary>
+            <param name="floatValue">float value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Nullable{System.Single},System.Byte)">
+            <summary>
+            <para>Convert nullable float value to byte value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="floatValue">nullable float value</param>
+            <param name="defaultValue">default value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByte(System.Nullable{System.Single})">
+            <summary>
+            Convert nullable float value to byte value
+            </summary>
+            <param name="floatValue">nullable float value</param>
+            <returns>byte value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByteArray(System.String,System.Byte[],System.Boolean,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in byte array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="allowDefaultConversion">Allow default tryparse values</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>byte array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByteArray(System.String,System.Byte[],System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in byte array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>byte array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByteArray(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in byte array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>byte array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByteArray(System.String,System.Byte[],System.Boolean)">
+            <summary>
+            Parse string array in byte array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="allowDefaultConversion">Allow default tryparse values</param>
+            <returns>byte array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByteArray(System.String,System.Byte[])">
+            <summary>
+            Parse string array in byte array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <returns>byte array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.TryParseByteArray(System.String)">
+            <summary>
+            Parse string array in byte array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <returns>byte array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.IsValidByte(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Test if string value is a valid byte value
+            </summary>
+            <param name="strValue">string value</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>true/false</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ByteExtensions.IsValidByte(System.String)">
+            <summary>
+            Test if string value is a valid byte value
+            </summary>
+            <param name="strValue">string value</param>
+            <returns>true/false</returns>
+        </member>
+        <member name="T:DevUtils.PrimitivesExtensions.DecimalExtensions">
+            <summary>
+            Decimal extensions class
+            </summary>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.String,System.Decimal,System.Boolean,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Convert decimal string value in decimal value
+            </summary>
+            <param name="strValue">string to convert</param>
+            <param name="defaultValue">default value to return on convert error</param>
+            <param name="allowZero">allow 0 valuen on convert</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">decimal culture origin</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.String,System.Decimal,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Convert decimal string value in decimal value
+            </summary>
+            <param name="strValue">string to convert</param>
+            <param name="defaultValue">default value to return on convert error</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">decimal culture origin</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Convert decimal string value in decimal value
+            </summary>
+            <param name="strValue">string to convert</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">decimal culture origin</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.String,System.Decimal,System.Boolean)">
+            <summary>
+            Convert decimal string value in decimal value
+            </summary>
+            <param name="strValue">string to convert</param>
+            <param name="defaultValue">default value to return on convert error</param>
+            <param name="allowZero">allow 0 valuen on convert</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.String,System.Decimal)">
+            <summary>
+            Convert decimal string value in decimal value
+            </summary>
+            <param name="strValue">string to convert</param>
+            <param name="defaultValue">default value to return on convert error</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.String)">
+            <summary>
+            Convert decimal string value in decimal value
+            </summary>
+            <param name="strValue">string to convert</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Nullable{System.Decimal},System.Decimal)">
+            <summary>
+            Convert nullable decimal to decimal
+            </summary>
+            <param name="decimalValue">nullable decimal value</param>
+            <param name="defaultValue">default value when error on convert</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Nullable{System.Decimal})">
+            <summary>
+            Convert nullable decimal to decimal
+            </summary>
+            <param name="decimalValue">nullable decimal value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Byte)">
+            <summary>
+            <para>Convert byte value to decimal value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="byteValue">byte value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Nullable{System.Byte},System.Decimal)">
+            <summary>
+            <para>Convert nullable byte value to decimal value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="byteValue">nullable byte value</param>
+            <param name="defaultValue">default value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Nullable{System.Byte})">
+            <summary>
+            Convert nullable byte value to decimal value
+            </summary>
+            <param name="byteValue">nullable byte value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Int16)">
+            <summary>
+            <para>Convert short value to decimal value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="shortValue">short value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Nullable{System.Int16},System.Decimal)">
+            <summary>
+            <para>Convert nullable short value to decimal value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="shortValue">nullable short value</param>
+            <param name="defaultValue">default value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Nullable{System.Int16})">
+            <summary>
+            Convert nullable short value to decimal value
+            </summary>
+            <param name="shortValue">nullable short value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Int32,System.Decimal)">
+            <summary>
+            <para>Convert int32 value to decimal value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="intValue">int32 value</param>
+            <param name="defaultValue">default value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Int32)">
+            <summary>
+            Convert int32 value to decimal value
+            </summary>
+            <param name="intValue">int32 value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Nullable{System.Int32},System.Decimal)">
+            <summary>
+            <para>Convert nullable int32 value to decimal value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="intValue">nullable int32 value</param>
+            <param name="defaultValue">default value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Nullable{System.Int32})">
+            <summary>
+            Convert nullable int32 value to decimal value
+            </summary>
+            <param name="intValue">nullable int32 value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Int64,System.Decimal)">
+            <summary>
+            <para>Convert long value to decimal value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="longValue">long value</param>
+            <param name="defaultValue">default value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Int64)">
+            <summary>
+            Convert long value to decimal value
+            </summary>
+            <param name="longValue">long value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Nullable{System.Int64},System.Decimal)">
+            <summary>
+            <para>Convert nullable long value to decimal value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="longValue">nullable long value</param>
+            <param name="defaultValue">default value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Nullable{System.Int64})">
+            <summary>
+            Convert nullable long value to decimal value
+            </summary>
+            <param name="longValue">nullable long value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Double,System.Decimal)">
+            <summary>
+            <para>Convert double value to decimal value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="doubleValue">double value</param>
+            <param name="defaultValue">default value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Double)">
+            <summary>
+            Convert double value to decimal value
+            </summary>
+            <param name="doubleValue">double value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Nullable{System.Double},System.Decimal)">
+            <summary>
+            <para>Convert nullable double value to decimal value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="doubleValue">nullable double value</param>
+            <param name="defaultValue">default value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Nullable{System.Double})">
+            <summary>
+            Convert nullable double value to decimal value
+            </summary>
+            <param name="doubleValue">nullable double value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Single,System.Decimal)">
+            <summary>
+            <para>Convert float value to decimal value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="floatValue">float value</param>
+            <param name="defaultValue">default value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Single)">
+            <summary>
+            Convert float value to decimal value
+            </summary>
+            <param name="floatValue">float value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Nullable{System.Single},System.Decimal)">
+            <summary>
+            <para>Convert nullable float value to decimal value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="floatValue">nullable float value</param>
+            <param name="defaultValue">default value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimal(System.Nullable{System.Single})">
+            <summary>
+            Convert nullable float value to decimal value
+            </summary>
+            <param name="floatValue">nullable float value</param>
+            <returns>decimal value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimalArray(System.String,System.Decimal[],System.Boolean,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in decimal array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="allowDefaultConversion">Allow default tryparse values</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>decimal array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimalArray(System.String,System.Decimal[],System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in decimal array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>decimal array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimalArray(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in decimal array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>decimal array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimalArray(System.String,System.Decimal[],System.Boolean)">
+            <summary>
+            Parse string array in decimal array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="allowDefaultConversion">Allow default tryparse values</param>
+            <returns>decimal array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimalArray(System.String,System.Decimal[])">
+            <summary>
+            Parse string array in decimal array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <returns>decimal array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.TryParseDecimalArray(System.String)">
+            <summary>
+            Parse string array in short decimal
+            </summary>
+            <param name="strValue">string to parse</param>
+            <returns>decimal array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.IsValidDecimal(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Test if string value is a valid decimal value
+            </summary>
+            <param name="strValue">string value</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>true/false</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DecimalExtensions.IsValidDecimal(System.String)">
+            <summary>
+            Test if string value is a valid decimal value
+            </summary>
+            <param name="strValue">string value</param>
+            <returns>true/false</returns>
+        </member>
+        <member name="T:DevUtils.PrimitivesExtensions.DoubleExtensions">
+            <summary>
+            Double extensions class
+            </summary>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.String,System.Double,System.Boolean,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Convert double string value in double value
+            </summary>
+            <param name="strValue">string to convert</param>
+            <param name="defaultValue">default value to return on convert error</param>
+            <param name="allowZero">allow 0 valuen on convert</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">double culture origin</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.String,System.Double,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Convert double string value in double value
+            </summary>
+            <param name="strValue">string to convert</param>
+            <param name="defaultValue">default value to return on convert error</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">double culture origin</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Convert double string value in double value
+            </summary>
+            <param name="strValue">string to convert</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">double culture origin</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.String,System.Double,System.Boolean)">
+            <summary>
+            Convert double string value in double value
+            </summary>
+            <param name="strValue">string to convert</param>
+            <param name="defaultValue">default value to return on convert error</param>
+            <param name="allowZero">allow 0 valuen on convert</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.String,System.Double)">
+            <summary>
+            Convert double string value in double value
+            </summary>
+            <param name="strValue">string to convert</param>
+            <param name="defaultValue">default value to return on convert error</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.String)">
+            <summary>
+            Convert double string value in double value
+            </summary>
+            <param name="strValue">string to convert</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Nullable{System.Double},System.Double)">
+            <summary>
+            Convert nullable double to double
+            </summary>
+            <param name="doubleValue">nullable double value</param>
+            <param name="defaultValue">default value when error on convert</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Nullable{System.Double})">
+            <summary>
+            Convert nullable double to double
+            </summary>
+            <param name="doubleValue">nullable double value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Byte)">
+            <summary>
+            <para>Convert byte value to double value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="byteValue">byte value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Nullable{System.Byte},System.Double)">
+            <summary>
+            <para>Convert nullable byte value to double value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="byteValue">nullable byte value</param>
+            <param name="defaultValue">default value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Nullable{System.Byte})">
+            <summary>
+            Convert nullable byte value to double value
+            </summary>
+            <param name="byteValue">nullable byte value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Int16)">
+            <summary>
+            <para>Convert short value to double value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="shortValue">short value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Nullable{System.Int16},System.Double)">
+            <summary>
+            <para>Convert nullable short value to double value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="shortValue">nullable short value</param>
+            <param name="defaultValue">default value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Nullable{System.Int16})">
+            <summary>
+            Convert nullable short value to double value
+            </summary>
+            <param name="shortValue">nullable short value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Int32,System.Double)">
+            <summary>
+            <para>Convert int32 value to double value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="intValue">int32 value</param>
+            <param name="defaultValue">default value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Int32)">
+            <summary>
+            Convert int32 value to double value
+            </summary>
+            <param name="intValue">int32 value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Nullable{System.Int32},System.Double)">
+            <summary>
+            <para>Convert nullable int32 value to double value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="intValue">nullable int32 value</param>
+            <param name="defaultValue">default value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Nullable{System.Int32})">
+            <summary>
+            Convert nullable int32 value to double value
+            </summary>
+            <param name="intValue">nullable int32 value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Int64,System.Double)">
+            <summary>
+            <para>Convert long value to double value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="longValue">long value</param>
+            <param name="defaultValue">default value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Int64)">
+            <summary>
+            Convert long value to double value
+            </summary>
+            <param name="longValue">long value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Nullable{System.Int64},System.Double)">
+            <summary>
+            <para>Convert nullable long value to double value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="longValue">nullable long value</param>
+            <param name="defaultValue">default value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Nullable{System.Int64})">
+            <summary>
+            Convert nullable long value to double value
+            </summary>
+            <param name="longValue">nullable long value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Decimal)">
+            <summary>
+            <para>Convert decimal value to double value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="decimalValue">decimal value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Nullable{System.Decimal},System.Double)">
+            <summary>
+            <para>Convert nullable decimal value to double value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="decimalValue">nullable decimal value</param>
+            <param name="defaultValue">default value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Nullable{System.Decimal})">
+            <summary>
+            Convert nullable decimal value to double value
+            </summary>
+            <param name="decimalValue">nullable double value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Single,System.Double)">
+            <summary>
+            <para>Convert float value to double value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="floatValue">float value</param>
+            <param name="defaultValue">default value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Single)">
+            <summary>
+            Convert float value to double value
+            </summary>
+            <param name="floatValue">float value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Nullable{System.Single},System.Double)">
+            <summary>
+            <para>Convert nullable float value to double value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="floatValue">nullable float value</param>
+            <param name="defaultValue">default value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDouble(System.Nullable{System.Single})">
+            <summary>
+            Convert nullable float value to double value
+            </summary>
+            <param name="floatValue">nullable float value</param>
+            <returns>double value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDoubleArray(System.String,System.Double[],System.Boolean,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in double array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="allowDefaultConversion">Allow default tryparse values</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>double array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDoubleArray(System.String,System.Double[],System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in double array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>double array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDoubleArray(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in double array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>double array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDoubleArray(System.String,System.Double[],System.Boolean)">
+            <summary>
+            Parse string array in double array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="allowDefaultConversion">Allow default tryparse values</param>
+            <returns>double array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDoubleArray(System.String,System.Double[])">
+            <summary>
+            Parse string array in double array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <returns>double array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.TryParseDoubleArray(System.String)">
+            <summary>
+            Parse string array in short double
+            </summary>
+            <param name="strValue">string to parse</param>
+            <returns>double array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.IsValidDouble(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Test if string value is a valid double value
+            </summary>
+            <param name="strValue">string value</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>true/false</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.DoubleExtensions.IsValidDouble(System.String)">
+            <summary>
+            Test if string value is a valid double value
+            </summary>
+            <param name="strValue">string value</param>
+            <returns>true/false</returns>
+        </member>
+        <member name="T:DevUtils.PrimitivesExtensions.FloatExtensions">
+            <summary>
+            Float extensions class
+            </summary>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.String,System.Single,System.Boolean,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Convert float string value in float value
+            </summary>
+            <param name="strValue">string to convert</param>
+            <param name="defaultValue">default value to return on convert error</param>
+            <param name="allowZero">allow 0 valuen on convert</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">float culture origin</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.String,System.Single,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Convert float string value in float value
+            </summary>
+            <param name="strValue">string to convert</param>
+            <param name="defaultValue">default value to return on convert error</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">float culture origin</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Convert float string value in float value
+            </summary>
+            <param name="strValue">string to convert</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">float culture origin</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.String,System.Single,System.Boolean)">
+            <summary>
+            Convert float string value in float value
+            </summary>
+            <param name="strValue">string to convert</param>
+            <param name="defaultValue">default value to return on convert error</param>
+            <param name="allowZero">allow 0 valuen on convert</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.String,System.Single)">
+            <summary>
+            Convert float string value in float value
+            </summary>
+            <param name="strValue">string to convert</param>
+            <param name="defaultValue">default value to return on convert error</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.String)">
+            <summary>
+            Convert float string value in float value
+            </summary>
+            <param name="strValue">string to convert</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Nullable{System.Single},System.Single)">
+            <summary>
+            Convert nullable float to float
+            </summary>
+            <param name="floatValue">nullable float value</param>
+            <param name="defaultValue">default value when error on convert</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Nullable{System.Single})">
+            <summary>
+            Convert nullable float to float
+            </summary>
+            <param name="floatValue">nullable float value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Byte)">
+            <summary>
+            <para>Convert byte value to float value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="byteValue">byte value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Nullable{System.Byte},System.Single)">
+            <summary>
+            <para>Convert nullable byte value to float value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="byteValue">nullable byte value</param>
+            <param name="defaultValue">default value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Nullable{System.Byte})">
+            <summary>
+            Convert nullable byte value to float value
+            </summary>
+            <param name="byteValue">nullable byte value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Int16)">
+            <summary>
+            <para>Convert short value to float value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="shortValue">short value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Nullable{System.Int16},System.Single)">
+            <summary>
+            <para>Convert nullable short value to float value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="shortValue">nullable short value</param>
+            <param name="defaultValue">default value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Nullable{System.Int16})">
+            <summary>
+            Convert nullable short value to float value
+            </summary>
+            <param name="shortValue">nullable short value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Int32,System.Single)">
+            <summary>
+            <para>Convert int32 value to float value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="intValue">int32 value</param>
+            <param name="defaultValue">default value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Int32)">
+            <summary>
+            Convert int32 value to float value
+            </summary>
+            <param name="intValue">int32 value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Nullable{System.Int32},System.Single)">
+            <summary>
+            <para>Convert nullable int32 value to float value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="intValue">nullable int32 value</param>
+            <param name="defaultValue">default value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Nullable{System.Int32})">
+            <summary>
+            Convert nullable int32 value to float value
+            </summary>
+            <param name="intValue">nullable int32 value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Int64,System.Single)">
+            <summary>
+            <para>Convert long value to float value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="longValue">long value</param>
+            <param name="defaultValue">default value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Int64)">
+            <summary>
+            Convert long value to float value
+            </summary>
+            <param name="longValue">long value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Nullable{System.Int64},System.Single)">
+            <summary>
+            <para>Convert nullable long value to float value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="longValue">nullable long value</param>
+            <param name="defaultValue">default value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Nullable{System.Int64})">
+            <summary>
+            Convert nullable long value to float value
+            </summary>
+            <param name="longValue">nullable long value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Double,System.Single)">
+            <summary>
+            <para>Convert double value to float value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="doubleValue">double value</param>
+            <param name="defaultValue">default value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Double)">
+            <summary>
+            Convert double value to float value
+            </summary>
+            <param name="doubleValue">double value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Nullable{System.Double},System.Single)">
+            <summary>
+            <para>Convert nullable double value to float value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="doubleValue">nullable double value</param>
+            <param name="defaultValue">default value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Nullable{System.Double})">
+            <summary>
+            Convert nullable double value to float value
+            </summary>
+            <param name="doubleValue">nullable double value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Decimal,System.Single)">
+            <summary>
+            <para>Convert decimal value to float value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="decimalValue">decimal value</param>
+            <param name="defaultValue">default value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Decimal)">
+            <summary>
+            Convert decimal value to float value
+            </summary>
+            <param name="decimalValue">decimal value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Nullable{System.Decimal},System.Single)">
+            <summary>
+            <para>Convert nullable decimal value to float value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="decimalValue">nullable decimal value</param>
+            <param name="defaultValue">default value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloat(System.Nullable{System.Decimal})">
+            <summary>
+            Convert nullable decimal value to float value
+            </summary>
+            <param name="decimalValue">nullable decimal value</param>
+            <returns>float value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloatArray(System.String,System.Single[],System.Boolean,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in float array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="allowDefaultConversion">Allow default tryparse values</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>float array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloatArray(System.String,System.Single[],System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in float array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>float array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloatArray(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in float array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>float array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloatArray(System.String,System.Single[],System.Boolean)">
+            <summary>
+            Parse string array in float array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="allowDefaultConversion">Allow default tryparse values</param>
+            <returns>float array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloatArray(System.String,System.Single[])">
+            <summary>
+            Parse string array in float array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <returns>float array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.TryParseFloatArray(System.String)">
+            <summary>
+            Parse string array in short float
+            </summary>
+            <param name="strValue">string to parse</param>
+            <returns>float array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.IsValidFloat(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Test if string value is a valid float value
+            </summary>
+            <param name="strValue">string value</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>true/false</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.FloatExtensions.IsValidFloat(System.String)">
+            <summary>
+            Test if string value is a valid float value
+            </summary>
+            <param name="strValue">string value</param>
+            <returns>true/false</returns>
+        </member>
+        <member name="T:DevUtils.PrimitivesExtensions.IntExtensions">
+            <summary>
+            Static int extension
+            </summary>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.String,System.Int32,System.Boolean,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Convert string value to int value
+            </summary>
+            <param name="strValue">string value to convert</param>
+            <param name="defaultValue">default value when error on convert value</param>
+            <param name="allowZero">allow zero on convert</param>
+            <param name="numberStyle">string number style</param>
+            <param name="culture">current culture</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.String,System.Int32,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Convert string value to int value
+            </summary>
+            <param name="strValue">string value to convert</param>
+            <param name="defaultValue">default value when error on convert value</param>
+            <param name="numberStyle">string number style</param>
+            <param name="culture">current culture</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Convert string value to int value
+            </summary>
+            <param name="strValue">string value to convert</param>
+            <param name="numberStyle">string number style</param>
+            <param name="culture">current culture</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Convert string value to int value
+            </summary>
+            <param name="strValue">string value to convert</param>
+            <param name="defaultValue">default value when error on convert value</param>
+            <param name="allowZero">allow zero on convert</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.String,System.Int32)">
+            <summary>
+            Convert string value to int value
+            </summary>
+            <param name="strValue">string value to convert</param>
+            <param name="defaultValue">default value when error on convert value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.String)">
+            <summary>
+            Convert string value to int value
+            </summary>
+            <param name="strValue">string value to convert</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Nullable{System.Int32},System.Int32)">
+            <summary>
+            Convert nullable int to int
+            </summary>
+            <param name="intValue">nullable int value</param>
+            <param name="defaultValue">default value when error on convert</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Nullable{System.Int32})">
+            <summary>
+            Convert nullable int to int
+            </summary>
+            <param name="intValue">nullable int value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Byte)">
+            <summary>
+            <para>Convert byte value to int value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="byteValue">int value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Nullable{System.Byte},System.Int32)">
+            <summary>
+            <para>Convert nullable byte value to int value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="byteValue">nullable byte value</param>
+            <param name="defaultValue">default value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Nullable{System.Byte})">
+            <summary>
+            Convert nullable byte value to int value
+            </summary>
+            <param name="byteValue">nullable byte value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Int16)">
+            <summary>
+            <para>Convert short value to int value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="shortValue">short value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Nullable{System.Int16},System.Int32)">
+            <summary>
+            <para>Convert nullable short value to int value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="shortValue">nullable short value</param>
+            <param name="defaultValue">default value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Nullable{System.Int16})">
+            <summary>
+            Convert nullable short value to int value
+            </summary>
+            <param name="shortValue">nullable short value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Int64,System.Int32)">
+            <summary>
+            <para>Convert long value to int value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="longValue">long value</param>
+            <param name="defaultValue">default value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Int64)">
+            <summary>
+            Convert long value to int value
+            </summary>
+            <param name="longValue">long value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Nullable{System.Int64},System.Int32)">
+            <summary>
+            <para>Convert nullable long value to int value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="longValue">nullable long value</param>
+            <param name="defaultValue">default value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Nullable{System.Int64})">
+            <summary>
+            Convert nullable long value to int value
+            </summary>
+            <param name="longValue">nullable long value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Decimal,System.Int32)">
+            <summary>
+            <para>Convert decimal value to int value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="decimalValue">decimal value</param>
+            <param name="defaultValue">default value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Decimal)">
+            <summary>
+            Convert decimal value to int value
+            </summary>
+            <param name="decimalValue">decimal value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Nullable{System.Decimal},System.Int32)">
+            <summary>
+            <para>Convert nullable decimal value to int value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="decimalValue">nullable decimal value</param>
+            <param name="defaultValue">default value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Nullable{System.Decimal})">
+            <summary>
+            Convert nullable decimal value to int value
+            </summary>
+            <param name="decimalValue">nullable decimal value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Double,System.Int32)">
+            <summary>
+            <para>Convert double value to int value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="doubleValue">double value</param>
+            <param name="defaultValue">default value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Double)">
+            <summary>
+            Convert double value to int value
+            </summary>
+            <param name="doubleValue">double value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Nullable{System.Double},System.Int32)">
+            <summary>
+            <para>Convert nullable double value to int value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="doubleValue">nullable double value</param>
+            <param name="defaultValue">default value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Nullable{System.Double})">
+            <summary>
+            Convert nullable double value to int value
+            </summary>
+            <param name="doubleValue">nullable double value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Single,System.Int32)">
+            <summary>
+            <para>Convert float value to int value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="floatValue">float value</param>
+            <param name="defaultValue">default value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Single)">
+            <summary>
+            Convert float value to int value
+            </summary>
+            <param name="floatValue">float value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Nullable{System.Single},System.Int32)">
+            <summary>
+            <para>Convert nullable float value to int value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="floatValue">nullable float value</param>
+            <param name="defaultValue">default value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseInt(System.Nullable{System.Single})">
+            <summary>
+            Convert nullable float value to int value
+            </summary>
+            <param name="floatValue">nullable float value</param>
+            <returns>int value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseIntArray(System.String,System.Int32[],System.Boolean,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in int array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="allowDefaultConversion">Allow default tryparse values</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>int array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseIntArray(System.String,System.Int32[],System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in int array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>int array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseIntArray(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in int array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>int array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseIntArray(System.String,System.Int32[],System.Boolean)">
+            <summary>
+            Parse string array in int array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="allowDefaultConversion">Allow default tryparse values</param>
+            <returns>int array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseIntArray(System.String,System.Int32[])">
+            <summary>
+            Parse string array in int array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <returns>int array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.TryParseIntArray(System.String)">
+            <summary>
+            Parse string array in short int
+            </summary>
+            <param name="strValue">string to parse</param>
+            <returns>int array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.IsValidInt(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Test if string value is a valid int value
+            </summary>
+            <param name="strValue">string value</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>true/false</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.IntExtensions.IsValidInt(System.String)">
+            <summary>
+            Test if string value is a valid int value
+            </summary>
+            <param name="strValue">string value</param>
+            <returns>true/false</returns>
+        </member>
+        <member name="T:DevUtils.PrimitivesExtensions.LongExtensions">
+            <summary>
+            Static long extension
+            </summary>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.String,System.Int64,System.Boolean,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Convert string value to long value
+            </summary>
+            <param name="strValue">string value to convert</param>
+            <param name="defaultValue">default value when error on convert value</param>
+            <param name="allowZero">allow zero on convert</param>
+            <param name="numberStyle">string number style</param>
+            <param name="culture">current culture</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.String,System.Int64,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Convert string value to long value
+            </summary>
+            <param name="strValue">string value to convert</param>
+            <param name="defaultValue">default value when error on convert value</param>
+            <param name="numberStyle">string number style</param>
+            <param name="culture">current culture</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Convert string value to long value
+            </summary>
+            <param name="strValue">string value to convert</param>
+            <param name="numberStyle">string number style</param>
+            <param name="culture">current culture</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.String,System.Int64,System.Boolean)">
+            <summary>
+            Convert string value to long value
+            </summary>
+            <param name="strValue">string value to convert</param>
+            <param name="defaultValue">default value when error on convert value</param>
+            <param name="allowZero">allow zero on convert</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.String,System.Int64)">
+            <summary>
+            Convert string value to long value
+            </summary>
+            <param name="strValue">string value to convert</param>
+            <param name="defaultValue">default value when error on convert value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.String)">
+            <summary>
+            Convert string value to long value
+            </summary>
+            <param name="strValue">string value to convert</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Nullable{System.Int64},System.Int64)">
+            <summary>
+            Convert nullable long to long
+            </summary>
+            <param name="longValue">nullable long value</param>
+            <param name="defaultValue">default value when error on convert</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Nullable{System.Int64})">
+            <summary>
+            Convert nullable long to long
+            </summary>
+            <param name="longValue">nullable long value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Byte)">
+            <summary>
+            <para>Convert byte value to long value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="byteValue">long value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Nullable{System.Byte},System.Int64)">
+            <summary>
+            <para>Convert nullable byte value to long value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="byteValue">nullable byte value</param>
+            <param name="defaultValue">default value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Nullable{System.Byte})">
+            <summary>
+            Convert nullable byte value to long value
+            </summary>
+            <param name="byteValue">nullable byte value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Int16)">
+            <summary>
+            <para>Convert short value to long value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="shortValue">short value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Nullable{System.Int16},System.Int64)">
+            <summary>
+            <para>Convert nullable short value to long value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="shortValue">nullable short value</param>
+            <param name="defaultValue">default value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Nullable{System.Int16})">
+            <summary>
+            Convert nullable short value to long value
+            </summary>
+            <param name="shortValue">nullable short value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Int32)">
+            <summary>
+            <para>Convert int value to long value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="intValue">int value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Nullable{System.Int32},System.Int64)">
+            <summary>
+            <para>Convert nullable int value to long value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="intValue">nullable int value</param>
+            <param name="defaultValue">default value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Nullable{System.Int32})">
+            <summary>
+            Convert nullable int value to long value
+            </summary>
+            <param name="intValue">nullable int value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Decimal,System.Int64)">
+            <summary>
+            <para>Convert decimal value to long value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="decimalValue">decimal value</param>
+            <param name="defaultValue">default value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Decimal)">
+            <summary>
+            Convert decimal value to long value
+            </summary>
+            <param name="decimalValue">decimal value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Nullable{System.Decimal},System.Int64)">
+            <summary>
+            <para>Convert nullable decimal value to long value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="decimalValue">nullable decimal value</param>
+            <param name="defaultValue">default value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Nullable{System.Decimal})">
+            <summary>
+            Convert nullable decimal value to long value
+            </summary>
+            <param name="decimalValue">nullable decimal value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Double,System.Int64)">
+            <summary>
+            <para>Convert double value to long value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="doubleValue">double value</param>
+            <param name="defaultValue">default value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Double)">
+            <summary>
+            Convert double value to long value
+            </summary>
+            <param name="doubleValue">double value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Nullable{System.Double},System.Int64)">
+            <summary>
+            <para>Convert nullable double value to long value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="doubleValue">nullable double value</param>
+            <param name="defaultValue">default value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Nullable{System.Double})">
+            <summary>
+            Convert nullable double value to long value
+            </summary>
+            <param name="doubleValue">nullable double value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Single,System.Int64)">
+            <summary>
+            <para>Convert float value to long value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="floatValue">float value</param>
+            <param name="defaultValue">default value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Single)">
+            <summary>
+            Convert float value to long value
+            </summary>
+            <param name="floatValue">float value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Nullable{System.Single},System.Int64)">
+            <summary>
+            <para>Convert nullable float value to long value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="floatValue">nullable float value</param>
+            <param name="defaultValue">default value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLong(System.Nullable{System.Single})">
+            <summary>
+            Convert nullable float value to long value
+            </summary>
+            <param name="floatValue">nullable float value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLongArray(System.String,System.Int64[],System.Boolean,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in long array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="allowDefaultConversion">Allow default tryparse values</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>long array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLongArray(System.String,System.Int64[],System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in long array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>long array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLongArray(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in long array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>long array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLongArray(System.String,System.Int64[],System.Boolean)">
+            <summary>
+            Parse string array in long array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="allowDefaultConversion">Allow default tryparse values</param>
+            <returns>long array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLongArray(System.String,System.Int64[])">
+            <summary>
+            Parse string array in long array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <returns>long array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.TryParseLongArray(System.String)">
+            <summary>
+            Parse string array in short long
+            </summary>
+            <param name="strValue">string to parse</param>
+            <returns>long array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.IsValidLong(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Test if string value is a valid long value
+            </summary>
+            <param name="strValue">string value</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>true/false</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.LongExtensions.IsValidLong(System.String)">
+            <summary>
+            Test if string value is a valid long value
+            </summary>
+            <param name="strValue">string value</param>
+            <returns>true/false</returns>
+        </member>
+        <member name="T:DevUtils.PrimitivesExtensions.ShortExtensions">
+            <summary>
+            Static short extension
+            </summary>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.String,System.Int16,System.Boolean,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            <para>Convert string to short</para>
+            <para>Set default value on error</para>
+            </summary>
+            <param name="strValue">string value</param>
+            <param name="defaultValue">default value</param>
+            <param name="allowZero">allow 0 on convert.</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>converted value or default value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.String,System.Int16,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            <para>Convert string to short</para>
+            <para>set default value on error</para>
+            </summary>
+            <param name="strValue">string value</param>
+            <param name="defaultValue">default value</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>converted value or default value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Convert string to short
+            </summary>
+            <param name="strValue">string value</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>converted value or BasePrimitivesExtensions.GetDefaultShortConversionValue value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.String,System.Int16,System.Boolean)">
+            <summary>
+            <para>Convert string to short</para>
+            <para>Set default value on error</para>
+            </summary>
+            <param name="strValue">string value</param>
+            <param name="defaultValue">default value</param>
+            <param name="allowZero">allow 0 on convert.</param>
+            <returns>converted value or default value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.String,System.Int16)">
+            <summary>
+            <para>Convert string to short</para>
+            <para>set default value on error</para>
+            </summary>
+            <param name="strValue">string value</param>
+            <param name="defaultValue">default value</param>
+            <returns>converted value or default value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.String)">
+            <summary>
+            Convert string to short
+            </summary>
+            <param name="strValue">string value</param>
+            <returns>converted value or BasePrimitivesExtensions.GetDefaultShortConversionValue value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Nullable{System.Int16},System.Int16)">
+            <summary>
+            Convert nullable short to short
+            </summary>
+            <param name="shortValue">nullable shortValue value</param>
+            <param name="defaultValue">default value when error on convert</param>
+            <returns>converted value or defaultValue value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Nullable{System.Int16})">
+            <summary>
+            Convert nullable short to short
+            </summary>
+            <param name="shortValue">nullable shortValue value</param>
+            <returns>converted value or BasePrimitivesExtensions.GetDefaultShortConversionValue value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Byte)">
+            <summary>
+            <para>Convert byte value to short value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="byteValue">byte value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Nullable{System.Byte},System.Int16)">
+            <summary>
+            <para>Convert nullable byte value to short value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="byteValue">nullable byte value</param>
+            <param name="defaultValue">default value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Nullable{System.Byte})">
+            <summary>
+            Convert nullable byte value to short value
+            </summary>
+            <param name="byteValue">nullable byte value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Int32,System.Int16)">
+            <summary>
+            <para>Convert int value to short value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="intValue">int value</param>
+            <param name="defaultValue">default value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Int32)">
+            <summary>
+            Convert int value to short value
+            </summary>
+            <param name="intValue">int value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Nullable{System.Int32},System.Int16)">
+            <summary>
+            <para>Convert nullable int value to short value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="intValue">nullable int value</param>
+            <param name="defaultValue">default value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Nullable{System.Int32})">
+            <summary>
+            Convert nullable int value to short value
+            </summary>
+            <param name="intValue">nullable int value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Int64,System.Int16)">
+            <summary>
+            <para>Convert long value to short value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="longValue">long value</param>
+            <param name="defaultValue">default value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Int64)">
+            <summary>
+            Convert long value to short value
+            </summary>
+            <param name="longValue">long value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Nullable{System.Int64},System.Int16)">
+            <summary>
+            <para>Convert nullable long value to short value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="longValue">nullable long value</param>
+            <param name="defaultValue">default value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Nullable{System.Int64})">
+            <summary>
+            Convert nullable long value to short value
+            </summary>
+            <param name="longValue">nullable long value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Decimal,System.Int16)">
+            <summary>
+            <para>Convert decimal value to short value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="decimalValue">decimal value</param>
+            <param name="defaultValue">default value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Decimal)">
+            <summary>
+            Convert decimal value to short value
+            </summary>
+            <param name="decimalValue">decimal value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Nullable{System.Decimal},System.Int16)">
+            <summary>
+            <para>Convert nullable decimal value to short value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="decimalValue">nullable decimal value</param>
+            <param name="defaultValue">default value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Nullable{System.Decimal})">
+            <summary>
+            Convert nullable decimal value to short value
+            </summary>
+            <param name="decimalValue">nullable decimal value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Double,System.Int16)">
+            <summary>
+            <para>Convert double value to short value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="doubleValue">double value</param>
+            <param name="defaultValue">default value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Double)">
+            <summary>
+            Convert double value to short value
+            </summary>
+            <param name="doubleValue">double value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Nullable{System.Double},System.Int16)">
+            <summary>
+            <para>Convert nullable double value to short value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="doubleValue">nullable double value</param>
+            <param name="defaultValue">default value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Nullable{System.Double})">
+            <summary>
+            Convert nullable double value to short value
+            </summary>
+            <param name="doubleValue">nullable double value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Single,System.Int16)">
+            <summary>
+            <para>Convert float value to short value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="floatValue">float value</param>
+            <param name="defaultValue">default value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Single)">
+            <summary>
+            Convert float value to short value
+            </summary>
+            <param name="floatValue">float value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Nullable{System.Single},System.Int16)">
+            <summary>
+            <para>Convert nullable float value to short value</para>
+            <para>Set default value on invalid convertion</para>
+            </summary>
+            <param name="floatValue">nullable float value</param>
+            <param name="defaultValue">default value</param>
+            <returns>short value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShort(System.Nullable{System.Single})">
+            <summary>
+            Convert nullable float value to short value
+            </summary>
+            <param name="floatValue">nullable float value</param>
+            <returns>long value</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShortArray(System.String,System.Int16[],System.Boolean,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in short array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="allowDefaultConversion">Allow default tryparse values</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>short array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShortArray(System.String,System.Int16[],System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in short array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>short array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShortArray(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Parse string array in short array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>short array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShortArray(System.String,System.Int16[],System.Boolean)">
+            <summary>
+            Parse string array in short array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <param name="allowDefaultConversion">Allow default tryparse values</param>
+            <returns>short array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShortArray(System.String,System.Int16[])">
+            <summary>
+            Parse string array in short array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <param name="defaultValue">default value when default tryparse</param>
+            <returns>short array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.TryParseShortArray(System.String)">
+            <summary>
+            Parse string array in short array
+            </summary>
+            <param name="strValue">string to parse</param>
+            <returns>short array</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.IsValidShort(System.String,System.Globalization.NumberStyles,System.Globalization.CultureInfo)">
+            <summary>
+            Test if string value is a valid short value
+            </summary>
+            <param name="strValue">string value</param>
+            <param name="numberStyle">number style to convert</param>
+            <param name="culture">culture origin</param>
+            <returns>true/false</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.ShortExtensions.IsValidShort(System.String)">
+            <summary>
+            Test if string value is a valid short value
+            </summary>
+            <param name="strValue">string value</param>
+            <returns>true/false</returns>
+        </member>
+        <member name="T:DevUtils.PrimitivesExtensions.StringExtensions">
+            <summary>
+            Static string extensions
+            </summary>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.StringExtensions.ToUnicode(System.String)">
+            <summary>
+            <para>Normalize string to unicode</para>
+            <para>Remove special characters</para>
+            </summary>
+            <param name="text">string to normalize</param>
+            <returns>unicode string</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.StringExtensions.ToUnicodeWithoutSpace(System.String)">
+            <summary>
+            <para>Remove all spaces and normalize string to unicode</para>
+            <para>Remove special characters</para>
+            <para>Convert space to underscore</para>
+            </summary>
+            <param name="text">strign to normalize</param>
+            <returns>unicode strings without spaces</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.StringExtensions.Left(System.String,System.Int32)">
+            <summary>
+            Get first N characters from string
+            </summary>
+            <param name="text">string text</param>
+            <param name="length">characters length</param>
+            <returns>first N characters</returns>
+        </member>
+        <member name="M:DevUtils.PrimitivesExtensions.StringExtensions.Right(System.String,System.Int32)">
+            <summary>
+            Get last N characters from string
+            </summary>
+            <param name="text">string text</param>
+            <param name="length">characters length</param>
+            <returns>last N characters</returns>
+        </member>
+        <member name="T:DevUtils.Validators.Email">
+            <summary>
+            Email validator class
+            </summary>
+        </member>
+        <member name="M:DevUtils.Validators.Email.IsEmailValid(System.String)">
+            <summary>
+            Validate an email
+            </summary>
+            <param name="email">email to validate</param>
+            <returns>is valid email</returns>
+        </member>
+        <member name="T:DevUtils.Validators.Url">
+            <summary>
+            Uri class urils
+            </summary>
+        </member>
+        <member name="M:DevUtils.Validators.Url.IsUriValid(System.String)">
+            <summary>
+            Validate an uri
+            </summary>
+            <param name="uri">uri to validate</param>
+            <returns>is valid uri</returns>
+        </member>
+    </members>
+</doc>

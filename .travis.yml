@@ -11,4 +11,5 @@ before_install:
  - sudo installer -pkg "MonoFramework-MDK-${MONO_VER}.macos10.xamarin.x86.pkg" -target /
 
 script:
-  - MONO_IOMAP=case xbuild "DevUtils.test/DevUtils.test.sln" /p:TargetFrameworkProfile="" /p:TargetFrameworkVersion="v4.5" /p:TreatWarningsAsErrors="false"
+ - xbuild 
+ - .ci/nunit.sh DevUtils.test/DevUtils.test/bin/Debug/DevUtils.dll
