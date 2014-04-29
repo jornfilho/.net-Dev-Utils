@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>../DevUtils/DevUtils/</id>
+    <version>1.0.0</version>
+    <authors>Jorn Filho</authors>
+    <owners>Jorn Filho</owners>
+    <licenseUrl>https://github.com/jornfilho/.net-Dev-Utils/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/jornfilho/.net-Dev-Utils</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>.net Dev Utils</description>
+    <releaseNotes>.net Dev Utils</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>c# .net utils</tags>    
+  </metadata>
+</package>
