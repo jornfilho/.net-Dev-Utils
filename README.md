@@ -1,6 +1,15 @@
 #.NET Dev Utils [![Build status](https://ci.appveyor.com/api/projects/status/ge146r8gotw9r0mb)](https://ci.appveyor.com/project/jornfilho/net-dev-utils)#
 ---
 
+###Nuget package:###
+
+[https://www.nuget.org/packages/DevUtils/](https://www.nuget.org/packages/DevUtils/)
+
+```sh
+PM> Install-Package DevUtils
+```
+
+---
 
 ###Validators###
 > **Email**
@@ -208,6 +217,134 @@
 
 ---
 
-##And much more...##
+###DateTimeExtensions###
+> **Utils**
+>
+>> **Business days**
+>>
+>>> public static DateTime AddBusinessDays(this DateTime date, int days, DayOfWeek[] businessDays)
+>>
+>>> public static DateTime AddBusinessDays(this DateTime date, int days)
+>>
+>>> public static DateTime RemoveBusinessDays(this DateTime date, int days, DayOfWeek[] businessDays)
+>>
+>>> public static DateTime RemoveBusinessDays(this DateTime date, int days)
+>>
+>> **Set date**
+>>
+>>> public static DateTime SetDate(this DateTime date, int year, int month, int day)
+>>
+>>> public static DateTime SetYear(this DateTime date, int year)
+>>
+>>> public static DateTime SetMonth(this DateTime date, int month)
+>>
+>>> public static DateTime SetDay(this DateTime date, int day)
+>>
+>> **Set time**
+>>
+>>> public static DateTime SetTime(this DateTime date, int hour, int minute, int second, int millisecond)
+>>
+>>> public static DateTime SetTime(this DateTime date, int hour, int minute, int second)
+>>
+>>> public static DateTime SetTime(this DateTime date, int hour, int minute)
+>>
+>>> public static DateTime SetHour(this DateTime date, int hour)
+>>
+>>> public static DateTime SetMinute(this DateTime date, int minute)
+>>
+>>> public static DateTime SetSecond(this DateTime date, int second)
+>>
+>>> public static DateTime SetMillisecond(this DateTime date, int millisecond)
+>>
+>> **Start of year**
+>>
+>>> public static DateTime StartOfYear(this DateTime date)
+>>
+>>> public static DateTime StartOfYear(int year)
+>>
+>>> public static DateTime StartOfBusinessYear(this DateTime date, DayOfWeek[] businessDays)
+>>
+>>> public static DateTime StartOfBusinessYear(this DateTime date)
+>>
+>>> public static DateTime StartOfBusinessYear(int year, DayOfWeek[] businessDays)
+>>
+>>> public static DateTime StartOfBusinessYear(int year)
+>>
+>> **End of year**
+>>
+>>> public static DateTime EndOfYear(this DateTime date)
+>>
+>>> public static DateTime EndOfYear(int year)
+>>
+>>> public static DateTime EndOfBusinessYear(this DateTime date, DayOfWeek[] businessDays)
+>>
+>>> public static DateTime EndOfBusinessYear(this DateTime date)
+>>
+>>> public static DateTime EndOfBusinessYear(int year, DayOfWeek[] businessDays)
+>>
+>>> public static DateTime EndOfBusinessYear(int year)
+>>
+>> **Start of month**
+>>
+>>> public static DateTime StartOfMonth(this DateTime date)
+>>
+>>> public static DateTime StartOfMonth(Month month, int year)
+>>
+>>> public static DateTime StartOfBusinessMonth(this DateTime date, DayOfWeek[] businessDays)
+>>
+>>> public static DateTime StartOfBusinessMonth(this DateTime date)
+>>
+>>> public static DateTime StartOfBusinessMonth(Month month, int year, DayOfWeek[] businessDays)
+>>
+>>> public static DateTime StartOfBusinessMonth(Month month, int year)
+>>
+>> **End of month**
+>>
+>>> public static DateTime EndOfMonth(this DateTime date)
+>>
+>>> public static DateTime EndOfMonth(Month month, int year)
+>>
+>>> public static DateTime EndOfBusinessMonth(this DateTime date, DayOfWeek[] businessDays)
+>>
+>>> public static DateTime EndOfBusinessMonth(this DateTime date)
+>>
+>>> public static DateTime EndOfBusinessMonth(Month month, int year, DayOfWeek[] businessDays)
+>>
+>>> public static DateTime EndOfBusinessMonth(Month month, int year)
+>>
+>> **Start of week**
+>>
+>>> public static DateTime StartOfWeek(this DateTime date, DayOfWeek firstDay)
+>>
+>>> public static DateTime StartOfWeek(this DateTime date)
+>>
+>>> public static DateTime StartOfBusinessWeek(this DateTime date, DayOfWeek firstBusinessDay)
+>>
+>>> public static DateTime StartOfBusinessWeek(this DateTime date)
+>>
+>> **End of week**
+>>
+>>> public static DateTime EndOfWeek(this DateTime date, DayOfWeek lastDay)
+>>
+>>> public static DateTime EndOfWeek(this DateTime date)
+>>
+>>> public static DateTime EndOfBusinessWeek(this DateTime date, DayOfWeek lastBusinessDay)
+>>
+>>> public static DateTime EndOfBusinessWeek(this DateTime date)
+>>
+>> **Start of day**
+>>
+>>> public static DateTime StartOfDay(this DateTime date)
+>>
+>> **End of day**
+>>
+>>> public static DateTime EndOfDay(this DateTime date)
+>>
+>
 
-<!--http://dillinger.io/-->
+---
+
+###And much more...###
+
+
+<!-- http://dillinger.io/ -->
