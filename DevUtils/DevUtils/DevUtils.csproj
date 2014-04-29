@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8A4DE6FB-22AF-48C2-A02B-4D63FB35B7F1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DevUtils</RootNamespace>
+    <AssemblyName>DevUtils</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\DevUtils.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\DevUtils.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DateTimeExtensions\BaseDateTimeExtensions.cs" />
+    <Compile Include="DateTimeExtensions\MonthEnum.cs" />
+    <Compile Include="DateTimeExtensions\Offset.cs" />
+    <Compile Include="DateTimeExtensions\DateExtensions.cs" />
+    <Compile Include="DateTimeExtensions\Utils.cs" />
+    <Compile Include="Hash\Base64.cs" />
+    <Compile Include="Hash\Md5.cs" />
+    <Compile Include="Hash\Randon.cs" />
+    <Compile Include="Hash\Sha256.cs" />
+    <Compile Include="PrimitivesExtensions\BasePrimitivesExtensions.cs" />
+    <Compile Include="PrimitivesExtensions\BoolExtensions.cs" />
+    <Compile Include="PrimitivesExtensions\ByteExtensions.cs" />
+    <Compile Include="PrimitivesExtensions\DecimalExtensions.cs" />
+    <Compile Include="PrimitivesExtensions\DoubleExtensions.cs" />
+    <Compile Include="PrimitivesExtensions\FloatExtensions.cs" />
+    <Compile Include="PrimitivesExtensions\IntExtensions.cs" />
+    <Compile Include="PrimitivesExtensions\LongExtensions.cs" />
+    <Compile Include="PrimitivesExtensions\ShortExtensions.cs" />
+    <Compile Include="PrimitivesExtensions\StringExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\Email.cs" />
+    <Compile Include="Validators\Uri.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
