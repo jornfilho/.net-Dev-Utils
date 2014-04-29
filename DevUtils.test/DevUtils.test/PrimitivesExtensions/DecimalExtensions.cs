@@ -570,7 +570,7 @@ namespace DevUtils.test.PrimitivesExtensions
             Assert.IsFalse("jorn".IsValidDecimal());
             Assert.IsFalse("false".IsValidDecimal());
             Assert.IsTrue("1".IsValidDecimal());
-            Assert.IsTrue("1,1".IsValidDecimal());
+            Assert.IsTrue("1.1".Replace(".", Culture.NumberFormat.CurrencyDecimalSeparator).IsValidDecimal());
             Assert.IsTrue("4545454.4545445".Replace(".", Culture.NumberFormat.CurrencyDecimalSeparator).IsValidDecimal());
             Assert.IsTrue("10".IsValidDecimal());
             Assert.IsTrue("0".IsValidDecimal());
@@ -581,7 +581,7 @@ namespace DevUtils.test.PrimitivesExtensions
             Assert.IsFalse("jorn".IsValidDecimal(NumberStyle, Culture));
             Assert.IsFalse("false".IsValidDecimal(NumberStyle, Culture));
             Assert.IsTrue("1".IsValidDecimal(NumberStyle, Culture));
-            Assert.IsTrue("1,1".IsValidDecimal(NumberStyle, Culture));
+            Assert.IsTrue("1.1".Replace(".", Culture.NumberFormat.CurrencyDecimalSeparator).IsValidDecimal(NumberStyle, Culture));
             Assert.IsTrue("4545454.4545445".Replace(".", Culture.NumberFormat.CurrencyDecimalSeparator).IsValidDecimal(NumberStyle, Culture));
             Assert.IsTrue("10".IsValidDecimal(NumberStyle, Culture));
             Assert.IsTrue("0".IsValidDecimal(NumberStyle, Culture));
