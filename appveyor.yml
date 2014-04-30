@@ -1,0 +1,53 @@
+#---------------------------------#
+#      general configuration      #
+#---------------------------------#
+version: 1.0.{build}
+
+# branches to build
+branches:
+  # whitelist
+  only:
+    - master
+    - hotfixes
+	- homolog
+	- develop
+
+  # blacklist
+  except:
+    - develop2
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+os: Windows Server 2012
+
+# scripts that are called at very beginning, before repo cloning
+#init:
+#  - git config --global core.autocrlf input
+
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
+platform: AnyCPU
+
+configuration:
+  - Debug
+  - Release
+
+build:
+  project: DevUtils.sln
+  publish_nuget: true
+
+  # MSBuild verbosity level
+  verbosity: minimal
+
+
+#---------------------------------#
+#     deployment configuration    #
+#---------------------------------#
+deploy:
+  - provider: NuGet
+    server: NuGet.org
+    api_key:
+	  secure: d92eb914-77dd-40bb-bd04-94742c38ce4e
+	artifact: /.*\.nupkg/
