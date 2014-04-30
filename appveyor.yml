@@ -7,14 +7,14 @@ version: 1.0.{build}
 branches:
   # whitelist
   only:
-    master
-    hotfixes
-	homolog
-	develop
+    - master
+    - hotfixes
+    - homolog
+    - develop
 
   # blacklist
   except:
-    develop2
+    - develop2
 
 #---------------------------------#
 #    environment configuration    #
@@ -49,5 +49,5 @@ deploy:
   - provider: NuGet
     server: NuGet.org
     api_key:
-	  secure: d92eb914-77dd-40bb-bd04-94742c38ce4e
-	artifact: /.*\.nupkg/
+      secure: d92eb914-77dd-40bb-bd04-94742c38ce4e
+    artifact: /.*\.nupkg/
