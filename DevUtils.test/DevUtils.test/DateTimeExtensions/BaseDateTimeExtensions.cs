@@ -72,36 +72,50 @@ namespace DevUtils.test.DateTimeExtensions
         [TestMethod]
         public void GetAndSet_DefaultBusinessDays()
         {
-            var businessDays = new[] {DayOfWeek.Tuesday, DayOfWeek.Wednesday};
-            var systemBusinessDays = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultBusinessDays();
+            try
+            {
+                var businessDays = new[] { DayOfWeek.Tuesday, DayOfWeek.Wednesday };
+                var systemBusinessDays = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultBusinessDays();
 
-            Assert.IsNotNull(systemBusinessDays, "Error getting default business days");
-            
-            DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultBusinessDays(businessDays);
-            systemBusinessDays = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultBusinessDays();
+                Assert.IsNotNull(systemBusinessDays, "Error getting default business days");
 
-            Assert.IsNotNull(systemBusinessDays, "Error getting default business days");
-            Assert.IsTrue(systemBusinessDays.Count() == businessDays.Count(), "Error setting business days");
-            foreach (var day in businessDays)
-                Assert.IsTrue(systemBusinessDays.Any(d=> d == day), "Error setting business days");
+                DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultBusinessDays(businessDays);
+                systemBusinessDays = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultBusinessDays();
 
-
-            DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultBusinessDays(null);
-            systemBusinessDays = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultBusinessDays();
-
-            Assert.IsNotNull(systemBusinessDays, "Error getting default business days");
-            Assert.IsTrue(systemBusinessDays.Count() == businessDays.Count(), "Error setting business days");
-            foreach (var day in businessDays)
-                Assert.IsTrue(systemBusinessDays.Any(d => d == day), "Error setting business days");
+                Assert.IsNotNull(systemBusinessDays, "Error getting default business days");
+                Assert.IsTrue(systemBusinessDays.Count() == businessDays.Count(), "Error setting business days");
+                foreach (var day in businessDays)
+                    Assert.IsTrue(systemBusinessDays.Any(d => d == day), "Error setting business days");
 
 
-            DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultBusinessDays(new DayOfWeek[]{});
-            systemBusinessDays = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultBusinessDays();
+                DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultBusinessDays(null);
+                systemBusinessDays = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultBusinessDays();
 
-            Assert.IsNotNull(systemBusinessDays, "Error getting default business days");
-            Assert.IsTrue(systemBusinessDays.Count() == businessDays.Count(), "Error setting business days");
-            foreach (var day in businessDays)
-                Assert.IsTrue(systemBusinessDays.Any(d => d == day), "Error setting business days");
+                Assert.IsNotNull(systemBusinessDays, "Error getting default business days");
+                Assert.IsTrue(systemBusinessDays.Count() == businessDays.Count(), "Error setting business days");
+                foreach (var day in businessDays)
+                    Assert.IsTrue(systemBusinessDays.Any(d => d == day), "Error setting business days");
+
+
+                DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultBusinessDays(new DayOfWeek[] { });
+                systemBusinessDays = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultBusinessDays();
+
+                Assert.IsNotNull(systemBusinessDays, "Error getting default business days");
+                Assert.IsTrue(systemBusinessDays.Count() == businessDays.Count(), "Error setting business days");
+                foreach (var day in businessDays)
+                    Assert.IsTrue(systemBusinessDays.Any(d => d == day), "Error setting business days");
+            }
+            finally
+            {
+                DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultBusinessDays(new[]
+                {
+                    DayOfWeek.Monday,
+                    DayOfWeek.Tuesday,
+                    DayOfWeek.Wednesday,
+                    DayOfWeek.Thursday,
+                    DayOfWeek.Friday
+                });
+            }
 
         }
 

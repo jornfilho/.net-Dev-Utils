@@ -62,30 +62,44 @@ namespace DevUtils.test.DateTimeExtensions.Utils
         [TestMethod]
         public void EndOfBusinessYear_UseDateAndDontSendBusiness()
         {
-            var baseDate = DateTime.Now;
-            var expectedDate = new DateTime(baseDate.Year, 1, 1, 23, 59, 59, 999, baseDate.Kind).AddYears(1).AddDays(-1);
-            var businessDays = new[] { DayOfWeek.Tuesday, DayOfWeek.Wednesday };
-            var systemBusinessDays = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultBusinessDays();
-
-            while (true)
+            try
             {
-                if (systemBusinessDays.Contains(expectedDate.DayOfWeek))
-                    break;
+                var baseDate = DateTime.Now;
+                var expectedDate = new DateTime(baseDate.Year, 1, 1, 23, 59, 59, 999, baseDate.Kind).AddYears(1).AddDays(-1);
+                var businessDays = new[] { DayOfWeek.Tuesday, DayOfWeek.Wednesday };
+                var systemBusinessDays = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultBusinessDays();
 
-                expectedDate = expectedDate.AddDays(-1);
+                while (true)
+                {
+                    if (systemBusinessDays.Contains(expectedDate.DayOfWeek))
+                        break;
+
+                    expectedDate = expectedDate.AddDays(-1);
+                }
+                Assert.AreEqual(expectedDate, baseDate.EndOfBusinessYear(), "Error getting end of business year");
+
+                expectedDate = new DateTime(baseDate.Year, 1, 1, 23, 59, 59, 999, baseDate.Kind).AddYears(1).AddDays(-1);
+                DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultBusinessDays(businessDays);
+                while (true)
+                {
+                    if (businessDays.Contains(expectedDate.DayOfWeek))
+                        break;
+
+                    expectedDate = expectedDate.AddDays(-1);
+                }
+                Assert.AreEqual(expectedDate, baseDate.EndOfBusinessYear(), "Error getting end of business year");
             }
-            Assert.AreEqual(expectedDate, baseDate.EndOfBusinessYear(), "Error getting end of business year");
-
-            expectedDate = new DateTime(baseDate.Year, 1, 1, 23, 59, 59, 999, baseDate.Kind).AddYears(1).AddDays(-1);
-            DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultBusinessDays(businessDays);
-            while (true)
+            finally
             {
-                if (businessDays.Contains(expectedDate.DayOfWeek))
-                    break;
-
-                expectedDate = expectedDate.AddDays(-1);
+                DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultBusinessDays(new[]
+                {
+                    DayOfWeek.Monday,
+                    DayOfWeek.Tuesday,
+                    DayOfWeek.Wednesday,
+                    DayOfWeek.Thursday,
+                    DayOfWeek.Friday
+                });
             }
-            Assert.AreEqual(expectedDate, baseDate.EndOfBusinessYear(), "Error getting end of business year");
 
         }
 
@@ -127,32 +141,46 @@ namespace DevUtils.test.DateTimeExtensions.Utils
         [TestMethod]
         public void StartOfBusinessYear_UseYearAndDontSendBusiness()
         {
-            var baseDate = DateTime.Now;
-            var expectedDate = new DateTime(baseDate.Year, 1, 1, 23, 59, 59, 999, baseDate.Kind).AddYears(1).AddDays(-1);
-            var businessDays = new[] { DayOfWeek.Thursday, DayOfWeek.Friday };
-            var systemBusinessDays = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultBusinessDays();
-
-            while (true)
+            try
             {
-                if (systemBusinessDays.Contains(expectedDate.DayOfWeek))
-                    break;
+                var baseDate = DateTime.Now;
+                var expectedDate = new DateTime(baseDate.Year, 1, 1, 23, 59, 59, 999, baseDate.Kind).AddYears(1).AddDays(-1);
+                var businessDays = new[] { DayOfWeek.Thursday, DayOfWeek.Friday };
+                var systemBusinessDays = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultBusinessDays();
 
-                expectedDate = expectedDate.AddDays(-1);
+                while (true)
+                {
+                    if (systemBusinessDays.Contains(expectedDate.DayOfWeek))
+                        break;
+
+                    expectedDate = expectedDate.AddDays(-1);
+                }
+                Assert.AreEqual(expectedDate, DevUtils.DateTimeExtensions.Utils.EndOfBusinessYear(baseDate.Year), "Error getting end of business year");
+                Console.WriteLine(DevUtils.DateTimeExtensions.Utils.EndOfBusinessYear(baseDate.Year));
+
+                expectedDate = new DateTime(baseDate.Year, 1, 1, 23, 59, 59, 999, baseDate.Kind).AddYears(1).AddDays(-1);
+                DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultBusinessDays(businessDays);
+                while (true)
+                {
+                    if (businessDays.Contains(expectedDate.DayOfWeek))
+                        break;
+
+                    expectedDate = expectedDate.AddDays(-1);
+                }
+                Assert.AreEqual(expectedDate, DevUtils.DateTimeExtensions.Utils.EndOfBusinessYear(baseDate.Year), "Error getting end of business year");
+                Console.WriteLine(DevUtils.DateTimeExtensions.Utils.EndOfBusinessYear(baseDate.Year));
             }
-            Assert.AreEqual(expectedDate, DevUtils.DateTimeExtensions.Utils.EndOfBusinessYear(baseDate.Year), "Error getting end of business year");
-            Console.WriteLine(DevUtils.DateTimeExtensions.Utils.EndOfBusinessYear(baseDate.Year));
-
-            expectedDate = new DateTime(baseDate.Year, 1, 1, 23, 59, 59, 999, baseDate.Kind).AddYears(1).AddDays(-1);
-            DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultBusinessDays(businessDays);
-            while (true)
+            finally
             {
-                if (businessDays.Contains(expectedDate.DayOfWeek))
-                    break;
-
-                expectedDate = expectedDate.AddDays(-1);
+                DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultBusinessDays(new[]
+                {
+                    DayOfWeek.Monday,
+                    DayOfWeek.Tuesday,
+                    DayOfWeek.Wednesday,
+                    DayOfWeek.Thursday,
+                    DayOfWeek.Friday
+                });
             }
-            Assert.AreEqual(expectedDate, DevUtils.DateTimeExtensions.Utils.EndOfBusinessYear(baseDate.Year), "Error getting end of business year");
-            Console.WriteLine(DevUtils.DateTimeExtensions.Utils.EndOfBusinessYear(baseDate.Year));
 
         }
     }

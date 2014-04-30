@@ -36,7 +36,6 @@ namespace DevUtils.DateTimeExtensions
         private DayOfWeek LastBusinessWeekDay { get; set; }
 
         private const DateTimeStyles DefaultToDateDateTimeStyle = DateTimeStyles.AssumeUniversal;
-        private DateTime _defaultByteConversion = DateTime.UtcNow;
         #endregion
 
         #region Constructor

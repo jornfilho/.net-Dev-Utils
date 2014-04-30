@@ -62,31 +62,44 @@ namespace DevUtils.test.DateTimeExtensions.Utils
         [TestMethod]
         public void StartOfBusinessMonth_UseDateAndDontSendBusiness()
         {
-            var baseDate = DateTime.Now;
-            var expectedDate = new DateTime(baseDate.Year, baseDate.Month, 1, 0, 0, 0, 0, baseDate.Kind);
-            var businessDays = new[] { DayOfWeek.Tuesday, DayOfWeek.Wednesday };
-            var systemBusinessDays = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultBusinessDays();
-
-            while (true)
+            try
             {
-                if (systemBusinessDays.Contains(expectedDate.DayOfWeek))
-                    break;
+                var baseDate = DateTime.Now;
+                var expectedDate = new DateTime(baseDate.Year, baseDate.Month, 1, 0, 0, 0, 0, baseDate.Kind);
+                var businessDays = new[] { DayOfWeek.Tuesday, DayOfWeek.Wednesday };
+                var systemBusinessDays = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultBusinessDays();
 
-                expectedDate = expectedDate.AddDays(1);
+                while (true)
+                {
+                    if (systemBusinessDays.Contains(expectedDate.DayOfWeek))
+                        break;
+
+                    expectedDate = expectedDate.AddDays(1);
+                }
+                Assert.AreEqual(expectedDate, baseDate.StartOfBusinessMonth(), "Error getting start of business month");
+
+                expectedDate = new DateTime(baseDate.Year, baseDate.Month, 1, 0, 0, 0, 0, baseDate.Kind);
+                DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultBusinessDays(businessDays);
+                while (true)
+                {
+                    if (businessDays.Contains(expectedDate.DayOfWeek))
+                        break;
+
+                    expectedDate = expectedDate.AddDays(1);
+                }
+                Assert.AreEqual(expectedDate, baseDate.StartOfBusinessMonth(), "Error getting start of business month");
             }
-            Assert.AreEqual(expectedDate, baseDate.StartOfBusinessMonth(), "Error getting start of business month");
-
-            expectedDate = new DateTime(baseDate.Year, baseDate.Month, 1, 0, 0, 0, 0, baseDate.Kind);
-            DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultBusinessDays(businessDays);
-            while (true)
+            finally
             {
-                if (businessDays.Contains(expectedDate.DayOfWeek))
-                    break;
-
-                expectedDate = expectedDate.AddDays(1);
+                DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultBusinessDays(new[]
+                {
+                    DayOfWeek.Monday,
+                    DayOfWeek.Tuesday,
+                    DayOfWeek.Wednesday,
+                    DayOfWeek.Thursday,
+                    DayOfWeek.Friday
+                });
             }
-            Assert.AreEqual(expectedDate, baseDate.StartOfBusinessMonth(), "Error getting start of business month");
-
         }
 
         /// <summary>
@@ -127,33 +140,46 @@ namespace DevUtils.test.DateTimeExtensions.Utils
         [TestMethod]
         public void StartOfBusinessMonth_UseYearMonthAndDontSendBusiness()
         {
-            var baseDate = DateTime.Now;
-            var expectedDate = new DateTime(baseDate.Year, baseDate.Month, 1, 0, 0, 0, 0, baseDate.Kind);
-            var businessDays = new[] { DayOfWeek.Thursday, DayOfWeek.Friday};
-            var systemBusinessDays = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultBusinessDays();
-
-            while (true)
+            try
             {
-                if (systemBusinessDays.Contains(expectedDate.DayOfWeek))
-                    break;
+                var baseDate = DateTime.Now;
+                var expectedDate = new DateTime(baseDate.Year, baseDate.Month, 1, 0, 0, 0, 0, baseDate.Kind);
+                var businessDays = new[] { DayOfWeek.Thursday, DayOfWeek.Friday };
+                var systemBusinessDays = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultBusinessDays();
 
-                expectedDate = expectedDate.AddDays(1);
+                while (true)
+                {
+                    if (systemBusinessDays.Contains(expectedDate.DayOfWeek))
+                        break;
+
+                    expectedDate = expectedDate.AddDays(1);
+                }
+                Assert.AreEqual(expectedDate, DevUtils.DateTimeExtensions.Utils.StartOfBusinessMonth((Month)baseDate.Month, baseDate.Year), "Error getting start of business month");
+                Console.WriteLine(DevUtils.DateTimeExtensions.Utils.StartOfBusinessMonth((Month)baseDate.Month, baseDate.Year));
+
+                expectedDate = new DateTime(baseDate.Year, baseDate.Month, 1, 0, 0, 0, 0, baseDate.Kind);
+                DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultBusinessDays(businessDays);
+                while (true)
+                {
+                    if (businessDays.Contains(expectedDate.DayOfWeek))
+                        break;
+
+                    expectedDate = expectedDate.AddDays(1);
+                }
+                Assert.AreEqual(expectedDate, DevUtils.DateTimeExtensions.Utils.StartOfBusinessMonth((Month)baseDate.Month, baseDate.Year), "Error getting start of business month");
+                Console.WriteLine(DevUtils.DateTimeExtensions.Utils.StartOfBusinessMonth((Month)baseDate.Month, baseDate.Year));
             }
-            Assert.AreEqual(expectedDate, DevUtils.DateTimeExtensions.Utils.StartOfBusinessMonth((Month)baseDate.Month, baseDate.Year), "Error getting start of business month");
-            Console.WriteLine(DevUtils.DateTimeExtensions.Utils.StartOfBusinessMonth((Month)baseDate.Month, baseDate.Year));
-
-            expectedDate = new DateTime(baseDate.Year, baseDate.Month, 1, 0, 0, 0, 0, baseDate.Kind);
-            DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultBusinessDays(businessDays);
-            while (true)
+            finally
             {
-                if (businessDays.Contains(expectedDate.DayOfWeek))
-                    break;
-
-                expectedDate = expectedDate.AddDays(1);
+                DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultBusinessDays(new[]
+                {
+                    DayOfWeek.Monday,
+                    DayOfWeek.Tuesday,
+                    DayOfWeek.Wednesday,
+                    DayOfWeek.Thursday,
+                    DayOfWeek.Friday
+                });
             }
-            Assert.AreEqual(expectedDate, DevUtils.DateTimeExtensions.Utils.StartOfBusinessMonth((Month)baseDate.Month, baseDate.Year), "Error getting start of business month");
-            Console.WriteLine(DevUtils.DateTimeExtensions.Utils.StartOfBusinessMonth((Month)baseDate.Month, baseDate.Year));
-
         }
     }
 }
