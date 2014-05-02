@@ -166,6 +166,26 @@ namespace DevUtils.test.DateTimeExtensions
         }
         #endregion
 
+        #region FromUnixTimestamp
+        /// <summary>
+        /// Test method FromUnixTimestamp and overloads
+        /// </summary>
+        [TestMethod]
+        public void FromUnixTimestampAndOverloads()
+        {
+            var unix1 = (UtcDate - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds.TryParseLong();
+            var unix2 = (LocalDate.ToUtc(LocalTimeZoneInfo) - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds.TryParseLong();
+
+            Assert.AreEqual(UtcDate.ToString("g"), unix1.FromUnixTimestamp().ToTimezoneDate(LocalTimeZoneInfo, UtcTimeZoneInfo).ToString("g"));
+            Assert.AreEqual(UtcDate.ToString("g"), unix1.FromUnixTimestamp(UtcTimeZoneInfo).ToString("g"));
+            Assert.AreEqual(UtcDate.ToString("g"), unix1.FromUnixTimestamp(UtcTimeZoneName).ToString("g"));
+
+            Assert.AreEqual(LocalDate.ToString("g"), unix2.FromUnixTimestamp().ToTimezoneDate(UtcTimeZoneInfo, LocalTimeZoneInfo).ToString("g"));
+            Assert.AreEqual(LocalDate.ToString("g"), unix2.FromUnixTimestamp(LocalTimeZoneInfo).ToString("g"));
+            Assert.AreEqual(LocalDate.ToString("g"), unix2.FromUnixTimestamp(LocalTimeZoneName).ToString("g"));
+        }
+        #endregion
+
         #region ToTimezoneDate
         /// <summary>
         /// Test method ToTimezoneDate and overloads
@@ -181,7 +201,5 @@ namespace DevUtils.test.DateTimeExtensions
             Assert.AreEqual(LocalDate.ToString("G"), UtcDate.ToTimezoneDate(UtcTimeZoneInfo, LocalTimeZoneInfo).ToString("G"));
         } 
         #endregion
-
-        
     }
 }

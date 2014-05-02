@@ -586,6 +586,15 @@ namespace DevUtils.DateTimeExtensions
         }
 
         /// <summary>
+        /// Get default system timezone info
+        /// </summary>
+        /// <returns>System timezoneinfo</returns>
+        public static TimeZoneInfo GetUtcTimezoneInfo()
+        {
+            return GetTimezoneInfo("UTC") ?? GetDefaultTimezoneInfo();
+        }
+
+        /// <summary>
         /// Set default system timezone info
         /// </summary>
         /// <param name="timeZoneInfo">Timezoneinfo to set as default</param>

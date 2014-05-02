@@ -395,7 +395,15 @@ PM> Install-Package DevUtils
 >>> public static long ToUnixTimestamp(this DateTime date, string timezoneName)
 >>>
 >>> public static long ToUnixTimestamp(this DateTime date)
->
+>>
+>> **FromUnixTimestamp**
+>>
+>>> public static DateTime FromUnixTimestamp(this long unixTimestap, TimeZoneInfo timezoneInfo)
+>>>
+>>> public static DateTime FromUnixTimestamp(this long unixTimestap, string timezoneName)
+>>>
+>>> public static DateTime FromUnixTimestamp(this long unixTimestap)
+>>>
 
 
 

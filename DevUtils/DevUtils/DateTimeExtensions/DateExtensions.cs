@@ -245,7 +245,7 @@ namespace DevUtils.DateTimeExtensions
         {
             try
             {
-                return (new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).AddSeconds(unixTimestap.TryParseDouble(0));
+                return (new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).AddSeconds(unixTimestap.TryParseDouble(0)).ToTimezoneDate(BaseDateTimeExtensions.GetUtcTimezoneInfo(), timezoneInfo);
             }
             catch (Exception e)
             {
