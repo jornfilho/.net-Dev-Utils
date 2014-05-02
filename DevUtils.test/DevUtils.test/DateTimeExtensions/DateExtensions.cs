@@ -63,6 +63,7 @@ namespace DevUtils.test.DateTimeExtensions
             
         }
 
+        #region ToUtc
         /// <summary>
         /// Test method ToUtc and overloads
         /// </summary>
@@ -80,12 +81,44 @@ namespace DevUtils.test.DateTimeExtensions
             }
             finally
             {
-                if(UtcTimeZoneInfo != null)
+                if (UtcTimeZoneInfo != null)
                     DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo(UtcTimeZoneInfo);
             }
 
 
-        }
+        } 
+        #endregion
+
+        #region ToTimezoneDate
+        /// <summary>
+        /// Test method ToTimezoneDate and overloads
+        /// </summary>
+        [TestMethod]
+        public void ToTimezoneDateAndOverloads()
+        {
+            try
+            {
+                DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo(LocalTimeZoneInfo);
+
+                Assert.AreEqual(LocalDate.ToString("G"), UtcDate.ToTimezoneDate(LocalTimeZoneName).ToString("G"));
+                Assert.AreEqual(LocalDate.ToString("G"), UtcDate.ToTimezoneDate(LocalTimeZoneInfo).ToString("G"));
+
+                DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo(UtcTimeZoneInfo);
+
+                Assert.AreEqual(LocalDate.ToString("G"), UtcDate.ToTimezoneDate(UtcTimeZoneName, LocalTimeZoneName).ToString("G"));
+                Assert.AreEqual(LocalDate.ToString("G"), UtcDate.ToTimezoneDate(UtcTimeZoneInfo, LocalTimeZoneName).ToString("G"));
+                Assert.AreEqual(LocalDate.ToString("G"), UtcDate.ToTimezoneDate(UtcTimeZoneName, LocalTimeZoneInfo).ToString("G"));
+                Assert.AreEqual(LocalDate.ToString("G"), UtcDate.ToTimezoneDate(UtcTimeZoneInfo, LocalTimeZoneInfo).ToString("G"));
+            }
+            finally
+            {
+                if (UtcTimeZoneInfo != null)
+                    DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo(UtcTimeZoneInfo);
+            }
+
+
+        } 
+        #endregion
 
         
     }

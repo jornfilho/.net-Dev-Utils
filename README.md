@@ -359,7 +359,22 @@ PM> Install-Package DevUtils
 >>> public static DateTime ToUtc(this DateTime date, string timezoneName)
 >>> 
 >>> public static DateTime ToUtc(this DateTime date)
-
+>>
+>> **ToTimezoneDate**
+>> 
+>>> public static DateTime ToTimezoneDate(this DateTime date, TimeZoneInfo currentTimeZoneInfo, TimeZoneInfo destinationTimeZoneInfo)
+>>>
+>>> public static DateTime ToTimezoneDate(this DateTime date, string currentTimeZoneName, TimeZoneInfo destinationTimeZoneInfo)
+>>>
+>>> public static DateTime ToTimezoneDate(this DateTime date, TimeZoneInfo currentTimezoneInfo, string destinationTimeZoneName)
+>>>
+>>> public static DateTime ToTimezoneDate(this DateTime date, string currentTimeZoneName, string destinationTimeZoneName)
+>>>
+>>> public static DateTime ToTimezoneDate(this DateTime date, TimeZoneInfo destinationTimeZoneInfo)
+>>>
+>>> public static DateTime ToTimezoneDate(this DateTime date, string destinationTimeZoneName)
+>>
+>
 ---
 
 ###And much more...###
