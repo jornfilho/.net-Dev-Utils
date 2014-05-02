@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using DevUtils.DateTimeExtensions;
+using DevUtils.PrimitivesExtensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DevUtils.test.DateTimeExtensions
@@ -44,6 +45,7 @@ namespace DevUtils.test.DateTimeExtensions
         } 
         #endregion
 
+        #region TryParseDate
         /// <summary>
         /// Test method TryParseDate with string date
         /// </summary>
@@ -129,6 +131,7 @@ namespace DevUtils.test.DateTimeExtensions
             Assert.AreEqual(date2.ToString("G"), ((DateTime?)null).TryParseDate(date2).ToUtc().ToString("G"));
             Assert.AreEqual(date3.ToString("G"), ((DateTime?)null).TryParseDate(date3).ToUtc().ToString("G"));
         }
+        #endregion
 
         #region ToUtc
         /// <summary>
@@ -141,6 +144,26 @@ namespace DevUtils.test.DateTimeExtensions
             Assert.AreEqual(UtcDate.ToString("G"), LocalDate.ToUtc(UtcTimeZoneInfo).ToString("G"));
             Assert.AreEqual(UtcDate.ToString("G"), LocalDate.ToUtc(UtcTimeZoneName).ToString("G"));
         } 
+        #endregion
+
+        #region ToUnixTimestamp
+        /// <summary>
+        /// Test method ToUnixTimestamp and overloads
+        /// </summary>
+        [TestMethod]
+        public void ToUnixTimestampAndOverloads()
+        {
+            var unix1 = (UtcDate - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds.TryParseLong();
+            var unix2 = (LocalDate.ToUtc(LocalTimeZoneInfo) - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds.TryParseLong();
+
+            Assert.AreEqual(unix1, UtcDate.ToUnixTimestamp());
+            Assert.AreEqual(unix1, UtcDate.ToUnixTimestamp(UtcTimeZoneInfo));
+            Assert.AreEqual(unix1, UtcDate.ToUnixTimestamp(UtcTimeZoneName));
+
+            Assert.AreEqual(unix2, LocalDate.ToUnixTimestamp());
+            Assert.AreEqual(unix2, LocalDate.ToUnixTimestamp(UtcTimeZoneInfo));
+            Assert.AreEqual(unix2, LocalDate.ToUnixTimestamp(UtcTimeZoneName));
+        }
         #endregion
 
         #region ToTimezoneDate

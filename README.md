@@ -388,6 +388,14 @@ PM> Install-Package DevUtils
 >>>
 >>> public static DateTime TryParseDate(this DateTime? nullableDate)
 >>
+>> **ToUnixTimestamp**
+>>
+>>> public static long ToUnixTimestamp(this DateTime date, TimeZoneInfo timezoneInfo)
+>>>
+>>> public static long ToUnixTimestamp(this DateTime date, string timezoneName)
+>>>
+>>> public static long ToUnixTimestamp(this DateTime date)
+>
 
 
 

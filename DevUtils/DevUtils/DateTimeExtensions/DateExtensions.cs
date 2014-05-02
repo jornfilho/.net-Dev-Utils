@@ -236,45 +236,45 @@ namespace DevUtils.DateTimeExtensions
 
         #region FromUnixTimestamp
         /// <summary>
-        /// Convert date to unix timestamp
+        /// Convert unix timestamp to date
         /// </summary>
-        /// <param name="date">date to convert</param>
-        /// <param name="timezoneInfo">date timezone info</param>
+        /// <param name="unixTimestap">unix to convert</param>
+        /// <param name="timezoneInfo">date timezone info for result date</param>
         /// <returns>datetime</returns>
-        public static long FromUnixTimestamp(this DateTime date, TimeZoneInfo timezoneInfo)
+        public static DateTime FromUnixTimestamp(this long unixTimestap, TimeZoneInfo timezoneInfo)
         {
             try
             {
-                return (date.ToUtc(timezoneInfo) - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds.TryParseLong();
+                return (new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).AddSeconds(unixTimestap.TryParseDouble(0));
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e);
-                return 0;
+                return BaseDateTimeExtensions.GetCurrentDateTime();
             }
         }
 
         /// <summary>
-        /// Convert date to unix timestamp
+        /// Convert unix timestamp to date
         /// </summary>
-        /// <param name="date">date to convert</param>
-        /// <param name="timezoneName">current date timezone name</param>
-        /// <returns>unix timestamp</returns>
-        public static long FromUnixTimestamp(this DateTime date, string timezoneName)
+        /// <param name="unixTimestap">unix to convert</param>
+        /// <param name="timezoneName">date timezone info for result date</param>
+        /// <returns>datetime</returns>
+        public static DateTime FromUnixTimestamp(this long unixTimestap, string timezoneName)
         {
             var timezoneInfo = BaseDateTimeExtensions.GetTimezoneInfo(timezoneName);
-            return date.ToUnixTimestamp(timezoneInfo);
+            return unixTimestap.FromUnixTimestamp(timezoneInfo);
         }
 
         /// <summary>
-        /// Convert date to unix timestamp
+        /// Convert unix timestamp to date
         /// </summary>
-        /// <param name="date">date to convert</param>
-        /// <returns>unix timestamp</returns>
-        public static long FromUnixTimestamp(this DateTime date)
+        /// <param name="unixTimestap">unix to convert</param>
+        /// <returns>datetime</returns>
+        public static DateTime FromUnixTimestamp(this long unixTimestap)
         {
             var timezoneInfo = BaseDateTimeExtensions.GetDefaultTimezoneInfo();
-            return date.ToUnixTimestamp(timezoneInfo);
+            return unixTimestap.FromUnixTimestamp(timezoneInfo);
         }
         #endregion
 
