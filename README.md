@@ -350,6 +350,15 @@ PM> Install-Package DevUtils
 >>> public static DateTime EndOfDay(this DateTime date)
 >>
 >
+> **DateExtensions**
+> 
+>> **ToUtc**
+>> 
+>>> public static DateTime ToUtc(this DateTime date, TimeZoneInfo timezoneInfo)
+>>> 
+>>> public static DateTime ToUtc(this DateTime date, string timezoneName)
+>>> 
+>>> public static DateTime ToUtc(this DateTime date)
 
 ---
 

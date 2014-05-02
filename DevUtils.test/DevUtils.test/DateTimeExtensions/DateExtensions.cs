@@ -35,10 +35,10 @@ namespace DevUtils.test.DateTimeExtensions
             LocalDate = DateTime.Now;
 
             UtcTimeZoneInfo = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo("UTC");
-            LocalTimeZoneInfo = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo("E. South America Standard Time");
+            LocalTimeZoneInfo = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo(TimeZone.CurrentTimeZone.StandardName);
 
             UtcTimeZoneName = "UTC";
-            LocalTimeZoneName = "E. South America Standard Time";
+            LocalTimeZoneName = TimeZone.CurrentTimeZone.StandardName;
         } 
         #endregion
 
@@ -72,11 +72,11 @@ namespace DevUtils.test.DateTimeExtensions
             try
             {
                 DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo(LocalTimeZoneInfo);
-                Assert.AreEqual(UtcDate, LocalDate.ToUtc());
+                Assert.AreEqual(UtcDate.ToString("G"), LocalDate.ToUtc().ToString("G"));
                 DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo(UtcTimeZoneInfo);
 
-                Assert.AreEqual(UtcDate, LocalDate.ToUtc(UtcTimeZoneInfo));
-                Assert.AreEqual(UtcDate, LocalDate.ToUtc(UtcTimeZoneName));
+                Assert.AreEqual(UtcDate.ToString("G"), LocalDate.ToUtc(UtcTimeZoneInfo).ToString("G"));
+                Assert.AreEqual(UtcDate.ToString("G"), LocalDate.ToUtc(UtcTimeZoneName).ToString("G"));
             }
             finally
             {
