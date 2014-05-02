@@ -11,7 +11,6 @@ namespace DevUtils.DateTimeExtensions
     public static class DateExtensions
     {
         #region TryParseDate
-        #region string
         /// <summary>
         /// Convert string date to datetime
         /// </summary>
@@ -26,42 +25,24 @@ namespace DevUtils.DateTimeExtensions
             if (DateTime.TryParse(strValue, culture, dateTimeStyle, out date))
                 return date;
 
-            //FromOADate
+            #region FromOADate
             if (strValue.IsValidDouble(NumberStyles.Float, culture))
             {
-                try
+                var doubleValue = strValue.TryParseDouble(-99);
+                if (doubleValue >= -657434.999 && doubleValue <= 2593589)
                 {
-                    return DateTime.FromOADate(strValue.TryParseDouble(-99));
-
+                    try
+                    {
+                        return DateTime.FromOADate(doubleValue);
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine(e);
+                    }
                 }
-                catch (Exception e)
-                {
-                    Debug.WriteLine(e);
-                }
-            }
-
-            //FromBinary or FromFileTime
-            if (!strValue.IsValidLong(NumberStyles.Integer, culture))
-                return defaultValue;
-
-            try
-            {
-                return DateTime.FromBinary(strValue.TryParseLong(-99));
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e);
-            }
-
-            try
-            {
-                return DateTime.FromFileTime(strValue.TryParseLong(-99));
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e);
-            }
-
+            } 
+            #endregion
+            
             return defaultValue;
         }
 
@@ -103,152 +84,29 @@ namespace DevUtils.DateTimeExtensions
                 BaseDateTimeExtensions.GetCurrentCulture(),
                 BaseDateTimeExtensions.GetDefaultToDateDateTimeStyles());
         }
-        #endregion
-
-        #region double
-        /// <summary>
-        /// Convert double date to datetime
-        /// </summary>
-        /// <param name="doubleValue">string to convert</param>
-        /// <param name="defaultValue">default value when invalid date</param>
-        /// <param name="culture">date culture</param>
-        /// <param name="dateTimeStyle">datetime style</param>
-        /// <returns>datetime</returns>
-        public static DateTime TryParseDate(this double doubleValue, DateTime defaultValue, CultureInfo culture, DateTimeStyles dateTimeStyle)
-        {
-            if (doubleValue <= 0)
-                return defaultValue;
-
-            //FromOADate
-            try
-            {
-                return DateTime.FromOADate(doubleValue);
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e);
-            }
-
-            //FromBinary
-            try
-            {
-                return DateTime.FromBinary(doubleValue.TryParseLong(-99));
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e);
-            }
-
-            //FromFileTime
-            try
-            {
-                return DateTime.FromFileTime(doubleValue.TryParseLong(-99));
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e);
-            }
-
-            return defaultValue;
-        }
 
         /// <summary>
-        /// <para>Convert double date to datetime</para>
-        /// <para>Return BaseDateTimeExtensions.GetCurrentDateTime() on error</para>
+        /// Convert nullable date to datetime
         /// </summary>
-        /// <param name="doubleValue">string to convert</param>
-        /// <param name="culture">date culture</param>
-        /// <param name="dateTimeStyle">datetime style</param>
-        /// <returns>datetime</returns>
-        public static DateTime TryParseDate(this double doubleValue, CultureInfo culture, DateTimeStyles dateTimeStyle)
-        {
-            return doubleValue.TryParseDate(BaseDateTimeExtensions.GetCurrentDateTime(), culture, dateTimeStyle);
-        }
-
-        /// <summary>
-        /// <para>Convert double date to datetime</para>
-        /// </summary>
-        /// <param name="doubleValue">string to convert</param>
+        /// <param name="nullableDate">nullable date to convert</param>
         /// <param name="defaultValue">default value when invalid date</param>
         /// <returns>datetime</returns>
-        public static DateTime TryParseDate(this double doubleValue, DateTime defaultValue)
+        public static DateTime TryParseDate(this DateTime? nullableDate, DateTime defaultValue)
         {
-            return doubleValue.TryParseDate(defaultValue,
-                BaseDateTimeExtensions.GetCurrentCulture(),
-                BaseDateTimeExtensions.GetDefaultToDateDateTimeStyles());
+            return nullableDate == null
+                ? defaultValue
+                : (DateTime) nullableDate;
         }
 
         /// <summary>
-        /// <para>Convert double date to datetime</para>
-        /// <para>Return BaseDateTimeExtensions.GetCurrentDateTime() on error</para>
+        /// Convert nullable date to datetime
         /// </summary>
-        /// <param name="doubleValue">string to convert</param>
+        /// <param name="nullableDate">nullable date to convert</param>
         /// <returns>datetime</returns>
-        public static DateTime TryParseDate(this double doubleValue)
+        public static DateTime TryParseDate(this DateTime? nullableDate)
         {
-            return doubleValue.TryParseDate(BaseDateTimeExtensions.GetCurrentDateTime(),
-                BaseDateTimeExtensions.GetCurrentCulture(),
-                BaseDateTimeExtensions.GetDefaultToDateDateTimeStyles());
+            return nullableDate.TryParseDate(BaseDateTimeExtensions.GetCurrentDateTime());
         }
-
-        /// <summary>
-        /// Convert double date to datetime
-        /// </summary>
-        /// <param name="doubleValue">string to convert</param>
-        /// <param name="defaultValue">default value when invalid date</param>
-        /// <param name="culture">date culture</param>
-        /// <param name="dateTimeStyle">datetime style</param>
-        /// <returns>datetime</returns>
-        public static DateTime TryParseDate(this double? doubleValue, DateTime defaultValue, CultureInfo culture, DateTimeStyles dateTimeStyle)
-        {
-            if (doubleValue == null)
-                return defaultValue;
-
-            if (doubleValue <= 0)
-                return defaultValue;
-
-            return doubleValue.TryParseDouble(-99).TryParseDate(defaultValue, culture, dateTimeStyle);
-        }
-
-        /// <summary>
-        /// <para>Convert double date to datetime</para>
-        /// <para>Return BaseDateTimeExtensions.GetCurrentDateTime() on error</para>
-        /// </summary>
-        /// <param name="doubleValue">string to convert</param>
-        /// <param name="culture">date culture</param>
-        /// <param name="dateTimeStyle">datetime style</param>
-        /// <returns>datetime</returns>
-        public static DateTime TryParseDate(this double? doubleValue, CultureInfo culture, DateTimeStyles dateTimeStyle)
-        {
-            return doubleValue.TryParseDate(BaseDateTimeExtensions.GetCurrentDateTime(), culture, dateTimeStyle);
-        }
-
-        /// <summary>
-        /// <para>Convert double date to datetime</para>
-        /// </summary>
-        /// <param name="doubleValue">string to convert</param>
-        /// <param name="defaultValue">default value when invalid date</param>
-        /// <returns>datetime</returns>
-        public static DateTime TryParseDate(this double? doubleValue, DateTime defaultValue)
-        {
-            return doubleValue.TryParseDate(defaultValue,
-                BaseDateTimeExtensions.GetCurrentCulture(),
-                BaseDateTimeExtensions.GetDefaultToDateDateTimeStyles());
-        }
-
-        /// <summary>
-        /// <para>Convert double date to datetime</para>
-        /// <para>Return BaseDateTimeExtensions.GetCurrentDateTime() on error</para>
-        /// </summary>
-        /// <param name="doubleValue">string to convert</param>
-        /// <returns>datetime</returns>
-        public static DateTime TryParseDate(this double? doubleValue)
-        {
-            return doubleValue.TryParseDate(BaseDateTimeExtensions.GetCurrentDateTime(),
-                BaseDateTimeExtensions.GetCurrentCulture(),
-                BaseDateTimeExtensions.GetDefaultToDateDateTimeStyles());
-        }
-        #endregion 
         #endregion
 
         #region IsValidDate
@@ -329,6 +187,50 @@ namespace DevUtils.DateTimeExtensions
         {
             var timezoneInfo = BaseDateTimeExtensions.GetDefaultTimezoneInfo();
             return date.ToUtc(timezoneInfo);
+        }
+        #endregion
+
+        #region ToUnixTimestamp
+        /// <summary>
+        /// Convert date to unix timestamp
+        /// </summary>
+        /// <param name="date">date to convert</param>
+        /// <param name="timezoneInfo">current date timezone info</param>
+        /// <returns>unix timestamp</returns>
+        public static long ToUnixTimestamp(this DateTime date, TimeZoneInfo timezoneInfo)
+        {
+            try
+            {
+                return (date.ToUtc(timezoneInfo) - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds.TryParseLong();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Convert date to unix timestamp
+        /// </summary>
+        /// <param name="date">date to convert</param>
+        /// <param name="timezoneName">current date timezone name</param>
+        /// <returns>unix timestamp</returns>
+        public static long ToUnixTimestamp(this DateTime date, string timezoneName)
+        {
+            var timezoneInfo = BaseDateTimeExtensions.GetTimezoneInfo(timezoneName);
+            return date.ToUnixTimestamp(timezoneInfo);
+        }
+
+        /// <summary>
+        /// Convert date to unix timestamp
+        /// </summary>
+        /// <param name="date">date to convert</param>
+        /// <returns>unix timestamp</returns>
+        public static long ToUnixTimestamp(this DateTime date)
+        {
+            var timezoneInfo = BaseDateTimeExtensions.GetDefaultTimezoneInfo();
+            return date.ToUnixTimestamp(timezoneInfo);
         }
         #endregion
 

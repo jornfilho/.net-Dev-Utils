@@ -536,7 +536,7 @@ namespace DevUtils.DateTimeExtensions
         /// </summary>
         private void SetDefaultTimezoneInfo()
         {
-            DefaultTimeZoneInfo = TryConvertTimezoneName("UTC");
+            DefaultTimeZoneInfo = TryConvertTimezoneName(TimeZone.CurrentTimeZone.StandardName);
         }
         #endregion
 
@@ -710,7 +710,7 @@ namespace DevUtils.DateTimeExtensions
         /// <returns>Current DateTime</returns>
         public static DateTime GetCurrentDateTime()
         {
-            return DateTime.UtcNow;
+            return DateTime.Now;
         }
         #endregion
         

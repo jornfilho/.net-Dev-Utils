@@ -201,9 +201,9 @@ namespace DevUtils.test.DateTimeExtensions
         [TestMethod]
         public void GetDefaultTimezoneInfo()
         {
-            var utcTimezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo("UTC");
-            Assert.IsNotNull(utcTimezone, "Error getting utc timezoneinfo");
-            Assert.AreEqual(utcTimezone, DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultTimezoneInfo(), "Error getting default timezoneinfo");
+            var currentTimezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo(TimeZone.CurrentTimeZone.StandardName);
+            Assert.IsNotNull(currentTimezone, "Error getting current timezoneinfo");
+            Assert.AreEqual(currentTimezone, DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultTimezoneInfo(), "Error getting default timezoneinfo");
         }
         
         /// <summary>
@@ -213,18 +213,18 @@ namespace DevUtils.test.DateTimeExtensions
         public void SetDefaultTimezoneInfoWithTimezoneinfo()
         {
             var utcTimezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo("UTC");
-            var saoPauloTimezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo("E. South America Standard Time");
+            var localTimezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo(TimeZone.CurrentTimeZone.StandardName);
 
             try
             {
                 Assert.IsNotNull(utcTimezone, "Error getting utc timezoneinfo");
-                Assert.IsNotNull(saoPauloTimezone, "Error getting sao paulo timezoneinfo");
+                Assert.IsNotNull(localTimezone, "Error local timezoneinfo");
 
                 var defaultTimezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultTimezoneInfo();
                 if (defaultTimezone.Equals(utcTimezone))
                 {
-                    DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo(saoPauloTimezone);
-                    Assert.AreEqual(saoPauloTimezone, DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultTimezoneInfo(), "Error setting default timezoneinfo");
+                    DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo(localTimezone);
+                    Assert.AreEqual(localTimezone, DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultTimezoneInfo(), "Error setting default timezoneinfo");
                 }
                 else
                 {
@@ -235,7 +235,7 @@ namespace DevUtils.test.DateTimeExtensions
             finally
             {
                 if(utcTimezone != null)
-                    DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo(utcTimezone);
+                    DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo(localTimezone);
             }
         }
 
@@ -246,18 +246,18 @@ namespace DevUtils.test.DateTimeExtensions
         public void SetDefaultTimezoneInfoWithTimezonename()
         {
             var utcTimezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo("UTC");
-            var saoPauloTimezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo("E. South America Standard Time");
+            var localTimezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo(TimeZone.CurrentTimeZone.StandardName);
 
             try
             {
                 Assert.IsNotNull(utcTimezone, "Error getting utc timezoneinfo");
-                Assert.IsNotNull(saoPauloTimezone, "Error getting sao paulo timezoneinfo");
+                Assert.IsNotNull(localTimezone, "Error getting local timezoneinfo");
 
                 var defaultTimezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultTimezoneInfo();
                 if (defaultTimezone.Equals(utcTimezone))
                 {
                     DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo("E. South America Standard Time");
-                    Assert.AreEqual(saoPauloTimezone, DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultTimezoneInfo(), "Error setting default timezoneinfo");
+                    Assert.AreEqual(localTimezone, DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultTimezoneInfo(), "Error setting default timezoneinfo");
                 }
                 else
                 {
@@ -268,7 +268,7 @@ namespace DevUtils.test.DateTimeExtensions
             finally
             {
                 if (utcTimezone != null)
-                    DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo(utcTimezone);
+                    DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo(localTimezone);
             }
         }
     }

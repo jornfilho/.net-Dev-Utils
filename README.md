@@ -374,7 +374,23 @@ PM> Install-Package DevUtils
 >>>
 >>> public static DateTime ToTimezoneDate(this DateTime date, string destinationTimeZoneName)
 >>
->
+>> **TryParseDate**
+>>
+>>> public static DateTime TryParseDate(this string strValue, DateTime defaultValue, CultureInfo culture, DateTimeStyles dateTimeStyle)
+>>>
+>>> public static DateTime TryParseDate(this string strValue, CultureInfo culture, DateTimeStyles dateTimeStyle)
+>>> 
+>>> public static DateTime TryParseDate(this string strValue, DateTime defaultValue)
+>>> 
+>>> public static DateTime TryParseDate(this string strValue)
+>>>
+>>> public static DateTime TryParseDate(this DateTime? nullableDate, DateTime defaultValue)
+>>>
+>>> public static DateTime TryParseDate(this DateTime? nullableDate)
+>>
+
+
+
 ---
 
 ###And much more...###
