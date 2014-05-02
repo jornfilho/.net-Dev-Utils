@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Globalization;
 using DevUtils.PrimitivesExtensions;
@@ -10,6 +10,7 @@ namespace DevUtils.DateTimeExtensions
     /// </summary>
     public static class DateExtensions
     {
+        #region TryParseDate
         #region string
         /// <summary>
         /// Convert string date to datetime
@@ -101,12 +102,12 @@ namespace DevUtils.DateTimeExtensions
             return strValue.TryParseDate(BaseDateTimeExtensions.GetCurrentDateTime(),
                 BaseDateTimeExtensions.GetCurrentCulture(),
                 BaseDateTimeExtensions.GetDefaultToDateDateTimeStyles());
-        } 
+        }
         #endregion
 
         #region double
         /// <summary>
-        /// Convert string date to datetime
+        /// Convert double date to datetime
         /// </summary>
         /// <param name="doubleValue">string to convert</param>
         /// <param name="defaultValue">default value when invalid date</param>
@@ -152,7 +153,7 @@ namespace DevUtils.DateTimeExtensions
         }
 
         /// <summary>
-        /// <para>Convert string date to datetime</para>
+        /// <para>Convert double date to datetime</para>
         /// <para>Return BaseDateTimeExtensions.GetCurrentDateTime() on error</para>
         /// </summary>
         /// <param name="doubleValue">string to convert</param>
@@ -165,7 +166,7 @@ namespace DevUtils.DateTimeExtensions
         }
 
         /// <summary>
-        /// <para>Convert string date to datetime</para>
+        /// <para>Convert double date to datetime</para>
         /// </summary>
         /// <param name="doubleValue">string to convert</param>
         /// <param name="defaultValue">default value when invalid date</param>
@@ -178,7 +179,7 @@ namespace DevUtils.DateTimeExtensions
         }
 
         /// <summary>
-        /// <para>Convert string date to datetime</para>
+        /// <para>Convert double date to datetime</para>
         /// <para>Return BaseDateTimeExtensions.GetCurrentDateTime() on error</para>
         /// </summary>
         /// <param name="doubleValue">string to convert</param>
@@ -191,7 +192,7 @@ namespace DevUtils.DateTimeExtensions
         }
 
         /// <summary>
-        /// Convert string date to datetime
+        /// Convert double date to datetime
         /// </summary>
         /// <param name="doubleValue">string to convert</param>
         /// <param name="defaultValue">default value when invalid date</param>
@@ -210,7 +211,7 @@ namespace DevUtils.DateTimeExtensions
         }
 
         /// <summary>
-        /// <para>Convert string date to datetime</para>
+        /// <para>Convert double date to datetime</para>
         /// <para>Return BaseDateTimeExtensions.GetCurrentDateTime() on error</para>
         /// </summary>
         /// <param name="doubleValue">string to convert</param>
@@ -223,7 +224,7 @@ namespace DevUtils.DateTimeExtensions
         }
 
         /// <summary>
-        /// <para>Convert string date to datetime</para>
+        /// <para>Convert double date to datetime</para>
         /// </summary>
         /// <param name="doubleValue">string to convert</param>
         /// <param name="defaultValue">default value when invalid date</param>
@@ -236,7 +237,7 @@ namespace DevUtils.DateTimeExtensions
         }
 
         /// <summary>
-        /// <para>Convert string date to datetime</para>
+        /// <para>Convert double date to datetime</para>
         /// <para>Return BaseDateTimeExtensions.GetCurrentDateTime() on error</para>
         /// </summary>
         /// <param name="doubleValue">string to convert</param>
@@ -247,6 +248,7 @@ namespace DevUtils.DateTimeExtensions
                 BaseDateTimeExtensions.GetCurrentCulture(),
                 BaseDateTimeExtensions.GetDefaultToDateDateTimeStyles());
         }
+        #endregion 
         #endregion
 
         #region IsValidDate
@@ -284,6 +286,62 @@ namespace DevUtils.DateTimeExtensions
                 BaseDateTimeExtensions.GetCurrentCulture(),
                 BaseDateTimeExtensions.GetDefaultToDateDateTimeStyles());
         } 
+        #endregion
+
+        #region ToUtc
+        /// <summary>
+        /// Convert date to UtcDate
+        /// </summary>
+        /// <param name="date">date to convert</param>
+        /// <param name="timezoneInfo">current date timezone info</param>
+        /// <returns>utc date</returns>
+        public static DateTime ToUtc(this DateTime date, TimeZoneInfo timezoneInfo)
+        {
+            return TimeZoneInfo.ConvertTimeToUtc(date, timezoneInfo);
+        }
+
+        /// <summary>
+        /// Convert date to UtcDate
+        /// </summary>
+        /// <param name="date">date to convert</param>
+        /// <param name="timezoneName">current date timezone name</param>
+        /// <returns>utc date</returns>
+        public static DateTime ToUtc(this DateTime date, string timezoneName)
+        {
+            try
+            {
+                var timezoneInfo = BaseDateTimeExtensions.GetTimezoneInfo(timezoneName);
+                return timezoneInfo == null 
+                    ? date 
+                    : TimeZoneInfo.ConvertTimeToUtc(date, timezoneInfo);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return date;
+            }
+        }
+
+        /// <summary>
+        /// Convert date to UtcDate
+        /// </summary>
+        /// <param name="date">date to convert</param>
+        /// <returns>utc date</returns>
+        public static DateTime ToUtc(this DateTime date)
+        {
+            try
+            {
+                var timezoneInfo = BaseDateTimeExtensions.GetDefaultTimezoneInfo();
+                return timezoneInfo == null
+                    ? date
+                    : TimeZoneInfo.ConvertTimeToUtc(date, timezoneInfo);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return date;
+            }
+        }
         #endregion
     }
 }

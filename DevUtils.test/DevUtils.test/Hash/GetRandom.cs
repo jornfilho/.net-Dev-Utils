@@ -7,7 +7,7 @@ namespace DevUtils.test.Hash
     /// Randon test class
     /// </summary>
     [TestClass]
-    public class Randon
+    public class GetRandom
     {
         /// <summary>
         /// Test CreateRandonHash method

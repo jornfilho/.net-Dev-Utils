@@ -218,6 +218,15 @@ PM> Install-Package DevUtils
 ---
 
 ###DateTimeExtensions###
+>
+> **Offset**
+>
+>> public static int GetDateTimeOffsetMinutes(this DateTime date, TimeZoneInfo timezoneInfo)
+>>
+>> public static int GetDateTimeOffsetMinutes(this DateTime date, string timezoneName)
+>>
+>> public static int GetDateTimeOffsetMinutes(this DateTime date)
+>
 > **Utils**
 >
 >> **Business days**

@@ -22,6 +22,7 @@ namespace DevUtils.DateTimeExtensions
 
                 _instance = new BaseDateTimeExtensions();
                 _instance.SetTimezoneInfoDictionary();
+                _instance.SetDefaultTimezoneInfo();
                 _instance.SetDefaultDays();
                 return _instance;
             }
@@ -29,11 +30,13 @@ namespace DevUtils.DateTimeExtensions
 
 
         private Dictionary<string, string> TimezoneInfoDictionary { get; set; }
+        private TimeZoneInfo DefaultTimeZoneInfo { get; set; }
         private DayOfWeek[] BusinessDays { get; set; }
         private DayOfWeek FirstWeekDay { get; set; }
         private DayOfWeek FirstBusinessWeekDay { get; set; }
         private DayOfWeek LastWeekDay { get; set; }
         private DayOfWeek LastBusinessWeekDay { get; set; }
+
 
         private const DateTimeStyles DefaultToDateDateTimeStyle = DateTimeStyles.AssumeUniversal;
         #endregion
@@ -527,11 +530,19 @@ namespace DevUtils.DateTimeExtensions
             Instance.LastWeekDay = DayOfWeek.Saturday;
             Instance.LastBusinessWeekDay = DayOfWeek.Friday;
         }
+
+        /// <summary>
+        /// Set default TimezoneInfo
+        /// </summary>
+        private void SetDefaultTimezoneInfo()
+        {
+            DefaultTimeZoneInfo = TryConvertTimezoneName("UTC");
+        }
         #endregion
-        
 
 
-        #region Offset
+
+        #region Offset and TimeZoneInfo
         /// <summary>
         /// Get TimezoneInfo dictionary
         /// </summary>
@@ -561,6 +572,37 @@ namespace DevUtils.DateTimeExtensions
 
             return timezoneInfo ?? TryConvertTimezoneName(name);
         }
+        
+        /// <summary>
+        /// Get default system timezone info
+        /// </summary>
+        /// <returns>System timezoneinfo</returns>
+        public static TimeZoneInfo GetDefaultTimezoneInfo()
+        {
+            return Instance.DefaultTimeZoneInfo;
+        }
+
+        /// <summary>
+        /// Set default system timezone info
+        /// </summary>
+        /// <param name="timeZoneInfo">Timezoneinfo to set as default</param>
+        public static void SetDefaultTimezoneInfo(TimeZoneInfo timeZoneInfo)
+        {
+            Instance.DefaultTimeZoneInfo = timeZoneInfo;
+        }
+
+        /// <summary>
+        /// Set default system timezone info
+        /// </summary>
+        /// <param name="timeZoneName">Timezonename to set as default</param>
+        public static void SetDefaultTimezoneInfo(string timeZoneName)
+        {
+            var timeZoneInfo = GetTimezoneInfo(timeZoneName);
+            if (timeZoneInfo == null)
+                return;
+
+            Instance.DefaultTimeZoneInfo = timeZoneInfo;
+        } 
         #endregion
 
         #region Utils

@@ -54,6 +54,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="DateTimeExtensions\BaseDateTimeExtensions.cs" />
+    <Compile Include="DateTimeExtensions\DateExtensions.cs" />
     <Compile Include="DateTimeExtensions\Offset.cs" />
     <Compile Include="DateTimeExtensions\Utils\AddAndRemoveBusinessDays.cs" />
     <Compile Include="DateTimeExtensions\Utils\EndOfMonthAndBusinessMonth.cs" />
@@ -67,7 +68,7 @@
     <Compile Include="DateTimeExtensions\Utils\StartAndEndOfDay.cs" />
     <Compile Include="Hash\Base64.cs" />
     <Compile Include="Hash\Md5.cs" />
-    <Compile Include="Hash\Randon.cs" />
+    <Compile Include="Hash\GetRandom.cs" />
     <Compile Include="Hash\Sha256.cs" />
     <Compile Include="PrimitivesExtensions\BoolExtensions.cs" />
     <Compile Include="PrimitivesExtensions\ByteExtensions.cs" />
@@ -88,7 +89,6 @@
       <Name>DevUtils</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
