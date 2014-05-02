@@ -477,7 +477,10 @@ namespace DevUtils.DateTimeExtensions
                     {"Pacific/Truk", "West Pacific Standard Time"},
                     {"Pacific/Wake", "UTC+12"},
                     {"Pacific/Wallis", "UTC+12"},
-                    {"PST8PDT", "Pacific Standard Time"}
+                    {"PST8PDT", "Pacific Standard Time"},
+
+                    {"UTC", "Coordinated Universal Time"},
+                    {"Coordinated Universal Time", "UTC"}
                 };
         }
 
@@ -536,7 +539,7 @@ namespace DevUtils.DateTimeExtensions
         /// </summary>
         private void SetDefaultTimezoneInfo()
         {
-            DefaultTimeZoneInfo = TryConvertTimezoneName(TimeZone.CurrentTimeZone.StandardName);
+            DefaultTimeZoneInfo = GetTimezoneInfo(TimeZone.CurrentTimeZone.StandardName);
         }
         #endregion
 

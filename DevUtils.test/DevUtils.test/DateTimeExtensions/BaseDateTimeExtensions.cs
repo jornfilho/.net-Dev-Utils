@@ -256,7 +256,7 @@ namespace DevUtils.test.DateTimeExtensions
                 var defaultTimezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultTimezoneInfo();
                 if (defaultTimezone.Equals(utcTimezone))
                 {
-                    DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo("E. South America Standard Time");
+                    DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo(TimeZone.CurrentTimeZone.StandardName);
                     Assert.AreEqual(localTimezone, DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultTimezoneInfo(), "Error setting default timezoneinfo");
                 }
                 else

@@ -234,6 +234,50 @@ namespace DevUtils.DateTimeExtensions
         }
         #endregion
 
+        #region FromUnixTimestamp
+        /// <summary>
+        /// Convert date to unix timestamp
+        /// </summary>
+        /// <param name="date">date to convert</param>
+        /// <param name="timezoneInfo">date timezone info</param>
+        /// <returns>datetime</returns>
+        public static long FromUnixTimestamp(this DateTime date, TimeZoneInfo timezoneInfo)
+        {
+            try
+            {
+                return (date.ToUtc(timezoneInfo) - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds.TryParseLong();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Convert date to unix timestamp
+        /// </summary>
+        /// <param name="date">date to convert</param>
+        /// <param name="timezoneName">current date timezone name</param>
+        /// <returns>unix timestamp</returns>
+        public static long FromUnixTimestamp(this DateTime date, string timezoneName)
+        {
+            var timezoneInfo = BaseDateTimeExtensions.GetTimezoneInfo(timezoneName);
+            return date.ToUnixTimestamp(timezoneInfo);
+        }
+
+        /// <summary>
+        /// Convert date to unix timestamp
+        /// </summary>
+        /// <param name="date">date to convert</param>
+        /// <returns>unix timestamp</returns>
+        public static long FromUnixTimestamp(this DateTime date)
+        {
+            var timezoneInfo = BaseDateTimeExtensions.GetDefaultTimezoneInfo();
+            return date.ToUnixTimestamp(timezoneInfo);
+        }
+        #endregion
+
         #region ToTimezoneDate
         /// <summary>
         /// Convert date to an especific timezone
