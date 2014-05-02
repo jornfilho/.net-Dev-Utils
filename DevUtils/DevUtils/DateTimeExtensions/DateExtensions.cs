@@ -297,7 +297,15 @@ namespace DevUtils.DateTimeExtensions
         /// <returns>utc date</returns>
         public static DateTime ToUtc(this DateTime date, TimeZoneInfo timezoneInfo)
         {
-            return TimeZoneInfo.ConvertTimeToUtc(date, timezoneInfo);
+            try
+            {
+                return TimeZoneInfo.ConvertTime(date, timezoneInfo).ToUniversalTime();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return date;
+            }
         }
 
         /// <summary>
@@ -308,18 +316,8 @@ namespace DevUtils.DateTimeExtensions
         /// <returns>utc date</returns>
         public static DateTime ToUtc(this DateTime date, string timezoneName)
         {
-            try
-            {
-                var timezoneInfo = BaseDateTimeExtensions.GetTimezoneInfo(timezoneName);
-                return timezoneInfo == null 
-                    ? date 
-                    : TimeZoneInfo.ConvertTimeToUtc(date, timezoneInfo);
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e);
-                return date;
-            }
+            var timezoneInfo = BaseDateTimeExtensions.GetTimezoneInfo(timezoneName);
+            return date.ToUtc(timezoneInfo);
         }
 
         /// <summary>
@@ -329,18 +327,93 @@ namespace DevUtils.DateTimeExtensions
         /// <returns>utc date</returns>
         public static DateTime ToUtc(this DateTime date)
         {
+            var timezoneInfo = BaseDateTimeExtensions.GetDefaultTimezoneInfo();
+            return date.ToUtc(timezoneInfo);
+        }
+        #endregion
+
+        #region ToTimezoneDate
+        /// <summary>
+        /// Convert date to an especific timezone
+        /// </summary>
+        /// <param name="date">date to convert</param>
+        /// <param name="currentTimeZoneInfo">current date timezone info</param>
+        /// <param name="destinationTimeZoneInfo">destination date timezone info</param>
+        /// <returns>date on especific timezone</returns>
+        public static DateTime ToTimezoneDate(this DateTime date, TimeZoneInfo currentTimeZoneInfo, TimeZoneInfo destinationTimeZoneInfo)
+        {
             try
             {
-                var timezoneInfo = BaseDateTimeExtensions.GetDefaultTimezoneInfo();
-                return timezoneInfo == null
-                    ? date
-                    : TimeZoneInfo.ConvertTimeToUtc(date, timezoneInfo);
+                return TimeZoneInfo.ConvertTime(date.ToUtc(currentTimeZoneInfo), destinationTimeZoneInfo);
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e);
                 return date;
             }
+        }
+
+        /// <summary>
+        /// Convert date to an especific timezone
+        /// </summary>
+        /// <param name="date">date to convert</param>
+        /// <param name="currentTimeZoneName">current date timezone name</param>
+        /// <param name="destinationTimeZoneInfo">destination date timezone info</param>
+        /// <returns>date on especific timezone</returns>
+        public static DateTime ToTimezoneDate(this DateTime date, string currentTimeZoneName, TimeZoneInfo destinationTimeZoneInfo)
+        {
+            var currentTimezone = BaseDateTimeExtensions.GetTimezoneInfo(currentTimeZoneName);
+            return date.ToTimezoneDate(currentTimezone, destinationTimeZoneInfo);
+        }
+
+        /// <summary>
+        /// Convert date to an especific timezone
+        /// </summary>
+        /// <param name="date">date to convert</param>
+        /// <param name="currentTimezoneInfo">current date timezone info</param>
+        /// <param name="destinationTimeZoneName">destination date timezone name</param>
+        /// <returns>date on especific timezone</returns>
+        public static DateTime ToTimezoneDate(this DateTime date, TimeZoneInfo currentTimezoneInfo, string destinationTimeZoneName)
+        {
+            var destinationTimezone = BaseDateTimeExtensions.GetTimezoneInfo(destinationTimeZoneName);
+            return date.ToTimezoneDate(currentTimezoneInfo, destinationTimezone);
+        }
+
+        /// <summary>
+        /// Convert date to an especific timezone
+        /// </summary>
+        /// <param name="date">date to convert</param>
+        /// <param name="currentTimeZoneName">current date timezone name</param>
+        /// <param name="destinationTimeZoneName">destination date timezone name</param>
+        /// <returns>date on especific timezone</returns>
+        public static DateTime ToTimezoneDate(this DateTime date, string currentTimeZoneName, string destinationTimeZoneName)
+        {
+            var currentTimezone = BaseDateTimeExtensions.GetTimezoneInfo(currentTimeZoneName);
+            var destinationTimezone = BaseDateTimeExtensions.GetTimezoneInfo(destinationTimeZoneName);
+            return date.ToTimezoneDate(currentTimezone, destinationTimezone);
+        }
+
+        /// <summary>
+        /// Convert date to an especific timezone
+        /// </summary>
+        /// <param name="date">date to convert</param>
+        /// <param name="destinationTimeZoneInfo">destination date timezone info</param>
+        /// <returns>date on especific timezone</returns>
+        public static DateTime ToTimezoneDate(this DateTime date, TimeZoneInfo destinationTimeZoneInfo)
+        {
+            return date.ToTimezoneDate(BaseDateTimeExtensions.GetDefaultTimezoneInfo(), destinationTimeZoneInfo);
+        }
+
+        /// <summary>
+        /// Convert date to an especific timezone
+        /// </summary>
+        /// <param name="date">date to convert</param>
+        /// <param name="destinationTimeZoneName">destination date timezone name</param>
+        /// <returns>date on especific timezone</returns>
+        public static DateTime ToTimezoneDate(this DateTime date, string destinationTimeZoneName)
+        {
+            var destinationTimezone = BaseDateTimeExtensions.GetTimezoneInfo(destinationTimeZoneName);
+            return date.ToTimezoneDate(BaseDateTimeExtensions.GetDefaultTimezoneInfo(), destinationTimezone);
         }
         #endregion
     }

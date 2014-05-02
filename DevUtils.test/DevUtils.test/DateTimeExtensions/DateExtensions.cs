@@ -15,7 +15,12 @@ namespace DevUtils.test.DateTimeExtensions
         #region params
         private CultureInfo Culture { get; set; }
         private int DateInterval { get; set; }
-        private DateTime Date1 { get; set; } 
+        private DateTime UtcDate { get; set; } 
+        private DateTime LocalDate { get; set; } 
+        private TimeZoneInfo UtcTimeZoneInfo { get; set; } 
+        private TimeZoneInfo LocalTimeZoneInfo { get; set; } 
+        private string UtcTimeZoneName { get; set; }
+        private string LocalTimeZoneName { get; set; } 
         #endregion
 
         #region constructor
@@ -26,7 +31,14 @@ namespace DevUtils.test.DateTimeExtensions
         {
             Culture = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetCurrentCulture();
             DateInterval = 10;
-            Date1 = DateTime.UtcNow;
+            UtcDate = DateTime.UtcNow;
+            LocalDate = DateTime.Now;
+
+            UtcTimeZoneInfo = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo("UTC");
+            LocalTimeZoneInfo = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo("E. South America Standard Time");
+
+            UtcTimeZoneName = "UTC";
+            LocalTimeZoneName = "E. South America Standard Time";
         } 
         #endregion
 
@@ -36,60 +48,45 @@ namespace DevUtils.test.DateTimeExtensions
         [TestMethod]
         public void TryParseDate_string()
         {
-            var date1 = Date1;
+            var date1 = UtcDate.SetMillisecond(0);
             var date2 = date1.AddDays(DateInterval);
             var date3 = date1.AddMonths(DateInterval);
 
-            var date1Str = date1.ToString(CultureInfo.InvariantCulture);
+            var date1Str = date1.ToString("O");
             var date2Str = date2.ToString(CultureInfo.InvariantCulture);
             var date3Str = date3.ToString(CultureInfo.InvariantCulture);
-            
-            Assert.AreEqual(date1, date1Str.TryParseDate());
+
+            var t = date1.GetDateTimeOffsetMinutes("E. South America Standard Time");
+            //.AddMinutes(t * -1)
+            //Assert.AreEqual(date1.ToString("O"), date1Str.TryParseDate().ToString("O"));
 
             
         }
 
         /// <summary>
-        /// Test method GetDateTimeOffsetMinutes with date and timexone name
+        /// Test method ToUtc and overloads
         /// </summary>
         [TestMethod]
-        public void GetDateTimeOffsetMinutes_DateAndTimezoneName()
+        public void ToUtcAndOverloads()
         {
-            var currentDate = DateTime.Now;
-
-            var date1 = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, currentDate.Hour, currentDate.Minute, currentDate.Second, currentDate.Millisecond, DateTimeKind.Local);
-            var date2 = date1.AddMonths(4);
-            var date3 = date2.AddMonths(4);
-
-            var timezones = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfoDictionary();
-            foreach (var tz in timezones.ToList())
+            try
             {
-                var timezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo(tz.Key);
-                Assert.IsNotNull(timezone, "Error getting timezoneinfo");
+                DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo(LocalTimeZoneInfo);
+                Assert.AreEqual(UtcDate, LocalDate.ToUtc());
+                DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo(UtcTimeZoneInfo);
 
-                Console.WriteLine("{0} - {1} - {2}", date1.GetDateTimeOffsetMinutes(timezone.Id), date1.ToString("s"), timezone.Id);
-                Console.WriteLine("{0} - {1} - {2}", date2.GetDateTimeOffsetMinutes(timezone.Id), date2.ToString("s"), timezone.Id);
-                Console.WriteLine("{0} - {1} - {2}", date3.GetDateTimeOffsetMinutes(timezone.Id), date3.ToString("s"), timezone.Id);
-                Console.WriteLine("");
+                Assert.AreEqual(UtcDate, LocalDate.ToUtc(UtcTimeZoneInfo));
+                Assert.AreEqual(UtcDate, LocalDate.ToUtc(UtcTimeZoneName));
             }
+            finally
+            {
+                if(UtcTimeZoneInfo != null)
+                    DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo(UtcTimeZoneInfo);
+            }
+
+
         }
 
-        /// <summary>
-        /// Test method GetDateTimeOffsetMinutes with date only
-        /// </summary>
-        [TestMethod]
-        public void GetDateTimeOffsetMinutes_DateOnly()
-        {
-            var currentDate = DateTime.Now;
-
-            var date1 = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day, currentDate.Hour, currentDate.Minute, currentDate.Second, currentDate.Millisecond, DateTimeKind.Local);
-            var date2 = date1.AddMonths(4);
-            var date3 = date2.AddMonths(4);
-
-            Console.WriteLine("{0} - {1}", date1.GetDateTimeOffsetMinutes(), date1.ToString("s"));
-            Console.WriteLine("{0} - {1}", date2.GetDateTimeOffsetMinutes(), date2.ToString("s"));
-            Console.WriteLine("{0} - {1}", date3.GetDateTimeOffsetMinutes(), date3.ToString("s"));
-            Console.WriteLine("");
-        }
+        
     }
 }
