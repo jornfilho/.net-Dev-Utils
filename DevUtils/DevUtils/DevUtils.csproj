@@ -52,6 +52,8 @@
     <Compile Include="Hash\Md5.cs" />
     <Compile Include="Hash\GetRandom.cs" />
     <Compile Include="Hash\Sha256.cs" />
+    <Compile Include="Interfaces\Io\IIoUtils.cs" />
+    <Compile Include="Io\IoUtils.cs" />
     <Compile Include="PrimitivesExtensions\BasePrimitivesExtensions.cs" />
     <Compile Include="PrimitivesExtensions\BoolExtensions.cs" />
     <Compile Include="PrimitivesExtensions\ByteExtensions.cs" />

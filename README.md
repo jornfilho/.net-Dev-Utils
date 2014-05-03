@@ -43,6 +43,51 @@ PM> Install-Package DevUtils
 ---
 
 ###PrimitivesExtensions###
+> **IO**
+> 
+>> **Directory**
+>> 
+>> - public bool IsDirectory(string path)
+>> - public bool DirectoryExists(string path)
+>> - public bool CopyDirectory(string sourcePath, string targetPath)
+>> - public bool CreateDirectory(string path)
+>> - public bool DeleteDirectoryContents(string path)
+>> - public bool DeleteDirectory(string path)
+>>
+>> **File**
+>>
+>> - public bool FileExists(string path)
+>> - public int GetCountOfFilesInDirectory(string path)
+>> - public bool CopyFile(string sourcePath, string targetPath)
+>> - public string ReadFileAsString(string path)
+>> - public FileStream ReadFileAsStream(string path)
+>> - public bool IsFileReadOnly(string path)
+>> - public bool WriteFile(string path, string contents)
+>> - public TextWriter CreateFileTextWriter(string path)
+>> - public int DeleteFiles(string path)
+>> - public bool DeleteFile(string path)
+
+---
+
+###PrimitivesExtensions###
+> **IsValid**
+>
+> - public static bool IsValidBool(this string strValue)
+> - public static bool IsValidByte(this string strValue)
+> - public static bool IsValidDecimal(this string strValue)
+> - public static bool IsValidDouble(this string strValue)
+> - public static bool IsValidFloat(this string strValue)
+> - public static bool IsValidInt(this string strValue)
+> - public static bool IsValidLong(this string strValue)
+> - public static bool IsValidShort(this string strValue)
+> 
+> **StringExtensions**
+>
+> - public static string ToUnicode(this string text)
+> - public static string ToUnicodeWithoutSpace(this string text)
+> - public static string Left(this string text, int length)
+> - public static string Right(this string text, int length)
+>
 > **BoolExtensions**
 >
 >> **From string to bool**
@@ -202,23 +247,6 @@ PM> Install-Package DevUtils
 > - From float and nullable float to short
 > - From string to short array
 >
-> **StringExtensions**
->
-> - public static string ToUnicode(this string text)
-> - public static string ToUnicodeWithoutSpace(this string text)
-> - public static string Left(this string text, int length)
-> - public static string Right(this string text, int length)
->
-> **IsValid**
->
-> - public static bool IsValidBool(this string strValue)
-> - public static bool IsValidByte(this string strValue)
-> - public static bool IsValidDecimal(this string strValue)
-> - public static bool IsValidDouble(this string strValue)
-> - public static bool IsValidFloat(this string strValue)
-> - public static bool IsValidInt(this string strValue)
-> - public static bool IsValidLong(this string strValue)
-> - public static bool IsValidShort(this string strValue)
 
 ---
 
