@@ -93,6 +93,7 @@
     <Compile Include="Service\ServiceUtils.cs" />
     <Compile Include="Validators\Email.cs" />
     <Compile Include="Validators\Uri.cs" />
+    <Compile Include="Xml\XmlExtensions.cs" />
     <Compile Include="Xml\XmlUtils.cs" />
   </ItemGroup>
   <ItemGroup>

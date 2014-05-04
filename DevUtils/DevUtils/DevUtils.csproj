@@ -57,6 +57,7 @@
     <Compile Include="Service\ServiceUtils.cs" />
     <Compile Include="Service\WindowsServiceAction.cs" />
     <Compile Include="Service\WindowsServiceState.cs" />
+    <Compile Include="Xml\XmlExtensions.cs" />
     <Compile Include="Xml\XmlUtils.cs" />
     <Compile Include="_Interfaces\Io\IIoFileUtils.cs" />
     <Compile Include="_Interfaces\Io\IIoDirectoryUtils.cs" />

@@ -75,12 +75,18 @@ PM> Install-Package DevUtils
 
 ---
 
-###XmlUtils###
+###Xml###
+>
+> **XmlUtils**
 > 
 > - public bool CreateDocument(string path, string fileName, string xml, string xsd, string ns)
 > - public bool ValidateDocument(string xml, string xsd, string ns)
 > - public string GetElement(string path, string element, XNamespace ns)
 > - public bool UpdateElement(string path, string element, string value, XNamespace ns)
+>
+> **XmlExtensions**
+> 
+> - public static string ToXml(this object o)
 
 ---
 
