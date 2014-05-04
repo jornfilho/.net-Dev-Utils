@@ -43,7 +43,7 @@ PM> Install-Package DevUtils
 ---
 
 ###IO###
-> **Directory**
+> **IoDirectoryUtils**
 > 
 > - public bool IsDirectory(string path)
 > - public bool DirectoryExists(string path)
@@ -56,18 +56,21 @@ PM> Install-Package DevUtils
 > - public bool SetDirectoryPermission(string path, FileSystemRights permission)
 > - public bool SetDirectoryPermissions(string path, FileSystemRights[] permissions)
 >
-> **File**
+> **IoFileUtils**
 >
 > - public bool FileExists(string path)
-> - public int GetCountOfFilesInDirectory(string path)
-> - public bool CopyFile(string sourcePath, string targetPath)
 > - public string ReadFileAsString(string path)
 > - public FileStream ReadFileAsStream(string path)
-> - public bool IsFileReadOnly(string path)
-> - public bool WriteFile(string path, string contents)
+> - public bool CreateFile(string path, string contents)
+> - public bool CreateReadOnlyFile(string path, string contents)
 > - public TextWriter CreateFileTextWriter(string path)
+> - public bool CopyFile(string sourcePath, string targetPath)
 > - public int DeleteFiles(string path)
 > - public bool DeleteFile(string path)
+> - public bool IsFileReadOnly(string path)
+> - public bool RemoveReadOnlyAttribute(string path)
+> - public int GetCountOfFilesInDirectory(string path)
+> - public int GetCountOfFilesInDirectoryAndSubdirectories(string path)
 
 ---
 

@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Linq;
 using System.Security.AccessControl;
 using DevUtils.Interfaces.Io;
-using DevUtils.Io;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DevUtils.test.Io
@@ -13,7 +12,7 @@ namespace DevUtils.test.Io
     /// IO utils directory test class
     /// </summary>
     [TestClass]
-    public class Directory
+    public class IoDirectoryUtils
     {
         #region params
         private IIoDirectoryUtils IoDir { get; set; } 
@@ -21,22 +20,25 @@ namespace DevUtils.test.Io
         private string TestFolder { get; set; } 
         private string TestFolderCopy { get; set; } 
         private bool HasFolderPermission { get; set; } 
+        private bool HasFilePermission { get; set; } 
         #endregion
 
         #region constructor
         /// <summary>
         /// Base test constructor
         /// </summary>
-        public Directory()
+        public IoDirectoryUtils()
         {
-            IoDir = new IoDirectoryUtils();
-            IoFiles = new IoFileUtils();
+            IoDir = new DevUtils.Io.IoDirectoryUtils();
+            IoFiles = new DevUtils.Io.IoFileUtils();
             TestFolder = "_TestContent";
             TestFolderCopy = TestFolder+"_Copy";
 
             var directoryPermission = IoDir.GetDirectoryPermission(System.IO.Directory.GetCurrentDirectory());
             HasFolderPermission = directoryPermission != null &&
                                   directoryPermission.Any(p => p == FileSystemRights.CreateDirectories || p == FileSystemRights.FullControl);
+            HasFilePermission = directoryPermission != null &&
+                                  directoryPermission.Any(p => p == FileSystemRights.CreateFiles || p == FileSystemRights.FullControl);
         } 
         #endregion
 
@@ -131,7 +133,7 @@ namespace DevUtils.test.Io
         {
             try
             {
-                if (!HasFolderPermission)
+                if (!HasFolderPermission || !HasFilePermission)
                     return;
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
@@ -142,13 +144,13 @@ namespace DevUtils.test.Io
                 {
                     if (d == 0)
                         for (var i = 0; i < 20; i++)
-                            IoFiles.WriteFile(TestFolder + "//" + i + ".txt", i.ToString(CultureInfo.InvariantCulture));
+                            IoFiles.CreateFile(TestFolder + "//" + i + ".txt", i.ToString(CultureInfo.InvariantCulture));
 
 
                     IoDir.CreateDirectory(TestFolder + "//" + d + "//");
 
                     for (var i = 0; i < 20; i++)
-                        IoFiles.WriteFile(TestFolder + "//" + d + "//" + i + ".txt", i.ToString(CultureInfo.InvariantCulture));
+                        IoFiles.CreateFile(TestFolder + "//" + d + "//" + i + ".txt", i.ToString(CultureInfo.InvariantCulture));
                 }
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolderCopy + "//"), "Invalid directory path");
@@ -181,7 +183,7 @@ namespace DevUtils.test.Io
         {
             try
             {
-                if (!HasFolderPermission)
+                if (!HasFolderPermission || !HasFilePermission)
                     return;
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
@@ -192,13 +194,13 @@ namespace DevUtils.test.Io
                 {
                     if (d == 0)
                         for (var i = 0; i < 20; i++)
-                            IoFiles.WriteFile(TestFolder + "//" + i + ".txt", i.ToString(CultureInfo.InvariantCulture));
+                            IoFiles.CreateFile(TestFolder + "//" + i + ".txt", i.ToString(CultureInfo.InvariantCulture));
 
 
                     IoDir.CreateDirectory(TestFolder + "//" + d + "//");
 
                     for (var i = 0; i < 20; i++)
-                        IoFiles.WriteFile(TestFolder + "//" + d + "//" + i + ".txt", i.ToString(CultureInfo.InvariantCulture));
+                        IoFiles.CreateFile(TestFolder + "//" + d + "//" + i + ".txt", i.ToString(CultureInfo.InvariantCulture));
                 }
 
                 var mainFilesCount = IoFiles.GetCountOfFilesInDirectoryAndSubdirectories(TestFolder + "//");
@@ -233,7 +235,7 @@ namespace DevUtils.test.Io
         {
             try
             {
-                if (!HasFolderPermission)
+                if (!HasFolderPermission || !HasFilePermission)
                     return;
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
@@ -244,13 +246,13 @@ namespace DevUtils.test.Io
                 {
                     if (d == 0)
                         for (var i = 0; i < 20; i++)
-                            IoFiles.WriteFile(TestFolder + "//" + i + ".txt", i.ToString(CultureInfo.InvariantCulture));
+                            IoFiles.CreateFile(TestFolder + "//" + i + ".txt", i.ToString(CultureInfo.InvariantCulture));
 
 
                     IoDir.CreateDirectory(TestFolder + "//" + d + "//");
 
                     for (var i = 0; i < 20; i++)
-                        IoFiles.WriteFile(TestFolder + "//" + d + "//" + i + ".txt", i.ToString(CultureInfo.InvariantCulture));
+                        IoFiles.CreateFile(TestFolder + "//" + d + "//" + i + ".txt", i.ToString(CultureInfo.InvariantCulture));
                 }
 
                 Assert.IsTrue(IoDir.DeleteDirectory(TestFolder + "//"), "Error deleting directory");
