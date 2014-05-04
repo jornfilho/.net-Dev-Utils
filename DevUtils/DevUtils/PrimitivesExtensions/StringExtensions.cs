@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -78,13 +79,6 @@ namespace DevUtils.PrimitivesExtensions
                : text.Substring(text.Length - length, length);
         }
 
-
-
-
-
-
-
-
         /// <summary>
         /// Compares two string objects ignoring case.
         /// </summary>
@@ -93,7 +87,15 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>A value indicating if the strings are equal.</returns>
         public static bool CompareNoCase(this string valueCurrent, string valueToCompare)
         {
-            return string.Compare(valueCurrent, valueToCompare, true, CultureInfo.CurrentCulture) == 0;
+            try
+            {
+                return string.Compare(valueCurrent, valueToCompare, true, CultureInfo.CurrentCulture) == 0;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return false;
+            }
         }
 
         /// <summary>
@@ -105,21 +107,19 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>A value indicating if the string is contained in the array of objects.</returns>
         public static bool ContainedIn(this string valueCurrent, object[] values)
         {
-            bool isContainedIn = false;
-
-            if (valueCurrent != null && values != null)
+            try
             {
-                foreach (object value in values)
-                {
-                    if (valueCurrent.Contains(value.ToString()))
-                    {
-                        isContainedIn = true;
-                        break;
-                    }
-                }
-            }
+                if (valueCurrent == null || values == null) 
+                    return false;
 
-            return isContainedIn;
+                return values.Any(value => valueCurrent.Contains(value.ToString()));
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return false;
+            }
+            
         }
 
         /// <summary>
@@ -131,21 +131,19 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>A value indicating if the string is contained in the list of objects.</returns>
         public static bool ContainedIn(this string valueCurrent, List<object> values)
         {
-            bool isContainedIn = false;
-
-            if (valueCurrent != null && values != null)
+            try
             {
-                foreach (object value in values)
-                {
-                    if (valueCurrent.Contains(value.ToString()))
-                    {
-                        isContainedIn = true;
-                        break;
-                    }
-                }
-            }
+                if (valueCurrent == null || values == null) 
+                    return false;
 
-            return isContainedIn;
+                return values.Any(value => valueCurrent.Contains(value.ToString()));
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return false;
+            }
+            
         }
 
         /// <summary>
@@ -157,21 +155,18 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>A value indicating if the string is contained in the list of strings.</returns>
         public static bool ContainedIn(this string valueCurrent, List<string> values)
         {
-            bool isContainedIn = false;
-
-            if (valueCurrent != null && values != null)
+            try
             {
-                foreach (string value in values)
-                {
-                    if (valueCurrent.Contains(value))
-                    {
-                        isContainedIn = true;
-                        break;
-                    }
-                }
-            }
+                if (valueCurrent == null || values == null) 
+                    return false;
 
-            return isContainedIn;
+                return values.Any(valueCurrent.Contains);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return false;
+            }
         }
 
         /// <summary>
@@ -183,12 +178,20 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>A value indicating if the string ends with the specified substring.</returns>
         public static bool EndsWithCurrent(this string valueCurrent, string valueToCompare)
         {
-            bool endsWith = false;
+            try
+            {
+                var endsWith = false;
 
-            if (!string.IsNullOrWhiteSpace(valueToCompare) && valueCurrent != null)
-                endsWith = valueCurrent.EndsWith(valueToCompare, StringComparison.CurrentCulture);
+                if (!string.IsNullOrWhiteSpace(valueToCompare) && valueCurrent != null)
+                    endsWith = valueCurrent.EndsWith(valueToCompare, StringComparison.CurrentCulture);
 
-            return endsWith;
+                return endsWith;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return false;
+            }
         }
 
         /// <summary>
@@ -200,12 +203,20 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>A value indicating if the string ends with the specified substring.</returns>
         public static bool EndsWithOrdinalIgnoreCase(this string valueCurrent, string valueToCompare)
         {
-            bool endsWith = false;
+            try
+            {
+                var endsWith = false;
 
-            if (!string.IsNullOrWhiteSpace(valueToCompare) && valueCurrent != null)
-                endsWith = valueCurrent.EndsWith(valueToCompare, StringComparison.OrdinalIgnoreCase);
+                if (!string.IsNullOrWhiteSpace(valueToCompare) && valueCurrent != null)
+                    endsWith = valueCurrent.EndsWith(valueToCompare, StringComparison.OrdinalIgnoreCase);
 
-            return endsWith;
+                return endsWith;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return false;
+            }
         }
 
         /// <summary>
@@ -217,7 +228,15 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>A formatted string with the object.</returns>
         public static string FormatCurrent(this string format, object arg0)
         {
-            return string.Format(CultureInfo.CurrentCulture, format, arg0);
+            try
+            {
+                return string.Format(CultureInfo.CurrentCulture, format, arg0);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
         }
 
         /// <summary>
@@ -230,7 +249,15 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>A formatted string with the objects.</returns>
         public static string FormatCurrent(this string format, object arg0, object arg1)
         {
-            return string.Format(CultureInfo.CurrentCulture, format, arg0, arg1);
+            try
+            {
+                return string.Format(CultureInfo.CurrentCulture, format, arg0, arg1);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
         }
 
         /// <summary>
@@ -244,7 +271,15 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>A formatted string with the objects.</returns>
         public static string FormatCurrent(this string format, object arg0, object arg1, object arg2)
         {
-            return string.Format(CultureInfo.CurrentCulture, format, arg0, arg1, arg2);
+            try
+            {
+                return string.Format(CultureInfo.CurrentCulture, format, arg0, arg1, arg2);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
         }
 
         /// <summary>
@@ -256,7 +291,15 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>A formatted string with the objects.</returns>
         public static string FormatCurrent(this string format, params object[] args)
         {
-            return string.Format(CultureInfo.CurrentCulture, format, args);
+            try
+            {
+                return string.Format(CultureInfo.CurrentCulture, format, args);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
         }
 
         /// <summary>
@@ -268,7 +311,15 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>A formatted string with the object.</returns>
         public static string FormatInvariant(this string format, object arg0)
         {
-            return string.Format(CultureInfo.InvariantCulture, format, arg0);
+            try
+            {
+                return string.Format(CultureInfo.InvariantCulture, format, arg0);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
         }
 
         /// <summary>
@@ -281,7 +332,15 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>A formatted string with the objects.</returns>
         public static string FormatInvariant(this string format, object arg0, object arg1)
         {
-            return string.Format(CultureInfo.InvariantCulture, format, arg0, arg1);
+            try
+            {
+                return string.Format(CultureInfo.InvariantCulture, format, arg0, arg1);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
         }
 
         /// <summary>
@@ -295,7 +354,15 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>A formatted string with the objects.</returns>
         public static string FormatInvariant(this string format, object arg0, object arg1, object arg2)
         {
-            return string.Format(CultureInfo.InvariantCulture, format, arg0, arg1, arg2);
+            try
+            {
+                return string.Format(CultureInfo.InvariantCulture, format, arg0, arg1, arg2);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
         }
 
         /// <summary>
@@ -307,7 +374,15 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>A formatted string with the objects.</returns>
         public static string FormatInvariant(this string format, params object[] args)
         {
-            return String.Format(CultureInfo.InvariantCulture, format, args);
+            try
+            {
+                return string.Format(CultureInfo.InvariantCulture, format, args);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
         }
 
         /// <summary>
@@ -319,7 +394,15 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>An enumerable containing all the indexes of the occurences of the value sought.</returns>
         public static IEnumerable<int> IndexOfAll(this string valueCurrent, string value)
         {
-            return Regex.Matches(valueCurrent, value).Cast<Match>().Select(m => m.Index);
+            try
+            {
+                return Regex.Matches(valueCurrent, value).Cast<Match>().Select(m => m.Index);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
         }
 
         /// <summary>
@@ -331,12 +414,20 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>The index of the first occurrence of the specified value in the string.</returns>
         public static int IndexOfCurrent(this string valueCurrent, string value)
         {
-            int index = -1;
+            try
+            {
+                var index = -1;
 
-            if (valueCurrent != null)
-                index = valueCurrent.IndexOf(value, StringComparison.CurrentCulture);
+                if (valueCurrent != null)
+                    index = valueCurrent.IndexOf(value, StringComparison.CurrentCulture);
 
-            return index;
+                return index;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return -1;
+            }
         }
 
         /// <summary>
@@ -349,12 +440,20 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>The index of the first occurrence of the specified value in the string.</returns>
         public static int IndexOfCurrent(this string valueCurrent, string value, int startIndex)
         {
-            int index = -1;
+            try
+            {
+                var index = -1;
 
-            if (valueCurrent != null)
-                index = valueCurrent.IndexOf(value, startIndex, StringComparison.CurrentCulture);
+                if (valueCurrent != null)
+                    index = valueCurrent.IndexOf(value, startIndex, StringComparison.CurrentCulture);
 
-            return index;
+                return index;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return -1;
+            }
         }
 
         /// <summary>
@@ -366,12 +465,20 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>The index of the first occurrence of the specified value in the string.</returns>
         public static int IndexOfOrdinalIgnoreCase(this string valueCurrent, string value)
         {
-            int index = -1;
+            try
+            {
+                var index = -1;
 
-            if (valueCurrent != null)
-                index = valueCurrent.IndexOf(value, StringComparison.OrdinalIgnoreCase);
+                if (valueCurrent != null)
+                    index = valueCurrent.IndexOf(value, StringComparison.OrdinalIgnoreCase);
 
-            return index;
+                return index;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return -1;
+            }
         }
 
         /// <summary>
@@ -384,12 +491,20 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>The index of the first occurrence of the specified value in the string.</returns>
         public static int IndexOfOrdinalIgnoreCase(this string valueCurrent, string value, int startIndex)
         {
-            int index = -1;
+            try
+            {
+                var index = -1;
 
-            if (valueCurrent != null)
-                index = valueCurrent.IndexOf(value, startIndex, StringComparison.OrdinalIgnoreCase);
+                if (valueCurrent != null)
+                    index = valueCurrent.IndexOf(value, startIndex, StringComparison.OrdinalIgnoreCase);
 
-            return index;
+                return index;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return -1;
+            }
         }
 
         /// <summary>
@@ -401,10 +516,18 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>A joined string of all elements separated by a delimiter.</returns>
         public static string Join(this List<string> list, string separator)
         {
-            if (list != null && list.Count > 0)
-                return string.Join(separator, list.ToArray());
+            try
+            {
+                if (list != null && list.Count > 0)
+                    return string.Join(separator, list.ToArray());
 
-            return string.Empty;
+                return null;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
         }
 
         /// <summary>
@@ -416,10 +539,18 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>A joined string of all elements separated by a delimiter.</returns>
         public static string Join(this string[] array, string separator)
         {
-            if (array != null && array.Length > 0)
-                return string.Join(separator, array);
+            try
+            {
+                if (array != null && array.Length > 0)
+                    return string.Join(separator, array);
 
-            return null;
+                return null;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
         }
 
         /// <summary>
@@ -431,12 +562,20 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>A value indicating if the string begins with the specified substring.</returns>
         public static bool StartsWithCurrent(this string valueCurrent, string valueToCompare)
         {
-            bool startsWith = false;
+            try
+            {
+                var startsWith = false;
 
-            if (!string.IsNullOrWhiteSpace(valueToCompare) && valueCurrent != null)
-                startsWith = valueCurrent.StartsWith(valueToCompare, StringComparison.CurrentCulture);
+                if (!string.IsNullOrWhiteSpace(valueToCompare) && valueCurrent != null)
+                    startsWith = valueCurrent.StartsWith(valueToCompare, StringComparison.CurrentCulture);
 
-            return startsWith;
+                return startsWith;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return false;
+            }
         }
 
         /// <summary>
@@ -448,12 +587,20 @@ namespace DevUtils.PrimitivesExtensions
         /// <returns>A value indicating if the string begins with the specified substring.</returns>
         public static bool StartsWithOrdinalIgnoreCase(this string valueCurrent, string valueToCompare)
         {
-            bool startsWith = false;
+            try
+            {
+                var startsWith = false;
 
-            if (!string.IsNullOrWhiteSpace(valueToCompare) && valueCurrent != null)
-                startsWith = valueCurrent.StartsWith(valueToCompare, StringComparison.OrdinalIgnoreCase);
+                if (!string.IsNullOrWhiteSpace(valueToCompare) && valueCurrent != null)
+                    startsWith = valueCurrent.StartsWith(valueToCompare, StringComparison.OrdinalIgnoreCase);
 
-            return startsWith;
+                return startsWith;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return false;
+            }
         }
     }
 }
