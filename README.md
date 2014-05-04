@@ -90,6 +90,13 @@ PM> Install-Package DevUtils
 
 ---
 
+###ServiceUtils###
+> 
+> - public WindowsServiceState GetServiceState(string host, string serviceName)
+> - public bool ChangeServiceState(string host,string serviceName,WindowsServiceAction action)
+
+---
+
 ###PrimitivesExtensions###
 > **IsValid**
 >

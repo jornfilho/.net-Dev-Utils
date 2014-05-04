@@ -38,6 +38,9 @@
     <DocumentationFile>bin\Release\DevUtils.test.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>..\..\DevUtils\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
@@ -85,6 +88,7 @@
     <Compile Include="PrimitivesExtensions\StringExtensions.cs" />
     <Compile Include="Proccess\ProcessUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\ServiceUtils.cs" />
     <Compile Include="Validators\Email.cs" />
     <Compile Include="Validators\Uri.cs" />
     <Compile Include="Xml\XmlUtils.cs" />
@@ -95,7 +99,9 @@
       <Name>DevUtils</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
