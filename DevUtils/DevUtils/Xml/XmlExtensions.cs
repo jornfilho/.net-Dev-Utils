@@ -44,5 +44,36 @@ namespace DevUtils.Xml
                 return null;
             }
         }
+
+        /// <summary>
+        /// Converts the specified string containing XML to the specified type
+        /// of T.
+        /// </summary>
+        /// <typeparam name="T">The type in which to convert from XML.</typeparam>
+        /// <param name="xml">The string containing the XML to convert.</param>
+        /// <returns>The converted type of T from XML.</returns>
+        public static T FromXml<T>(this string xml)
+        {
+            try
+            {
+                var o = default(T);
+                if (xml == null) 
+                    return o;
+
+                using (TextReader reader = new StringReader(xml))
+                {
+                    var serializer = new XmlSerializer(typeof(T));
+                    o = (T)serializer.Deserialize(reader);
+                    reader.Close();
+                }
+
+                return o;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return default(T);
+            }
+        }
     }
 }

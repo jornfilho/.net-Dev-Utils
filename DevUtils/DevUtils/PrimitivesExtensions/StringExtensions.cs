@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
@@ -73,6 +74,231 @@ namespace DevUtils.PrimitivesExtensions
             return text.Length <= length
                ? text
                : text.Substring(text.Length - length, length);
+        }
+
+        /// <summary>
+        /// Compares two string objects ignoring case.
+        /// </summary>
+        /// <param name="valueCurrent">The current string used to compare against another string.</param>
+        /// <param name="valueToCompare">The string to compare against the current string.</param>
+        /// <returns>A value indicating if the strings are equal.</returns>
+        public static bool CompareNoCase(this string valueCurrent, string valueToCompare)
+        {
+            return string.Compare(valueCurrent, valueToCompare, true, CultureInfo.CurrentCulture) == 0;
+        }
+
+        /// <summary>
+        /// Determines if the current string is contained in the specified array
+        /// of objects.
+        /// </summary>
+        /// <param name="valueCurrent">The current string used to compare against the array of objects.</param>
+        /// <param name="values">The array of objects used compare against the current string.</param>
+        /// <returns>A value indicating if the string is contained in the array of objects.</returns>
+        public static bool ContainedIn(this string valueCurrent, object[] values)
+        {
+            bool isContainedIn = false;
+
+            if (valueCurrent != null && values != null)
+            {
+                foreach (object value in values)
+                {
+                    if (valueCurrent.Contains(value.ToString()))
+                    {
+                        isContainedIn = true;
+                        break;
+                    }
+                }
+            }
+
+            return isContainedIn;
+        }
+
+        /// <summary>
+        /// Determines if the current string is contained in the specified list
+        /// of objects.
+        /// </summary>
+        /// <param name="valueCurrent">The current string used to compare against the list of objects.</param>
+        /// <param name="values">The list of objects used compare against the current string.</param>
+        /// <returns>A value indicating if the string is contained in the list of objects.</returns>
+        public static bool ContainedIn(this string valueCurrent, List<object> values)
+        {
+            bool isContainedIn = false;
+
+            if (valueCurrent != null && values != null)
+            {
+                foreach (object value in values)
+                {
+                    if (valueCurrent.Contains(value.ToString()))
+                    {
+                        isContainedIn = true;
+                        break;
+                    }
+                }
+            }
+
+            return isContainedIn;
+        }
+
+        /// <summary>
+        /// Determines if the current string is contained in the specified list
+        /// of strings.
+        /// </summary>
+        /// <param name="valueCurrent">The current string used to compare against the list of strings.</param>
+        /// <param name="values">The list of strings used compare against the current string.</param>
+        /// <returns>A value indicating if the string is contained in the list of strings.</returns>
+        public static bool ContainedIn(this string valueCurrent, List<string> values)
+        {
+            bool isContainedIn = false;
+
+            if (valueCurrent != null && values != null)
+            {
+                foreach (string value in values)
+                {
+                    if (valueCurrent.Contains(value))
+                    {
+                        isContainedIn = true;
+                        break;
+                    }
+                }
+            }
+
+            return isContainedIn;
+        }
+
+        /// <summary>
+        /// Gets a value indicating if the string ends with the specified
+        /// substring for the current culture.
+        /// </summary>
+        /// <param name="valueCurrent">The current string to compare against a substring.</param>
+        /// <param name="valueToCompare">The substring to compare against the current string.</param>
+        /// <returns>A value indicating if the string ends with the specified substring.</returns>
+        public static bool EndsWithCurrent(this string valueCurrent, string valueToCompare)
+        {
+            bool endsWith = false;
+
+            if (!string.IsNullOrWhiteSpace(valueToCompare) && valueCurrent != null)
+                endsWith = valueCurrent.EndsWith(valueToCompare, StringComparison.CurrentCulture);
+
+            return endsWith;
+        }
+
+        /// <summary>
+        /// Gets a value indicating if the string ends with the specified
+        /// substring for ordinal ignoring case.
+        /// </summary>
+        /// <param name="valueCurrent">The current string to compare against a substring.</param>
+        /// <param name="valueToCompare">The substring to compare against the current string.</param>
+        /// <returns>A value indicating if the string ends with the specified substring.</returns>
+        public static bool EndsWithOrdinalIgnoreCase(this string valueCurrent, string valueToCompare)
+        {
+            bool endsWith = false;
+
+            if (!string.IsNullOrWhiteSpace(valueToCompare) && valueCurrent != null)
+                endsWith = valueCurrent.EndsWith(valueToCompare, StringComparison.OrdinalIgnoreCase);
+
+            return endsWith;
+        }
+
+        /// <summary>
+        /// Formats the string with the specified object for the current
+        /// culture.
+        /// </summary>
+        /// <param name="format">The string to format.</param>
+        /// <param name="arg0">The object in which to format in the string.</param>
+        /// <returns>A formatted string with the object.</returns>
+        public static string FormatCurrent(this string format, object arg0)
+        {
+            return string.Format(CultureInfo.CurrentCulture, format, arg0);
+        }
+
+        /// <summary>
+        /// Formats the string with the specified objects for the current
+        /// culture.
+        /// </summary>
+        /// <param name="format">The string to format.</param>
+        /// <param name="arg0">The first object in which to format in the string.</param>
+        /// <param name="arg1">The second object in which to format in the string.</param>
+        /// <returns>A formatted string with the objects.</returns>
+        public static string FormatCurrent(this string format, object arg0, object arg1)
+        {
+            return string.Format(CultureInfo.CurrentCulture, format, arg0, arg1);
+        }
+
+        /// <summary>
+        /// Formats the string with the specified objects for the current
+        /// culture.
+        /// </summary>
+        /// <param name="format">The string to format.</param>
+        /// <param name="arg0">The first object in which to format in the string.</param>
+        /// <param name="arg1">The second object in which to format in the string.</param>
+        /// <param name="arg2">The third object in which to format in the string.</param>
+        /// <returns>A formatted string with the objects.</returns>
+        public static string FormatCurrent(this string format, object arg0, object arg1, object arg2)
+        {
+            return string.Format(CultureInfo.CurrentCulture, format, arg0, arg1, arg2);
+        }
+
+        /// <summary>
+        /// Formats the string with the specified objects for the current
+        /// culture.
+        /// </summary>
+        /// <param name="format">The string to format.</param>
+        /// <param name="args">An array of objects in which to format in the string.</param>
+        /// <returns>A formatted string with the objects.</returns>
+        public static string FormatCurrent(this string format, params object[] args)
+        {
+            return string.Format(CultureInfo.CurrentCulture, format, args);
+        }
+
+        /// <summary>
+        /// Formats the string with the specified object for an invariant
+        /// culture.
+        /// </summary>
+        /// <param name="format">The string to format.</param>
+        /// <param name="arg0">The object in which to format in the string.</param>
+        /// <returns>A formatted string with the object.</returns>
+        public static string FormatInvariant(this string format, object arg0)
+        {
+            return string.Format(CultureInfo.InvariantCulture, format, arg0);
+        }
+
+        /// <summary>
+        /// Formats the string with the specified objects for an invariant
+        /// culture.
+        /// </summary>
+        /// <param name="format">The string to format.</param>
+        /// <param name="arg0">The first object in which to format in the string.</param>
+        /// <param name="arg1">The second object in which to format in the string.</param>
+        /// <returns>A formatted string with the objects.</returns>
+        public static string FormatInvariant(this string format, object arg0, object arg1)
+        {
+            return string.Format(CultureInfo.InvariantCulture, format, arg0, arg1);
+        }
+
+        /// <summary>
+        /// Formats the string with the specified objects for an invariant
+        /// culture.
+        /// </summary>
+        /// <param name="format">The string to format.</param>
+        /// <param name="arg0">The first object in which to format in the string.</param>
+        /// <param name="arg1">The second object in which to format in the string.</param>
+        /// <param name="arg2">The third object in which to format in the string.</param>
+        /// <returns>A formatted string with the objects.</returns>
+        public static string FormatInvariant(this string format, object arg0, object arg1, object arg2)
+        {
+            return string.Format(CultureInfo.InvariantCulture, format, arg0, arg1, arg2);
+        }
+
+        /// <summary>
+        /// Formats the string with the specified objects for an invariant
+        /// culture.
+        /// </summary>
+        /// <param name="format">The string to format.</param>
+        /// <param name="args">An array of objects in which to format in the string.</param>
+        /// <returns>A formatted string with the objects.</returns>
+        public static string FormatInvariant(this string format, params object[] args)
+        {
+            return String.Format(CultureInfo.InvariantCulture, format, args);
         }
     }
 }

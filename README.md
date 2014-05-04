@@ -87,6 +87,7 @@ PM> Install-Package DevUtils
 > **XmlExtensions**
 > 
 > - public static string ToXml(this object o)
+> - public static T FromXml<T>(this string xml)
 
 ---
 

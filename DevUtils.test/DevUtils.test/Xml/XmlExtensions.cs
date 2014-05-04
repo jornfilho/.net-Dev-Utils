@@ -95,5 +95,18 @@ namespace DevUtils.test.Xml
             // assert
             Assert.IsNull(result, "Error converting object to XML");
         }
+        
+        /// <summary>
+        /// Test method FromXml, null object
+        /// </summary>
+        [TestMethod]
+        public void TestXmlStringIsConvertedToObject()
+        {
+            _user = new User(1, "user1");
+            var result = _xml.FromXml<User>();
+
+            Assert.AreEqual(_user.Id, result.Id, "Error converting XML to object");
+            Assert.AreEqual(_user.UserName, result.UserName, "Error converting XML to object");
+        }
     }
 }
