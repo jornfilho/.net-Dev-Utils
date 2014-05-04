@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>DevUtils</id>
+    <version>1.0.2</version>
+    <authors>Jorn Filho</authors>
+    <owners>Jorn Filho</owners>
+    <licenseUrl>https://github.com/jornfilho/.net-Dev-Utils/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/jornfilho/.net-Dev-Utils</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>.net Dev Utils</description>
+	<language>en-US</language>
+    <releaseNotes>.net Dev Utils</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>c# .net asp.net utils converter parse hash validate date datetime unix offset timezone timezoneinfo timezonename long int float double string short byte sha256 base64 md5 email random url uri unicode IO directory file xml proccess service services enum</tags>		
+  </metadata>
+  <files>
+    <file src="bin\Release\*.dll" target="lib" />
+	<file src="bin\Release\*.pdb" target="lib" />
+	<file src="bin\Release\*.xml" target="lib" />
+  </files>
+</package>
