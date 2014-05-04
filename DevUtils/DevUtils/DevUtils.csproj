@@ -52,8 +52,9 @@
     <Compile Include="Hash\Md5.cs" />
     <Compile Include="Hash\GetRandom.cs" />
     <Compile Include="Hash\Sha256.cs" />
-    <Compile Include="Interfaces\Io\IIoFileUtils.cs" />
-    <Compile Include="Interfaces\Io\IIoDirectoryUtils.cs" />
+    <Compile Include="Xml\XmlUtils.cs" />
+    <Compile Include="_Interfaces\Io\IIoFileUtils.cs" />
+    <Compile Include="_Interfaces\Io\IIoDirectoryUtils.cs" />
     <Compile Include="Io\IoFileUtils.cs" />
     <Compile Include="Io\IoDirectoryUtils.cs" />
     <Compile Include="PrimitivesExtensions\BasePrimitivesExtensions.cs" />
@@ -69,7 +70,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\Email.cs" />
     <Compile Include="Validators\Url.cs" />
+    <Compile Include="_Interfaces\Xml\IXmlUtils.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

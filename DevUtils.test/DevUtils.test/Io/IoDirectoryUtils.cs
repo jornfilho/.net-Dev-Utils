@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.AccessControl;
-using DevUtils.Interfaces.Io;
+using DevUtils._Interfaces.Io;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DevUtils.test.Io
@@ -66,7 +66,7 @@ namespace DevUtils.test.Io
                     return;
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
             }
             finally
@@ -110,7 +110,7 @@ namespace DevUtils.test.Io
                     return;
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
 
                 for (var d = 0; d < 5; d++)
@@ -137,7 +137,7 @@ namespace DevUtils.test.Io
                     return;
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
 
                 for (var d = 0; d < 5; d++)
@@ -187,7 +187,7 @@ namespace DevUtils.test.Io
                     return;
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
 
                 for (var d = 0; d < 5; d++)
@@ -239,7 +239,7 @@ namespace DevUtils.test.Io
                     return;
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
 
                 for (var d = 0; d < 5; d++)
@@ -277,7 +277,7 @@ namespace DevUtils.test.Io
                     return;
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
                 
                 Assert.IsTrue(IoDir.GetDirectoryPermission(TestFolder + "//").Any(), "Error getting directory permissions");
@@ -301,7 +301,7 @@ namespace DevUtils.test.Io
                     return;
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
 
                 var permissions = IoDir.GetDirectoryPermission(TestFolder + "//");
@@ -345,7 +345,7 @@ namespace DevUtils.test.Io
                     return;
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
 
                 var permissions = IoDir.GetDirectoryPermission(TestFolder + "//");

@@ -4,7 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Security.AccessControl;
-using DevUtils.Interfaces.Io;
+using DevUtils._Interfaces.Io;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DevUtils.test.Io
@@ -55,7 +55,7 @@ namespace DevUtils.test.Io
                     return;
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
 
                 Assert.IsFalse(IoFiles.FileExists(TestFolder + "//0.txt"), "Invalid file path");
@@ -83,7 +83,7 @@ namespace DevUtils.test.Io
                 const string fileContent = "test content";
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
 
                 Assert.IsFalse(IoFiles.FileExists(TestFolder + "//0.txt"), "Invalid file path");
@@ -115,7 +115,7 @@ namespace DevUtils.test.Io
                 const string fileContent = "test content";
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
 
                 Assert.IsFalse(IoFiles.FileExists(TestFolder + "//0.txt"), "Invalid file path");
@@ -170,7 +170,7 @@ namespace DevUtils.test.Io
                 const string fileContent = "test content";
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
 
                 Assert.IsFalse(IoFiles.FileExists(TestFolder + "//0.txt"), "Invalid file path");
@@ -200,7 +200,7 @@ namespace DevUtils.test.Io
                 const string fileContent = "test content";
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
 
                 Assert.IsFalse(IoFiles.FileExists(TestFolder + "//0.txt"), "Invalid file path");
@@ -231,7 +231,7 @@ namespace DevUtils.test.Io
                 const string fileContent = "test content";
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
 
                 Assert.IsFalse(IoFiles.FileExists(TestFolder + "//0.txt"), "Invalid file path");
@@ -271,7 +271,7 @@ namespace DevUtils.test.Io
                 const string fileContent = "test content";
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
 
                 Assert.IsFalse(IoFiles.FileExists(TestFolder + "//0.txt"), "Invalid file path");
@@ -304,7 +304,7 @@ namespace DevUtils.test.Io
                     return;
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
 
                 IList<string> files = new List<string>();
@@ -339,7 +339,7 @@ namespace DevUtils.test.Io
                     return;
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
 
                 IList<string> files = new List<string>();
@@ -377,7 +377,7 @@ namespace DevUtils.test.Io
                 const string fileContent = "test content";
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
 
                 Assert.IsFalse(IoFiles.FileExists(TestFolder + "//0.txt"), "Invalid file path");
@@ -409,7 +409,7 @@ namespace DevUtils.test.Io
                 const string fileContent = "test content";
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
 
                 Assert.IsFalse(IoFiles.FileExists(TestFolder + "//0.txt"), "Invalid file path");
@@ -441,7 +441,7 @@ namespace DevUtils.test.Io
                 const int filesCount = 20;
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
 
                 for (var d = 0; d < 5; d++)
@@ -484,7 +484,7 @@ namespace DevUtils.test.Io
                 const int foldersCount = 5;
 
                 Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
-                IoDir.CreateDirectory(TestFolder + "//");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
                 Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
 
                 for (var d = 0; d < foldersCount; d++)

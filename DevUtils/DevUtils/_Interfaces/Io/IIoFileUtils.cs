@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace DevUtils.Interfaces.Io
+namespace DevUtils._Interfaces.Io
 {
     /// <summary>
     /// <para>The <c>IIoFileUtils</c> type provides an interface containing utility

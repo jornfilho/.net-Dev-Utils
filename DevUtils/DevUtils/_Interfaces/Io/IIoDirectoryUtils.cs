@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Security.AccessControl;
 
-namespace DevUtils.Interfaces.Io
+namespace DevUtils._Interfaces.Io
 {
     /// <summary>
     /// <para>The <c>IIoDirectoryUtils</c> type provides an interface containing utility
     /// methods for common I/O directory operations.</para>
-    /// <para>Base project reference: https://github.com/cjaehnen/OpenLib.Utils </para> 
+    /// <para>Base project reference: https://github.com/cjaehnen/OpenLib.Utils </para>
     /// </summary>
     public interface IIoDirectoryUtils
     {

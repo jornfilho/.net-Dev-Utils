@@ -11,6 +11,6 @@
     <description>.net Dev Utils</description>
     <releaseNotes>.net Dev Utils</releaseNotes>
     <copyright>Copyright 2014</copyright>
-    <tags>c# .net utils</tags>    
+    <tags>c# .net utils</tags>
   </metadata>
 </package>
