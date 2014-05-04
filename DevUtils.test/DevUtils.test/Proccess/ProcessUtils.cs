@@ -246,14 +246,15 @@ namespace DevUtils.test.Proccess
                 Console.WriteLine("Output: {0}", output);
                 Console.WriteLine("Errors: {0}", errors);
                 Console.WriteLine("");
-                Assert.IsTrue(completed, "Error executing proccess");
+
+                if (!completed) 
+                    return;
 
                 _processInfo.Arguments = "push DevUtils.1.0.0.0.nupkg";
                 completed = _processUtils.ExecuteProcess(_processInfo, out output, out errors);
                 Console.WriteLine("Complete generate: {0}", completed);
                 Console.WriteLine("Output: {0}", output);
                 Console.WriteLine("Errors: {0}", errors);
-                Console.WriteLine("");
             }
             finally
             {
