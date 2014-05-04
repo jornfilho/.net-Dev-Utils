@@ -56,52 +56,52 @@ namespace DevUtils.test.DateTimeExtensions
             var date2 = UtcDate.AddDays(DateInterval);
             var date3 = UtcDate.AddMonths(DateInterval);
 
-            var date1Str = date1.ToString("G");
-            var date2Str = date2.ToString("G");
-            var date3Str = date3.ToString("G");
+            var date1Str = date1.ToString("g");
+            var date2Str = date2.ToString("g");
+            var date3Str = date3.ToString("g");
 
             #region string date
-            Assert.AreEqual(date1.ToString("G"), date1Str.TryParseDate().ToUtc().ToString("G"));
-            Assert.AreEqual(date2.ToString("G"), date2Str.TryParseDate().ToUtc().ToString("G"));
-            Assert.AreEqual(date3.ToString("G"), date3Str.TryParseDate().ToUtc().ToString("G"));
-            Assert.AreEqual(date1.ToString("G"), "".TryParseDate().ToUtc().ToString("G"));
+            Assert.AreEqual(date1.ToString("g"), date1Str.TryParseDate().ToUtc().ToString("g"));
+            Assert.AreEqual(date2.ToString("g"), date2Str.TryParseDate().ToUtc().ToString("g"));
+            Assert.AreEqual(date3.ToString("g"), date3Str.TryParseDate().ToUtc().ToString("g"));
+            Assert.AreEqual(date1.ToString("g"), "".TryParseDate().ToUtc().ToString("g"));
 
-            Assert.AreEqual(date1.ToString("G"), date1Str.TryParseDate(date1).ToUtc().ToString("G"));
-            Assert.AreEqual(date2.ToString("G"), date2Str.TryParseDate(date2).ToUtc().ToString("G"));
-            Assert.AreEqual(date3.ToString("G"), date3Str.TryParseDate(date3).ToUtc().ToString("G"));
-            Assert.AreEqual(date1.ToString("G"), "".TryParseDate(date1).ToUtc().ToString("G"));
-            Assert.AreEqual(date2.ToString("G"), "".TryParseDate(date2).ToUtc().ToString("G"));
-            Assert.AreEqual(date3.ToString("G"), "".TryParseDate(date3).ToUtc().ToString("G"));
+            Assert.AreEqual(date1.ToString("g"), date1Str.TryParseDate(date1).ToUtc().ToString("g"));
+            Assert.AreEqual(date2.ToString("g"), date2Str.TryParseDate(date2).ToUtc().ToString("g"));
+            Assert.AreEqual(date3.ToString("g"), date3Str.TryParseDate(date3).ToUtc().ToString("g"));
+            Assert.AreEqual(date1.ToString("g"), "".TryParseDate(date1).ToUtc().ToString("g"));
+            Assert.AreEqual(date2.ToString("g"), "".TryParseDate(date2).ToUtc().ToString("g"));
+            Assert.AreEqual(date3.ToString("g"), "".TryParseDate(date3).ToUtc().ToString("g"));
 
-            Assert.AreEqual(date1.ToString("G"), date1Str.TryParseDate(Culture, DateTimeStyles).ToUtc().ToString("G"));
-            Assert.AreEqual(date2.ToString("G"), date2Str.TryParseDate(Culture, DateTimeStyles).ToUtc().ToString("G"));
-            Assert.AreEqual(date3.ToString("G"), date3Str.TryParseDate(Culture, DateTimeStyles).ToUtc().ToString("G"));
-            Assert.AreEqual(date1.ToString("G"), "".TryParseDate(Culture, DateTimeStyles).ToUtc().ToString("G"));
+            Assert.AreEqual(date1.ToString("g"), date1Str.TryParseDate(Culture, DateTimeStyles).ToUtc().ToString("g"));
+            Assert.AreEqual(date2.ToString("g"), date2Str.TryParseDate(Culture, DateTimeStyles).ToUtc().ToString("g"));
+            Assert.AreEqual(date3.ToString("g"), date3Str.TryParseDate(Culture, DateTimeStyles).ToUtc().ToString("g"));
+            Assert.AreEqual(date1.ToString("g"), "".TryParseDate(Culture, DateTimeStyles).ToUtc().ToString("g"));
 
-            Assert.AreEqual(date1.ToString("G"), date1Str.TryParseDate(date1, Culture, DateTimeStyles).ToUtc().ToString("G"));
-            Assert.AreEqual(date2.ToString("G"), date2Str.TryParseDate(date2, Culture, DateTimeStyles).ToUtc().ToString("G"));
-            Assert.AreEqual(date3.ToString("G"), date3Str.TryParseDate(date3, Culture, DateTimeStyles).ToUtc().ToString("G"));
-            Assert.AreEqual(date1.ToString("G"), "".TryParseDate(date1, Culture, DateTimeStyles).ToUtc().ToString("G"));
-            Assert.AreEqual(date2.ToString("G"), "".TryParseDate(date2, Culture, DateTimeStyles).ToUtc().ToString("G"));
-            Assert.AreEqual(date3.ToString("G"), "".TryParseDate(date3, Culture, DateTimeStyles).ToUtc().ToString("G"));
+            Assert.AreEqual(date1.ToString("g"), date1Str.TryParseDate(date1, Culture, DateTimeStyles).ToUtc().ToString("g"));
+            Assert.AreEqual(date2.ToString("g"), date2Str.TryParseDate(date2, Culture, DateTimeStyles).ToUtc().ToString("g"));
+            Assert.AreEqual(date3.ToString("g"), date3Str.TryParseDate(date3, Culture, DateTimeStyles).ToUtc().ToString("g"));
+            Assert.AreEqual(date1.ToString("g"), "".TryParseDate(date1, Culture, DateTimeStyles).ToUtc().ToString("g"));
+            Assert.AreEqual(date2.ToString("g"), "".TryParseDate(date2, Culture, DateTimeStyles).ToUtc().ToString("g"));
+            Assert.AreEqual(date3.ToString("g"), "".TryParseDate(date3, Culture, DateTimeStyles).ToUtc().ToString("g"));
             #endregion
 
             #region OADate
-            Assert.AreEqual(date1.ToString("G"), date1.ToOADate().ToString(Culture).TryParseDate().ToString("G"));
-            Assert.AreEqual(date2.ToString("G"), date2.ToOADate().ToString(Culture).TryParseDate().ToString("G"));
-            Assert.AreEqual(date3.ToString("G"), date3.ToOADate().ToString(Culture).TryParseDate().ToString("G"));
+            Assert.AreEqual(date1.ToString("g"), date1.ToOADate().ToString(Culture).TryParseDate().ToString("g"));
+            Assert.AreEqual(date2.ToString("g"), date2.ToOADate().ToString(Culture).TryParseDate().ToString("g"));
+            Assert.AreEqual(date3.ToString("g"), date3.ToOADate().ToString(Culture).TryParseDate().ToString("g"));
 
-            Assert.AreEqual(date1.ToString("G"), date1.ToOADate().ToString(Culture).TryParseDate(date1).ToString("G"));
-            Assert.AreEqual(date2.ToString("G"), date2.ToOADate().ToString(Culture).TryParseDate(date2).ToString("G"));
-            Assert.AreEqual(date3.ToString("G"), date3.ToOADate().ToString(Culture).TryParseDate(date3).ToString("G"));
+            Assert.AreEqual(date1.ToString("g"), date1.ToOADate().ToString(Culture).TryParseDate(date1).ToString("g"));
+            Assert.AreEqual(date2.ToString("g"), date2.ToOADate().ToString(Culture).TryParseDate(date2).ToString("g"));
+            Assert.AreEqual(date3.ToString("g"), date3.ToOADate().ToString(Culture).TryParseDate(date3).ToString("g"));
 
-            Assert.AreEqual(date1.ToString("G"), date1.ToOADate().ToString(Culture).TryParseDate(Culture, DateTimeStyles).ToString("G"));
-            Assert.AreEqual(date2.ToString("G"), date2.ToOADate().ToString(Culture).TryParseDate(Culture, DateTimeStyles).ToString("G"));
-            Assert.AreEqual(date3.ToString("G"), date3.ToOADate().ToString(Culture).TryParseDate(Culture, DateTimeStyles).ToString("G"));
+            Assert.AreEqual(date1.ToString("g"), date1.ToOADate().ToString(Culture).TryParseDate(Culture, DateTimeStyles).ToString("g"));
+            Assert.AreEqual(date2.ToString("g"), date2.ToOADate().ToString(Culture).TryParseDate(Culture, DateTimeStyles).ToString("g"));
+            Assert.AreEqual(date3.ToString("g"), date3.ToOADate().ToString(Culture).TryParseDate(Culture, DateTimeStyles).ToString("g"));
 
-            Assert.AreEqual(date1.ToString("G"), date1.ToOADate().ToString(Culture).TryParseDate(date1, Culture, DateTimeStyles).ToString("G"));
-            Assert.AreEqual(date2.ToString("G"), date2.ToOADate().ToString(Culture).TryParseDate(date2, Culture, DateTimeStyles).ToString("G"));
-            Assert.AreEqual(date3.ToString("G"), date3.ToOADate().ToString(Culture).TryParseDate(date3, Culture, DateTimeStyles).ToString("G"));
+            Assert.AreEqual(date1.ToString("g"), date1.ToOADate().ToString(Culture).TryParseDate(date1, Culture, DateTimeStyles).ToString("g"));
+            Assert.AreEqual(date2.ToString("g"), date2.ToOADate().ToString(Culture).TryParseDate(date2, Culture, DateTimeStyles).ToString("g"));
+            Assert.AreEqual(date3.ToString("g"), date3.ToOADate().ToString(Culture).TryParseDate(date3, Culture, DateTimeStyles).ToString("g"));
             #endregion
         }
 
@@ -119,17 +119,17 @@ namespace DevUtils.test.DateTimeExtensions
             DateTime? date2Nullable = UtcDate.AddDays(DateInterval);
             DateTime? date3Nullable = UtcDate.AddMonths(DateInterval);
 
-            Assert.AreEqual(date1.ToString("G"), date1Nullable.TryParseDate().ToUtc().ToString("G"));
-            Assert.AreEqual(date2.ToString("G"), date2Nullable.TryParseDate().ToUtc().ToString("G"));
-            Assert.AreEqual(date3.ToString("G"), date3Nullable.TryParseDate().ToUtc().ToString("G"));
-            Assert.AreEqual(date1.ToString("G"), ((DateTime?)null).TryParseDate().ToUtc().ToString("G"));
+            Assert.AreEqual(date1.ToString("g"), date1Nullable.TryParseDate().ToUtc().ToString("g"));
+            Assert.AreEqual(date2.ToString("g"), date2Nullable.TryParseDate().ToUtc().ToString("g"));
+            Assert.AreEqual(date3.ToString("g"), date3Nullable.TryParseDate().ToUtc().ToString("g"));
+            Assert.AreEqual(date1.ToString("g"), ((DateTime?)null).TryParseDate().ToUtc().ToString("g"));
 
-            Assert.AreEqual(date1.ToString("G"), date1Nullable.TryParseDate(date1).ToUtc().ToString("G"));
-            Assert.AreEqual(date2.ToString("G"), date2Nullable.TryParseDate(date2).ToUtc().ToString("G"));
-            Assert.AreEqual(date3.ToString("G"), date3Nullable.TryParseDate(date3).ToUtc().ToString("G"));
-            Assert.AreEqual(date1.ToString("G"), ((DateTime?)null).TryParseDate(date1).ToUtc().ToString("G"));
-            Assert.AreEqual(date2.ToString("G"), ((DateTime?)null).TryParseDate(date2).ToUtc().ToString("G"));
-            Assert.AreEqual(date3.ToString("G"), ((DateTime?)null).TryParseDate(date3).ToUtc().ToString("G"));
+            Assert.AreEqual(date1.ToString("g"), date1Nullable.TryParseDate(date1).ToUtc().ToString("g"));
+            Assert.AreEqual(date2.ToString("g"), date2Nullable.TryParseDate(date2).ToUtc().ToString("g"));
+            Assert.AreEqual(date3.ToString("g"), date3Nullable.TryParseDate(date3).ToUtc().ToString("g"));
+            Assert.AreEqual(date1.ToString("g"), ((DateTime?)null).TryParseDate(date1).ToUtc().ToString("g"));
+            Assert.AreEqual(date2.ToString("g"), ((DateTime?)null).TryParseDate(date2).ToUtc().ToString("g"));
+            Assert.AreEqual(date3.ToString("g"), ((DateTime?)null).TryParseDate(date3).ToUtc().ToString("g"));
         }
         #endregion
 
@@ -140,9 +140,9 @@ namespace DevUtils.test.DateTimeExtensions
         [TestMethod]
         public void ToUtcAndOverloads()
         {
-            Assert.AreEqual(UtcDate.ToString("G"), LocalDate.ToUtc().ToString("G"));
-            Assert.AreEqual(UtcDate.ToString("G"), LocalDate.ToUtc(UtcTimeZoneInfo).ToString("G"));
-            Assert.AreEqual(UtcDate.ToString("G"), LocalDate.ToUtc(UtcTimeZoneName).ToString("G"));
+            Assert.AreEqual(UtcDate.ToString("g"), LocalDate.ToUtc().ToString("g"));
+            Assert.AreEqual(UtcDate.ToString("g"), LocalDate.ToUtc(UtcTimeZoneInfo).ToString("g"));
+            Assert.AreEqual(UtcDate.ToString("g"), LocalDate.ToUtc(UtcTimeZoneName).ToString("g"));
         } 
         #endregion
 
@@ -193,12 +193,12 @@ namespace DevUtils.test.DateTimeExtensions
         [TestMethod]
         public void ToTimezoneDateAndOverloads()
         {
-            Assert.AreEqual(LocalDate.ToString("G"), UtcDate.ToTimezoneDate(LocalTimeZoneName).ToString("G"));
-            Assert.AreEqual(LocalDate.ToString("G"), UtcDate.ToTimezoneDate(LocalTimeZoneInfo).ToString("G"));
-            Assert.AreEqual(LocalDate.ToString("G"), UtcDate.ToTimezoneDate(UtcTimeZoneName, LocalTimeZoneName).ToString("G"));
-            Assert.AreEqual(LocalDate.ToString("G"), UtcDate.ToTimezoneDate(UtcTimeZoneInfo, LocalTimeZoneName).ToString("G"));
-            Assert.AreEqual(LocalDate.ToString("G"), UtcDate.ToTimezoneDate(UtcTimeZoneName, LocalTimeZoneInfo).ToString("G"));
-            Assert.AreEqual(LocalDate.ToString("G"), UtcDate.ToTimezoneDate(UtcTimeZoneInfo, LocalTimeZoneInfo).ToString("G"));
+            Assert.AreEqual(LocalDate.ToString("g"), UtcDate.ToTimezoneDate(LocalTimeZoneName).ToString("g"));
+            Assert.AreEqual(LocalDate.ToString("g"), UtcDate.ToTimezoneDate(LocalTimeZoneInfo).ToString("g"));
+            Assert.AreEqual(LocalDate.ToString("g"), UtcDate.ToTimezoneDate(UtcTimeZoneName, LocalTimeZoneName).ToString("g"));
+            Assert.AreEqual(LocalDate.ToString("g"), UtcDate.ToTimezoneDate(UtcTimeZoneInfo, LocalTimeZoneName).ToString("g"));
+            Assert.AreEqual(LocalDate.ToString("g"), UtcDate.ToTimezoneDate(UtcTimeZoneName, LocalTimeZoneInfo).ToString("g"));
+            Assert.AreEqual(LocalDate.ToString("g"), UtcDate.ToTimezoneDate(UtcTimeZoneInfo, LocalTimeZoneInfo).ToString("g"));
         } 
         #endregion
     }

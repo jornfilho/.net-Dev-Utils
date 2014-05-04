@@ -74,8 +74,12 @@ namespace DevUtils.test.Proccess
                 Assert.Fail("Error getting nuget file");
 
             ProcessPath = ProcessDir + "/" + ProcessExe;
-            if (!IoFiles.CopyFile(ProcessPath, Directory.GetCurrentDirectory() + "/" + ProcessExe))
-                Assert.Fail("Error coping nuget file file");
+
+            if (!IoFiles.FileExists(Directory.GetCurrentDirectory() + "/" + ProcessExe))
+            {
+                if (!IoFiles.CopyFile(ProcessPath, Directory.GetCurrentDirectory() + "/" + ProcessExe))
+                    Assert.Fail("Error coping nuget file file");
+            }
 	        #endregion
             
             _processInfo = new ProcessStartInfo(ProcessPath);
