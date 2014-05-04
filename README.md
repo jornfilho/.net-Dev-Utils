@@ -55,6 +55,7 @@ PM> Install-Package DevUtils
 > - public IList<FileSystemRights> GetDirectoryPermission(string path)
 > - public bool SetDirectoryPermission(string path, FileSystemRights permission)
 > - public bool SetDirectoryPermissions(string path, FileSystemRights[] permissions)
+> - public DirectoryInfo GetParentDirectory(string path)
 >
 > **IoFileUtils**
 >
@@ -80,6 +81,12 @@ PM> Install-Package DevUtils
 > - public bool ValidateDocument(string xml, string xsd, string ns)
 > - public string GetElement(string path, string element, XNamespace ns)
 > - public bool UpdateElement(string path, string element, string value, XNamespace ns)
+
+---
+
+###ProcessUtils###
+> 
+> - public bool ExecuteProcess(ProcessStartInfo processInfo, out string output, out string errors)
 
 ---
 

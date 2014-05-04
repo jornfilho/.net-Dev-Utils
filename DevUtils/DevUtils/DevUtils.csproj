@@ -52,6 +52,7 @@
     <Compile Include="Hash\Md5.cs" />
     <Compile Include="Hash\GetRandom.cs" />
     <Compile Include="Hash\Sha256.cs" />
+    <Compile Include="Proccess\ProcessUtils.cs" />
     <Compile Include="Xml\XmlUtils.cs" />
     <Compile Include="_Interfaces\Io\IIoFileUtils.cs" />
     <Compile Include="_Interfaces\Io\IIoDirectoryUtils.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\Email.cs" />
     <Compile Include="Validators\Url.cs" />
+    <Compile Include="_Interfaces\Proccess\IProcessUtils.cs" />
     <Compile Include="_Interfaces\Xml\IXmlUtils.cs" />
   </ItemGroup>
   <ItemGroup />

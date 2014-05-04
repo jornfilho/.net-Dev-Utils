@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Security.AccessControl;
 
 namespace DevUtils._Interfaces.Io
@@ -87,5 +88,12 @@ namespace DevUtils._Interfaces.Io
         /// <param name="permissions">Permissions to set on directory.</param>
         /// <returns>A value indicating if the permissions was applied on directory.</returns>
         bool SetDirectoryPermissions(string path, FileSystemRights[] permissions);
+
+        /// <summary>
+        /// Get parent directory if exists
+        /// </summary>
+        /// <param name="path">Directory path.</param>
+        /// <returns>Parent directory info.</returns>
+        DirectoryInfo GetParentDirectory(string path);
     }
 }

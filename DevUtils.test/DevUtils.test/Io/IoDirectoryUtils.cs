@@ -373,5 +373,32 @@ namespace DevUtils.test.Io
                     IoDir.DeleteDirectory(TestFolder + "//");
             }
         }
+        
+        /// <summary>
+        /// Test GetParentDirectory method
+        /// </summary>
+        [TestMethod]
+        public void GetParentDirectory()
+        {
+            try
+            {
+                if (!HasFolderPermission)
+                    return;
+
+                Assert.IsNull(IoDir.GetParentDirectory(""), "GetParentDirectory, Expected null");
+
+                Assert.IsFalse(IoDir.DirectoryExists(TestFolder + "//"), "Invalid directory path");
+                Assert.IsTrue(IoDir.CreateDirectory(TestFolder + "//"), "Error creating directory");
+                Assert.IsTrue(IoDir.DirectoryExists(TestFolder + "//"), "Error creating directory");
+
+                Assert.IsNotNull(IoDir.GetParentDirectory(TestFolder + "//"), "GetParentDirectory, Expected null");
+                
+            }
+            finally
+            {
+                if (HasFolderPermission)
+                    IoDir.DeleteDirectory(TestFolder + "//");
+            }
+        }
     }
 }

@@ -310,5 +310,35 @@ namespace DevUtils.Io
                 return false;
             }
         }
+
+        /// <summary>
+        /// Get parent directory if exists
+        /// </summary>
+        /// <param name="path">Directory path.</param>
+        /// <returns>Parent directory info.</returns>
+        public DirectoryInfo GetParentDirectory(string path)
+        {
+            try
+            {
+                return !DirectoryExists(path) 
+                    ? null 
+                    : Directory.GetParent(path);
+            }
+            catch (ArgumentNullException e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
+            catch (ArgumentException e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return null;
+            }
+        }
     }
 }
