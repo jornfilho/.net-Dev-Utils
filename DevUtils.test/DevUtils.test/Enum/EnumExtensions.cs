@@ -56,6 +56,22 @@ namespace DevUtils.test.Enum
         }
 
         /// <summary>
+        /// Test ToEnum method
+        /// </summary>
+        [TestMethod]
+        public void Test32BitIntegerValueIsConvertedToEnumerationType()
+        {
+            const int role1 = 1;
+            const int role2 = 2;
+
+            var result = role1.ToEnum<UserTypeEnum>();
+            Assert.AreEqual(UserTypeEnum.Admin, result, "Error setting enum, expected UserTypeEnum.Admin");
+
+            result = role2.ToEnum<UserTypeEnum>();
+            Assert.AreEqual(UserTypeEnum.User, result, "Error setting enum, expected UserTypeEnum.User");
+        }
+
+        /// <summary>
         /// Test FromEnumToInt method
         /// </summary>
         [TestMethod]

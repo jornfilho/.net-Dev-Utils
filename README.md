@@ -100,6 +100,7 @@ PM> Install-Package DevUtils
 ###EnumExtensions###
 > 
 > - public static T ToEnum<T>(this System.Enum enumeration)
+> - public static T ToEnum<T>(this int value)
 > - public static int FromEnumToInt(this System.Enum enumeration)
 > - public static string FromEnumToString(this System.Enum enumeration)
 

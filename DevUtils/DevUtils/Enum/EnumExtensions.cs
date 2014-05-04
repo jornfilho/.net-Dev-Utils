@@ -31,6 +31,25 @@ namespace DevUtils.Enum
         }
 
         /// <summary>
+        /// Converts the current 32-bit integer value to its enumeration
+        /// equivalent.
+        /// </summary>
+        /// <param name="value">The current 32-bit integer value in which to convert.</param>
+        /// <returns>The enumeration equivalent of the 32-bit integer value.</returns>
+        public static T ToEnum<T>(this int value)
+        {
+            try
+            {
+                return (T)System.Enum.ToObject(typeof(T), value);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return default(T);
+            }
+        }
+
+        /// <summary>
         /// Converts the current enumeration to its 32-bit integer value.
         /// </summary>
         /// <param name="enumeration">The current enumeration in which to convert.</param>
