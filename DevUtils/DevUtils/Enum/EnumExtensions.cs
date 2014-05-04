@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.Linq;
 
 namespace DevUtils.Enum
 {
@@ -69,6 +71,27 @@ namespace DevUtils.Enum
             {
                 Debug.WriteLine(e);
                 return default(T);
+            }
+        }
+
+        /// <summary>
+        /// Converts the enum instance to IList with all anum options.
+        /// </summary>
+        /// <param name="value">Enum to convert.</param>
+        /// <returns>The IList with equivalent enumeration option.</returns>
+        public static IList<T> FromEnum<T>(this T value)
+        {
+            try
+            {
+                return System.Enum.GetValues(typeof (T))
+                    .Cast<T>()
+                    .Select(v => v)
+                    .ToList();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return new T[]{};
             }
         }
 

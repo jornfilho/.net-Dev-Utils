@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using DevUtils.Enum;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -128,6 +129,20 @@ namespace DevUtils.test.Enum
 
             result = role2.FromEnumToString();
             Assert.AreEqual("2", result, "Error getting enum value, expected 2");
+        }
+
+        /// <summary>
+        /// Test FromEnum method
+        /// </summary>
+        [TestMethod]
+        public void TestConvertEnumToIList()
+        {
+            var value1 = new UserRoleEnum().FromEnum();
+            var value2 = UserRoleEnum.User.FromEnum();
+            Assert.AreEqual(string.Join(",", value1), string.Join(",", value2), "Error getting list from enum, expected same");
+
+            var count = ((UserRoleEnum[]) System.Enum.GetValues(typeof (UserRoleEnum))).Count();
+            Assert.AreEqual(count, value1.Count, "Error getting list from enum, expected same");
         }
     }
 }
