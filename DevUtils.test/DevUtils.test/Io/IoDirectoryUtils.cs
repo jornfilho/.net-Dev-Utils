@@ -308,7 +308,7 @@ namespace DevUtils.test.Io
                 Assert.IsTrue(permissions.Any(), "Error getting directory permissions");
 
                 FileSystemRights? newPermission = null;
-                foreach (var permission in (FileSystemRights[])Enum.GetValues(typeof(FileSystemRights)))
+                foreach (var permission in (FileSystemRights[])System.Enum.GetValues(typeof(FileSystemRights)))
                 {
                     if (permissions.All(p => p != permission))
                     {
@@ -352,7 +352,7 @@ namespace DevUtils.test.Io
                 Assert.IsTrue(permissions.Any(), "Error getting directory permissions");
 
                 IList<FileSystemRights> newPermissions = new List<FileSystemRights>();
-                foreach (var permission in (FileSystemRights[])Enum.GetValues(typeof(FileSystemRights)))
+                foreach (var permission in (FileSystemRights[])System.Enum.GetValues(typeof(FileSystemRights)))
                     if (permissions.All(p => p != permission))
                         newPermissions.Add(permission);
 

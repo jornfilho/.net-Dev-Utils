@@ -72,6 +72,7 @@
     <Compile Include="DateTimeExtensions\Utils\StartOfYearAndBusinessYear.cs" />
     <Compile Include="DateTimeExtensions\Utils\EndOfYearAndBusinessYear.cs" />
     <Compile Include="DateTimeExtensions\Utils\StartAndEndOfDay.cs" />
+    <Compile Include="Enum\EnumExtensions.cs" />
     <Compile Include="Hash\Base64.cs" />
     <Compile Include="Hash\Md5.cs" />
     <Compile Include="Hash\GetRandom.cs" />

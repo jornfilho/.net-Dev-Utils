@@ -48,6 +48,7 @@
     <Compile Include="DateTimeExtensions\Offset.cs" />
     <Compile Include="DateTimeExtensions\DateExtensions.cs" />
     <Compile Include="DateTimeExtensions\Utils.cs" />
+    <Compile Include="Enum\EnumExtensions.cs" />
     <Compile Include="Hash\Base64.cs" />
     <Compile Include="Hash\Md5.cs" />
     <Compile Include="Hash\GetRandom.cs" />
