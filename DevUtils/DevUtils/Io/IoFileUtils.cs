@@ -11,167 +11,22 @@ namespace DevUtils.Io
     /// <c>IIoUtils</c> interface that provides utility methods for common I/O operations.</para>
     /// <para>Reference project: https://github.com/cjaehnen/OpenLib.Utils </para> 
     /// </summary>
-    public class IoUtils : IIoUtils
+    public class IoFileUtils : IIoFileUtils
     {
-        #region Directory
+        #region Params
+        private IoDirectoryUtils IoDirectory { get; set; } 
+        #endregion
+
+        #region Constructor
         /// <summary>
-        /// Gets a value indicating if the specified path is a directory.
+        /// Base class constructor
         /// </summary>
-        /// <param name="path">The path to validate as a directory.</param>
-        /// <returns>A value indicating if the specified path is a directory.</returns>
-        public bool IsDirectory(string path)
+        public IoFileUtils()
         {
-            try
-            {
-                return !Path.HasExtension(path);
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e);
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Gets a value indicating if the specified directory exists.
-        /// </summary>
-        /// <param name="path">The path to the directory.</param>
-        /// <returns>A value indicating if the specified directory exists.</returns>
-        public bool DirectoryExists(string path)
-        {
-            try
-            {
-                return new DirectoryInfo(path).Exists;
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e);
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Copies the specified source directory to the target path.
-        /// </summary>
-        /// <param name="sourcePath">The path to the source directory.</param>
-        /// <param name="targetPath">The path to the target directory.</param>
-        /// <returns>A value indicating the directory copied successfully.</returns>
-        public bool CopyDirectory(string sourcePath, string targetPath)
-        {
-            try
-            {
-                var source = new DirectoryInfo(sourcePath);
-                var target = new DirectoryInfo(targetPath);
-
-                if (!source.Exists) 
-                    return false;
-
-                var sourceCount = source.GetFiles().Length;
-
-                if (sourceCount <= 0) 
-                    return false;
-                
-                if (!target.Exists)
-                    target.Create();
-
-                foreach (var file in source.GetFiles())
-                    file.CopyTo(Path.Combine(target.FullName, file.Name));
-
-                return target.GetFiles().Length == sourceCount;
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e);
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Creates the specified directory if it does not exist.
-        /// </summary>
-        /// <param name="path">The path to the directory to create.</param>
-        /// <returns>A value indicating if the directory was created.</returns>
-        public bool CreateDirectory(string path)
-        {
-            try
-            {
-                var directory = new DirectoryInfo(path);
-
-                if (directory.Exists) 
-                    return true;
-
-                directory.Create();
-
-                return true;
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e);
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Deletes all files and subdirectories in the specified directory.
-        /// </summary>
-        /// <param name="path">The path to the directory.</param>
-        /// <returns>A value indicating if all files and subdirectories in the specified directory were deleted.</returns>
-        public bool DeleteDirectoryContents(string path)
-        {
-            try
-            {
-                var directory = new DirectoryInfo(path);
-
-                if (!directory.Exists) 
-                    return false;
-
-                foreach (var file in directory.GetFiles())
-                    file.Delete();
-
-                foreach (var subDirectory in directory.GetDirectories())
-                {
-                    DeleteDirectoryContents(subDirectory.FullName);
-                    subDirectory.Delete();
-                }
-
-                return directory.GetFiles().Length == 0;
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e);
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Deletes the specified directory if it exists.
-        /// </summary>
-        /// <remarks>
-        /// Recursively deletes all sub directories and files in the specified
-        /// directory.
-        /// </remarks>
-        /// <param name="path">The path to the directory to delete.</param>
-        /// <returns>A value indicating if the directory was deleted.</returns>
-        public bool DeleteDirectory(string path)
-        {
-            try
-            {
-                var directory = new DirectoryInfo(path);
-
-                if (directory.Exists)
-                    directory.Delete(true);
-
-                return true;
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e);
-                return false;
-            }
+            IoDirectory = new IoDirectoryUtils();
         } 
         #endregion
 
-        #region File
         /// <summary>
         /// Gets a value indicating if the specified file exists.
         /// </summary>
@@ -210,6 +65,35 @@ namespace DevUtils.Io
         }
 
         /// <summary>
+        /// Gets a count indicating the number of files in the specified
+        /// directory and subdirectories.
+        /// </summary>
+        /// <param name="path">The path to the directory.</param>
+        /// <returns>The number of the files in the directory and subdirectories.</returns>
+        public int GetCountOfFilesInDirectoryAndSubdirectories(string path)
+        {
+            try
+            {
+                if (!IoDirectory.DirectoryExists(path))
+                    return 0;
+
+                var source = new DirectoryInfo(path);
+
+                var result = GetCountOfFilesInDirectory(path);
+                foreach (var subdirectories in source.GetDirectories())
+                    result += GetCountOfFilesInDirectoryAndSubdirectories(subdirectories.FullName);
+
+                return result;
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return 0;
+            }
+        }
+
+        /// <summary>
         /// Copies the specified source file to the target file path.
         /// </summary>
         /// <param name="sourcePath">The path to the source file.</param>
@@ -219,10 +103,13 @@ namespace DevUtils.Io
         {
             try
             {
-                var source = new FileInfo(sourcePath);
-
-                if (!source.Exists) 
+                if (!FileExists(sourcePath))
                     return false;
+
+                if (FileExists(targetPath))
+                    DeleteFile(targetPath);
+
+                var source = new FileInfo(sourcePath);
 
                 var target = new FileInfo(targetPath);
                 source.CopyTo(target.FullName);
@@ -245,11 +132,11 @@ namespace DevUtils.Io
         {
             try
             {
+                if (!FileExists(path))
+                    return null;
+
                 string contents;
                 var file = new FileInfo(path);
-
-                if (!file.Exists) 
-                    return null;
 
                 using (var stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
@@ -283,7 +170,7 @@ namespace DevUtils.Io
             {
                 var file = new FileInfo(path);
 
-                return !file.Exists
+                return !FileExists(path)
                     ? null
                     : file.Open(FileMode.Open, FileAccess.Read, FileShare.Read);
             }
@@ -306,7 +193,7 @@ namespace DevUtils.Io
                 var isReadOnly = false;
                 var file = new FileInfo(path);
 
-                if (file.Exists)
+                if (FileExists(path))
                     isReadOnly = file.IsReadOnly;
 
                 return isReadOnly;
@@ -369,10 +256,10 @@ namespace DevUtils.Io
         {
             try
             {
-                var file = new FileInfo(path);
-
-                if (file.Exists)
+                if (FileExists(path))
                     return null;
+
+                var file = new FileInfo(path);
 
                 Stream stream = file.OpenWrite();
 
@@ -398,7 +285,7 @@ namespace DevUtils.Io
                 
                 foreach (var file in Directory.GetFiles(path))
                 {
-                    if (!File.Exists(file) || (File.GetAttributes(file) & FileAttributes.ReadOnly) == FileAttributes.ReadOnly) 
+                    if (!FileExists(file) || (File.GetAttributes(file) & FileAttributes.ReadOnly) == FileAttributes.ReadOnly) 
                         continue;
 
                     File.Delete(file);
@@ -423,11 +310,11 @@ namespace DevUtils.Io
         {
             try
             {
+                if (!FileExists(path))
+                    return false;
+
                 var file = new FileInfo(path);
 
-                if (!file.Exists) 
-                    return false;
-                
                 file.Delete();
                 
                 return !new FileInfo(path).Exists;
@@ -438,6 +325,5 @@ namespace DevUtils.Io
                 return false;
             }
         } 
-        #endregion
     }
 }

@@ -42,30 +42,32 @@ PM> Install-Package DevUtils
 
 ---
 
-###PrimitivesExtensions###
-> **IO**
+###IO###
+> **Directory**
 > 
->> **Directory**
->> 
->> - public bool IsDirectory(string path)
->> - public bool DirectoryExists(string path)
->> - public bool CopyDirectory(string sourcePath, string targetPath)
->> - public bool CreateDirectory(string path)
->> - public bool DeleteDirectoryContents(string path)
->> - public bool DeleteDirectory(string path)
->>
->> **File**
->>
->> - public bool FileExists(string path)
->> - public int GetCountOfFilesInDirectory(string path)
->> - public bool CopyFile(string sourcePath, string targetPath)
->> - public string ReadFileAsString(string path)
->> - public FileStream ReadFileAsStream(string path)
->> - public bool IsFileReadOnly(string path)
->> - public bool WriteFile(string path, string contents)
->> - public TextWriter CreateFileTextWriter(string path)
->> - public int DeleteFiles(string path)
->> - public bool DeleteFile(string path)
+> - public bool IsDirectory(string path)
+> - public bool DirectoryExists(string path)
+> - public bool CreateDirectory(string path)
+> - public int GetCountOfSubdirectories(string path)
+> - public bool CopyDirectory(string sourcePath, string targetPath)
+> - public bool DeleteDirectoryContents(string path)
+> - public bool DeleteDirectory(string path)
+> - public IList<FileSystemRights> GetDirectoryPermission(string path)
+> - public bool SetDirectoryPermission(string path, FileSystemRights permission)
+> - public bool SetDirectoryPermissions(string path, FileSystemRights[] permissions)
+>
+> **File**
+>
+> - public bool FileExists(string path)
+> - public int GetCountOfFilesInDirectory(string path)
+> - public bool CopyFile(string sourcePath, string targetPath)
+> - public string ReadFileAsString(string path)
+> - public FileStream ReadFileAsStream(string path)
+> - public bool IsFileReadOnly(string path)
+> - public bool WriteFile(string path, string contents)
+> - public TextWriter CreateFileTextWriter(string path)
+> - public int DeleteFiles(string path)
+> - public bool DeleteFile(string path)
 
 ---
 

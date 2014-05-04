@@ -70,6 +70,7 @@
     <Compile Include="Hash\Md5.cs" />
     <Compile Include="Hash\GetRandom.cs" />
     <Compile Include="Hash\Sha256.cs" />
+    <Compile Include="Io\Directory.cs" />
     <Compile Include="PrimitivesExtensions\BoolExtensions.cs" />
     <Compile Include="PrimitivesExtensions\ByteExtensions.cs" />
     <Compile Include="PrimitivesExtensions\DecimalExtensions.cs" />
@@ -88,6 +89,9 @@
       <Project>{8a4de6fb-22af-48c2-a02b-4d63fb35b7f1}</Project>
       <Name>DevUtils</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="_TestContent\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

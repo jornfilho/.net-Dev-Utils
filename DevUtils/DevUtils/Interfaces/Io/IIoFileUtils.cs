@@ -3,62 +3,12 @@
 namespace DevUtils.Interfaces.Io
 {
     /// <summary>
-    /// <para>The <c>IIoUtils</c> type provides an interface containing utility
-    /// methods for common I/O operations.</para>
-    /// <para>Reference project: https://github.com/cjaehnen/OpenLib.Utils </para> 
+    /// <para>The <c>IIoFileUtils</c> type provides an interface containing utility
+    /// methods for common I/O file operations.</para>
+    /// <para>Base reference project: https://github.com/cjaehnen/OpenLib.Utils </para> 
     /// </summary>
-    public interface IIoUtils
+    public interface IIoFileUtils
     {
-        #region Directory
-        /// <summary>
-        /// Gets a value indicating if the specified path is a directory.
-        /// </summary>
-        /// <param name="path">The path to validate as a directory.</param>
-        /// <returns>A value indicating if the specified path is a directory.</returns>
-        bool IsDirectory(string path);
-
-        /// <summary>
-        /// Gets a value indicating if the specified directory exists.
-        /// </summary>
-        /// <param name="path">The path to the directory.</param>
-        /// <returns>A value indicating if the specified directory exists.</returns>
-        bool DirectoryExists(string path);
-
-        /// <summary>
-        /// Copies the specified source directory to the target path.
-        /// </summary>
-        /// <param name="sourcePath">The path to the source directory.</param>
-        /// <param name="targetPath">The path to the target directory.</param>
-        /// <returns>A value indicating the directory copied successfully.</returns>
-        bool CopyDirectory(string sourcePath, string targetPath);
-
-        /// <summary>
-        /// Creates the specified directory if it does not exist.
-        /// </summary>
-        /// <param name="path">The path to the directory to create.</param>
-        /// <returns>A value indicating if the directory was created.</returns>
-        bool CreateDirectory(string path);
-
-        /// <summary>
-        /// Deletes all files and subdirectories in the specified directory.
-        /// </summary>
-        /// <param name="path">The path to the directory.</param>
-        /// <returns>A value indicating if all files and subdirectories in the specified directory were deleted.</returns>
-        bool DeleteDirectoryContents(string path);
-
-        /// <summary>
-        /// Deletes the specified directory if it exists.
-        /// </summary>
-        /// <remarks>
-        /// Recursively deletes all sub directories and files in the specified
-        /// directory.
-        /// </remarks>
-        /// <param name="path">The path to the directory to delete.</param>
-        /// <returns>A value indicating if the directory was deleted.</returns>
-        bool DeleteDirectory(string path); 
-        #endregion
-
-        #region File
         /// <summary>
         /// Gets a value indicating if the specified file exists.
         /// </summary>
@@ -73,6 +23,14 @@ namespace DevUtils.Interfaces.Io
         /// <param name="path">The path to the directory.</param>
         /// <returns>The number of the files in the directory.</returns>
         int GetCountOfFilesInDirectory(string path);
+
+        /// <summary>
+        /// Gets a count indicating the number of files in the specified
+        /// directory and subdirectories.
+        /// </summary>
+        /// <param name="path">The path to the directory.</param>
+        /// <returns>The number of the files in the directory and subdirectories.</returns>
+        int GetCountOfFilesInDirectoryAndSubdirectories(string path);
 
         /// <summary>
         /// Copies the specified source file to the target file path.
@@ -134,7 +92,6 @@ namespace DevUtils.Interfaces.Io
         /// </summary>
         /// <param name="path">The path to the file.</param>
         /// <returns>A value indicating if the file was deleted.</returns>
-        bool DeleteFile(string path); 
-        #endregion
+        bool DeleteFile(string path);
     }
 }
