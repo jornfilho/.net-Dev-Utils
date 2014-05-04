@@ -1,4 +1,5 @@
-﻿using DevUtils.Enum;
+﻿using System;
+using DevUtils.Enum;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DevUtils.test.Enum
@@ -40,7 +41,7 @@ namespace DevUtils.test.Enum
         #endregion
 
         /// <summary>
-        /// Test ToEnum method
+        /// Test ToEnum method from enum
         /// </summary>
         [TestMethod]
         public void TestEnumerationIsConvertedToSpecifiedEnumerationType()
@@ -56,7 +57,33 @@ namespace DevUtils.test.Enum
         }
 
         /// <summary>
-        /// Test ToEnum method
+        /// Test ToEnum method from string
+        /// </summary>
+        [TestMethod]
+        public void TestStringIsProperlyConvertedToEnumType()
+        {
+            const string value = "Friday";
+            object result = value.ToEnum<DayOfWeek>();
+
+            Assert.IsInstanceOfType(result, typeof(DayOfWeek), "Invalid instance type");
+            Assert.AreEqual(DayOfWeek.Friday, result, "Error converting string to Enum");
+        }
+
+        /// <summary>
+        /// Test ToEnum method from string
+        /// </summary>
+        [TestMethod]
+        public void TestStringIsNotConvertedToEnumTypeWhenStringIsNull()
+        {
+            const string value = null;
+            object result = value.ToEnum<DayOfWeek>();
+
+            Assert.IsInstanceOfType(result, typeof(DayOfWeek), "Invalid instance type");
+            Assert.AreEqual(DayOfWeek.Sunday, result, "Error converting string to Enum");
+        }
+
+        /// <summary>
+        /// Test ToEnum method from int
         /// </summary>
         [TestMethod]
         public void Test32BitIntegerValueIsConvertedToEnumerationType()

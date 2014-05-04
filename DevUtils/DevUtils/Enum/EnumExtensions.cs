@@ -31,6 +31,29 @@ namespace DevUtils.Enum
         }
 
         /// <summary>
+        /// Converts the current enumerated string to the specified enumeration
+        /// type.
+        /// </summary>
+        /// <typeparam name="T">The type of enumeration to convert to.</typeparam>
+        /// <param name="enumeration">The current enumerated string in which to convert.</param>
+        /// <returns>The converted enumeration.</returns>
+        public static T ToEnum<T>(this string enumeration)
+        {
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(enumeration))
+                    return (T)System.Enum.Parse(typeof(T), enumeration);
+
+                return Activator.CreateInstance<T>();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return default(T);
+            }
+        }
+
+        /// <summary>
         /// Converts the current 32-bit integer value to its enumeration
         /// equivalent.
         /// </summary>

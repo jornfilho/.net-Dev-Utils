@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace DevUtils.PrimitivesExtensions
 {
@@ -75,6 +77,13 @@ namespace DevUtils.PrimitivesExtensions
                ? text
                : text.Substring(text.Length - length, length);
         }
+
+
+
+
+
+
+
 
         /// <summary>
         /// Compares two string objects ignoring case.
@@ -299,6 +308,152 @@ namespace DevUtils.PrimitivesExtensions
         public static string FormatInvariant(this string format, params object[] args)
         {
             return String.Format(CultureInfo.InvariantCulture, format, args);
+        }
+
+        /// <summary>
+        /// Gets the indexes of all occurrences of the specified value in the
+        /// string.
+        /// </summary>
+        /// <param name="valueCurrent">The current string in which to obtain all indexes of.</param>
+        /// <param name="value">The value to seek for all occurrences of.</param>
+        /// <returns>An enumerable containing all the indexes of the occurences of the value sought.</returns>
+        public static IEnumerable<int> IndexOfAll(this string valueCurrent, string value)
+        {
+            return Regex.Matches(valueCurrent, value).Cast<Match>().Select(m => m.Index);
+        }
+
+        /// <summary>
+        /// Gets the index of the first occurrence of the specified value in
+        /// the string for the current culture.
+        /// </summary>
+        /// <param name="valueCurrent">The current string in which to obtain the index of.</param>
+        /// <param name="value">The value to seek.</param>
+        /// <returns>The index of the first occurrence of the specified value in the string.</returns>
+        public static int IndexOfCurrent(this string valueCurrent, string value)
+        {
+            int index = -1;
+
+            if (valueCurrent != null)
+                index = valueCurrent.IndexOf(value, StringComparison.CurrentCulture);
+
+            return index;
+        }
+
+        /// <summary>
+        /// Gets the index of the first occurrence of the specified value in
+        /// the string for the current culture.
+        /// </summary>
+        /// <param name="valueCurrent">The current string in which to obtain the index of.</param>
+        /// <param name="value">The value to seek.</param>
+        /// <param name="startIndex">The search starting position.</param>
+        /// <returns>The index of the first occurrence of the specified value in the string.</returns>
+        public static int IndexOfCurrent(this string valueCurrent, string value, int startIndex)
+        {
+            int index = -1;
+
+            if (valueCurrent != null)
+                index = valueCurrent.IndexOf(value, startIndex, StringComparison.CurrentCulture);
+
+            return index;
+        }
+
+        /// <summary>
+        /// Gets the index of the first occurrence of the specified value in
+        /// the string for ordinal ignoring case.
+        /// </summary>
+        /// <param name="valueCurrent">The current string in which to obtain the index of.</param>
+        /// <param name="value">The value to seek.</param>>
+        /// <returns>The index of the first occurrence of the specified value in the string.</returns>
+        public static int IndexOfOrdinalIgnoreCase(this string valueCurrent, string value)
+        {
+            int index = -1;
+
+            if (valueCurrent != null)
+                index = valueCurrent.IndexOf(value, StringComparison.OrdinalIgnoreCase);
+
+            return index;
+        }
+
+        /// <summary>
+        /// Gets the index of the first occurrence of the specified value in
+        /// the string for ordinal ignoring case.
+        /// </summary>
+        /// <param name="valueCurrent">The current string in which to obtain the index of.</param>
+        /// <param name="value">The value to seek.</param>
+        /// <param name="startIndex">The search starting position.</param>
+        /// <returns>The index of the first occurrence of the specified value in the string.</returns>
+        public static int IndexOfOrdinalIgnoreCase(this string valueCurrent, string value, int startIndex)
+        {
+            int index = -1;
+
+            if (valueCurrent != null)
+                index = valueCurrent.IndexOf(value, startIndex, StringComparison.OrdinalIgnoreCase);
+
+            return index;
+        }
+
+        /// <summary>
+        /// Joins all elements in the specified list together separated
+        /// by the specified delimiter.
+        /// </summary>
+        /// <param name="list">A list of elements.</param>
+        /// <param name="separator">The separator for each element.</param>
+        /// <returns>A joined string of all elements separated by a delimiter.</returns>
+        public static string Join(this List<string> list, string separator)
+        {
+            if (list != null && list.Count > 0)
+                return string.Join(separator, list.ToArray());
+
+            return string.Empty;
+        }
+
+        /// <summary>
+        /// Joins all elements in the specified array together separated
+        /// by the specified delimiter.
+        /// </summary>
+        /// <param name="array">An array of elements.</param>
+        /// <param name="separator">The separator for each element.</param>
+        /// <returns>A joined string of all elements separated by a delimiter.</returns>
+        public static string Join(this string[] array, string separator)
+        {
+            if (array != null && array.Length > 0)
+                return string.Join(separator, array);
+
+            return null;
+        }
+
+        /// <summary>
+        /// Gets a value indicating if the string begins with the specified
+        /// substring for the current culture.
+        /// </summary>
+        /// <param name="valueCurrent">The current string to compare against a substring.</param>
+        /// <param name="valueToCompare">The substring to compare against the current string.</param>
+        /// <returns>A value indicating if the string begins with the specified substring.</returns>
+        public static bool StartsWithCurrent(this string valueCurrent, string valueToCompare)
+        {
+            bool startsWith = false;
+
+            if (!string.IsNullOrWhiteSpace(valueToCompare) && valueCurrent != null)
+                startsWith = valueCurrent.StartsWith(valueToCompare, StringComparison.CurrentCulture);
+
+            return startsWith;
+        }
+
+        /// <summary>
+        /// Gets a value indicating if the string begins with the specified
+        /// substring for ordinal ignoring case.
+        /// </summary>
+        /// <param name="valueCurrent">The current string to compare against a substring.</param>
+        /// <param name="valueToCompare">The substring to compare against the current string.</param>
+        /// <returns>A value indicating if the string begins with the specified substring.</returns>
+        public static bool StartsWithOrdinalIgnoreCase(this string valueCurrent, string valueToCompare)
+        {
+            bool startsWith = false;
+
+            if (!string.IsNullOrWhiteSpace(valueToCompare) && valueCurrent != null)
+                startsWith = valueCurrent.StartsWith(valueToCompare, StringComparison.OrdinalIgnoreCase);
+
+            return startsWith;
         }
     }
 }
