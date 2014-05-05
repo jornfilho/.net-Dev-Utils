@@ -43,6 +43,8 @@
       <HintPath>..\..\DevUtils\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web" />
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
@@ -93,6 +95,7 @@
     <Compile Include="Service\ServiceUtils.cs" />
     <Compile Include="Validators\Email.cs" />
     <Compile Include="Validators\Uri.cs" />
+    <Compile Include="WebConfig\WebConfigExtensions.cs" />
     <Compile Include="Xml\XmlExtensions.cs" />
     <Compile Include="Xml\XmlUtils.cs" />
   </ItemGroup>
@@ -103,8 +106,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
