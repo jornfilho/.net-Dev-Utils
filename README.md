@@ -115,6 +115,25 @@ PM> Install-Package DevUtils
 
 ---
 
+###WebConfigExtensions###
+>
+> **AppSettings**
+>>
+>> - public static string GetFromAppSettings(string paramName)
+>> - public static bool SetToAppSettings(string paramName, string paramValue)
+>> - public static bool DeleteFromAppSettings(string paramName)
+>
+>**ConnectionString**
+>
+>> - public static string GetFromConnectionString(string paramName, ConnectionStringInformationType informationType)
+>> - public static bool SetToConnectionString(string paramName, ConnectionStringInformationType informationType, string paramValue)
+>
+>**System.Web**
+>
+>> - public static T GetFromSystemWeb<T>(SystemWebSections section) where T : class
+
+---
+
 ###PrimitivesExtensions###
 > **IsValid**
 >

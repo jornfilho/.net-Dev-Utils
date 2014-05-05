@@ -10,8 +10,6 @@ namespace DevUtils.test.WebConfig
     [TestClass]
     public class WebConfigExtensions
     {
-        private readonly DevUtils.WebConfig.WebConfigExtensions _extension = new DevUtils.WebConfig.WebConfigExtensions();
-        
         private const string AppSettingsParam1 = "Hello World!";
         private const string AppSettingsParam2 = "Hello World 2!";
         
@@ -30,11 +28,71 @@ namespace DevUtils.test.WebConfig
         [TestMethod]
         public void GetFromAppSettings()
         {
-            var param1 = _extension.GetFromAppSettings("message");
-            var param2 = _extension.GetFromAppSettings("message2");
+            var param1 = DevUtils.WebConfig.WebConfigExtensions.GetFromAppSettings("message");
+            var param2 = DevUtils.WebConfig.WebConfigExtensions.GetFromAppSettings("message2");
 
             Assert.AreEqual(param1, AppSettingsParam1);
             Assert.AreEqual(param2, AppSettingsParam2);
+        }
+
+        /// <summary>
+        /// Test SetToAppSettings method, modify value
+        /// </summary>
+        [TestMethod]
+        public void SetToAppSettings_modify()
+        {
+            try
+            {
+                var param1 = DevUtils.WebConfig.WebConfigExtensions.GetFromAppSettings("message");
+                Assert.AreEqual(param1, AppSettingsParam1);
+
+                Assert.IsTrue(DevUtils.WebConfig.WebConfigExtensions.SetToAppSettings("message", "test 1"));
+                param1 = DevUtils.WebConfig.WebConfigExtensions.GetFromAppSettings("message");
+                Assert.AreEqual(param1, "test 1");
+            }
+            finally
+            {
+                DevUtils.WebConfig.WebConfigExtensions.SetToAppSettings("message", AppSettingsParam1);
+            }
+        }
+
+        /// <summary>
+        /// Test SetToAppSettings method, add value
+        /// </summary>
+        [TestMethod]
+        public void SetToAppSettings_create()
+        {
+            try
+            {
+                var param1 = DevUtils.WebConfig.WebConfigExtensions.GetFromAppSettings("test");
+                Assert.IsNull(param1);
+
+                Assert.IsTrue(DevUtils.WebConfig.WebConfigExtensions.SetToAppSettings("test", "test 1"));
+                param1 = DevUtils.WebConfig.WebConfigExtensions.GetFromAppSettings("test");
+                Assert.AreEqual(param1, "test 1");
+            }
+            finally
+            {
+                DevUtils.WebConfig.WebConfigExtensions.DeleteFromAppSettings("test");
+            }
+        }
+
+        /// <summary>
+        /// Test DeleteFromAppSettings method
+        /// </summary>
+        [TestMethod]
+        public void DeleteFromAppSettings()
+        {
+            var param1 = DevUtils.WebConfig.WebConfigExtensions.GetFromAppSettings("test");
+            Assert.IsNull(param1);
+
+            Assert.IsTrue(DevUtils.WebConfig.WebConfigExtensions.SetToAppSettings("test", "test 1"));
+            param1 = DevUtils.WebConfig.WebConfigExtensions.GetFromAppSettings("test");
+            Assert.AreEqual(param1, "test 1");
+            Assert.IsTrue(DevUtils.WebConfig.WebConfigExtensions.DeleteFromAppSettings("test"));
+
+            param1 = DevUtils.WebConfig.WebConfigExtensions.GetFromAppSettings("test");
+            Assert.IsNull(param1);
         }
 
         /// <summary>
@@ -43,23 +101,45 @@ namespace DevUtils.test.WebConfig
         [TestMethod]
         public void GetFromConnectionString()
         {
-            var param1 = _extension.GetFromConnectionString(Connection1Name, ConnectionStringInformationType.ConnectionString);
-            var param2 = _extension.GetFromConnectionString(Connection2Name, ConnectionStringInformationType.ConnectionString);
+            var param1 = DevUtils.WebConfig.WebConfigExtensions.GetFromConnectionString(Connection1Name, ConnectionStringInformationType.ConnectionString);
+            var param2 = DevUtils.WebConfig.WebConfigExtensions.GetFromConnectionString(Connection2Name, ConnectionStringInformationType.ConnectionString);
 
             Assert.AreEqual(param1, Connection1ConnectionString);
             Assert.AreEqual(param2, Connection2ConnectionString);
 
-            param1 = _extension.GetFromConnectionString(Connection1Name, ConnectionStringInformationType.Name);
-            param2 = _extension.GetFromConnectionString(Connection2Name, ConnectionStringInformationType.Name);
+            param1 = DevUtils.WebConfig.WebConfigExtensions.GetFromConnectionString(Connection1Name, ConnectionStringInformationType.Name);
+            param2 = DevUtils.WebConfig.WebConfigExtensions.GetFromConnectionString(Connection2Name, ConnectionStringInformationType.Name);
 
             Assert.AreEqual(Connection1Name, param1);
             Assert.AreEqual(Connection2Name, param2);
 
-            param1 = _extension.GetFromConnectionString(Connection1Name, ConnectionStringInformationType.ProviderName);
-            param2 = _extension.GetFromConnectionString(Connection2Name, ConnectionStringInformationType.ProviderName);
+            param1 = DevUtils.WebConfig.WebConfigExtensions.GetFromConnectionString(Connection1Name, ConnectionStringInformationType.ProviderName);
+            param2 = DevUtils.WebConfig.WebConfigExtensions.GetFromConnectionString(Connection2Name, ConnectionStringInformationType.ProviderName);
 
             Assert.AreEqual(Connection1Provider, param1);
             Assert.AreEqual(Connection2Provider, param2);
+        }
+
+        /// <summary>
+        /// Test SetToConnectionString method
+        /// </summary>
+        [TestMethod]
+        public void SetToConnectionString()
+        {
+            try
+            {
+                var param1 = DevUtils.WebConfig.WebConfigExtensions.GetFromConnectionString(Connection1Name, ConnectionStringInformationType.ConnectionString);
+                Assert.AreEqual(param1, Connection1ConnectionString);
+
+                Assert.IsTrue(DevUtils.WebConfig.WebConfigExtensions.SetToConnectionString(Connection1Name, ConnectionStringInformationType.ConnectionString, "test"));
+
+                param1 = DevUtils.WebConfig.WebConfigExtensions.GetFromConnectionString(Connection1Name, ConnectionStringInformationType.ConnectionString);
+                Assert.AreEqual(param1, "test");
+            }
+            finally
+            {
+                DevUtils.WebConfig.WebConfigExtensions.SetToConnectionString(Connection1Name, ConnectionStringInformationType.ConnectionString, Connection1ConnectionString);
+            }
         }
 
         /// <summary>
@@ -69,10 +149,10 @@ namespace DevUtils.test.WebConfig
         [TestMethod]
         public void GetFromSystemWeb_AsAuthenticationSection()
         {
-            var result = _extension.GetFromSystemWeb<AuthenticationSection>(SystemWebSections.Authentication);
+            var result = DevUtils.WebConfig.WebConfigExtensions.GetFromSystemWeb<AuthenticationSection>(SystemWebSections.Authentication);
             Assert.IsInstanceOfType(result, typeof(AuthenticationSection));
 
-            result = _extension.GetFromSystemWeb<AuthenticationSection>(SystemWebSections.Compilation);
+            result = DevUtils.WebConfig.WebConfigExtensions.GetFromSystemWeb<AuthenticationSection>(SystemWebSections.Compilation);
             Assert.IsNotInstanceOfType(result, typeof(AuthenticationSection));
         }
 
@@ -83,10 +163,10 @@ namespace DevUtils.test.WebConfig
         [TestMethod]
         public void GetFromSystemWeb_AsCompilationSection()
         {
-            var result = _extension.GetFromSystemWeb<CompilationSection>(SystemWebSections.Compilation);
+            var result = DevUtils.WebConfig.WebConfigExtensions.GetFromSystemWeb<CompilationSection>(SystemWebSections.Compilation);
             Assert.IsInstanceOfType(result, typeof(CompilationSection));
 
-            result = _extension.GetFromSystemWeb<CompilationSection>(SystemWebSections.Authentication);
+            result = DevUtils.WebConfig.WebConfigExtensions.GetFromSystemWeb<CompilationSection>(SystemWebSections.Authentication);
             Assert.IsNotInstanceOfType(result, typeof(CompilationSection));
         }
 
@@ -97,10 +177,10 @@ namespace DevUtils.test.WebConfig
         [TestMethod]
         public void GetFromSystemWeb_AsCustomErrorsSection()
         {
-            var result = _extension.GetFromSystemWeb<CustomErrorsSection>(SystemWebSections.CustomErrors);
+            var result = DevUtils.WebConfig.WebConfigExtensions.GetFromSystemWeb<CustomErrorsSection>(SystemWebSections.CustomErrors);
             Assert.IsInstanceOfType(result, typeof(CustomErrorsSection));
 
-            result = _extension.GetFromSystemWeb<CustomErrorsSection>(SystemWebSections.Authentication);
+            result = DevUtils.WebConfig.WebConfigExtensions.GetFromSystemWeb<CustomErrorsSection>(SystemWebSections.Authentication);
             Assert.IsNotInstanceOfType(result, typeof(CustomErrorsSection));
         }
 
@@ -111,10 +191,10 @@ namespace DevUtils.test.WebConfig
         [TestMethod]
         public void GetFromSystemWeb_AsGlobalizationSection()
         {
-            var result = _extension.GetFromSystemWeb<GlobalizationSection>(SystemWebSections.Globalization);
+            var result = DevUtils.WebConfig.WebConfigExtensions.GetFromSystemWeb<GlobalizationSection>(SystemWebSections.Globalization);
             Assert.IsInstanceOfType(result, typeof(GlobalizationSection));
 
-            result = _extension.GetFromSystemWeb<GlobalizationSection>(SystemWebSections.Authentication);
+            result = DevUtils.WebConfig.WebConfigExtensions.GetFromSystemWeb<GlobalizationSection>(SystemWebSections.Authentication);
             Assert.IsNotInstanceOfType(result, typeof(GlobalizationSection));
         }
 
@@ -125,10 +205,10 @@ namespace DevUtils.test.WebConfig
         [TestMethod]
         public void GetFromSystemWeb_AsHttpRuntimeSection()
         {
-            var result = _extension.GetFromSystemWeb<HttpRuntimeSection>(SystemWebSections.HttpRuntime);
+            var result = DevUtils.WebConfig.WebConfigExtensions.GetFromSystemWeb<HttpRuntimeSection>(SystemWebSections.HttpRuntime);
             Assert.IsInstanceOfType(result, typeof(HttpRuntimeSection));
 
-            result = _extension.GetFromSystemWeb<HttpRuntimeSection>(SystemWebSections.Authentication);
+            result = DevUtils.WebConfig.WebConfigExtensions.GetFromSystemWeb<HttpRuntimeSection>(SystemWebSections.Authentication);
             Assert.IsNotInstanceOfType(result, typeof(HttpRuntimeSection));
         }
 
@@ -139,10 +219,10 @@ namespace DevUtils.test.WebConfig
         [TestMethod]
         public void GetFromSystemWeb_AsIdentitySection()
         {
-            var result = _extension.GetFromSystemWeb<IdentitySection>(SystemWebSections.Identity);
+            var result = DevUtils.WebConfig.WebConfigExtensions.GetFromSystemWeb<IdentitySection>(SystemWebSections.Identity);
             Assert.IsInstanceOfType(result, typeof(IdentitySection));
 
-            result = _extension.GetFromSystemWeb<IdentitySection>(SystemWebSections.Authentication);
+            result = DevUtils.WebConfig.WebConfigExtensions.GetFromSystemWeb<IdentitySection>(SystemWebSections.Authentication);
             Assert.IsNotInstanceOfType(result, typeof(IdentitySection));
         }
 
@@ -153,10 +233,10 @@ namespace DevUtils.test.WebConfig
         [TestMethod]
         public void GetFromSystemWeb_AsTraceSection()
         {
-            var result = _extension.GetFromSystemWeb<TraceSection>(SystemWebSections.Trace);
+            var result = DevUtils.WebConfig.WebConfigExtensions.GetFromSystemWeb<TraceSection>(SystemWebSections.Trace);
             Assert.IsInstanceOfType(result, typeof(TraceSection));
 
-            result = _extension.GetFromSystemWeb<TraceSection>(SystemWebSections.Authentication);
+            result = DevUtils.WebConfig.WebConfigExtensions.GetFromSystemWeb<TraceSection>(SystemWebSections.Authentication);
             Assert.IsNotInstanceOfType(result, typeof(TraceSection));
         }
     }
