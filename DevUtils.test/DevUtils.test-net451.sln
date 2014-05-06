@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30324.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevUtils-net451", "..\DevUtils\DevUtils\DevUtils-net451.csproj", "{0B5A3B93-92F9-47FF-95C6-DD1E80FBBA87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevUtils.test-net451", "DevUtils.test\DevUtils.test-net451.csproj", "{2F5AAEFB-58ED-44A2-879B-655C2F4753AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug 4.5.1|Any CPU = Debug 4.5.1|Any CPU
+		Release 4.5.1|Any CPU = Release 4.5.1|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B5A3B93-92F9-47FF-95C6-DD1E80FBBA87}.Debug 4.5.1|Any CPU.ActiveCfg = Debug 4.5.1|Any CPU
+		{0B5A3B93-92F9-47FF-95C6-DD1E80FBBA87}.Debug 4.5.1|Any CPU.Build.0 = Debug 4.5.1|Any CPU
+		{0B5A3B93-92F9-47FF-95C6-DD1E80FBBA87}.Release 4.5.1|Any CPU.ActiveCfg = Release 4.5.1|Any CPU
+		{0B5A3B93-92F9-47FF-95C6-DD1E80FBBA87}.Release 4.5.1|Any CPU.Build.0 = Release 4.5.1|Any CPU
+		{2F5AAEFB-58ED-44A2-879B-655C2F4753AB}.Debug 4.5.1|Any CPU.ActiveCfg = Debug 4.5.1|Any CPU
+		{2F5AAEFB-58ED-44A2-879B-655C2F4753AB}.Debug 4.5.1|Any CPU.Build.0 = Debug 4.5.1|Any CPU
+		{2F5AAEFB-58ED-44A2-879B-655C2F4753AB}.Release 4.5.1|Any CPU.ActiveCfg = Release 4.5.1|Any CPU
+		{2F5AAEFB-58ED-44A2-879B-655C2F4753AB}.Release 4.5.1|Any CPU.Build.0 = Release 4.5.1|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

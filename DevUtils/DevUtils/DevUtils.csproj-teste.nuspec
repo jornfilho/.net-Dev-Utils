@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>DevUtils</id>
-    <version>1.0.3</version>
+    <id>DevUtils_publish-test</id>
+    <version>1.0.3.1</version>
     <authors>Jorn Filho</authors>
     <owners>Jorn Filho</owners>
     <licenseUrl>https://github.com/jornfilho/.net-Dev-Utils/blob/master/LICENSE</licenseUrl>

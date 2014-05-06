@@ -61,8 +61,6 @@
     <Compile Include="Service\WindowsServiceAction.cs" />
     <Compile Include="Service\WindowsServiceState.cs" />
     <Compile Include="WebConfig\ConnectionStringInformationType.cs" />
-    <Compile Include="WebConfig\ParamType.cs" />
-    <Compile Include="WebConfig\SectionType.cs" />
     <Compile Include="WebConfig\SystemWebSections.cs" />
     <Compile Include="WebConfig\WebConfigExtensions.cs" />
     <Compile Include="Xml\XmlExtensions.cs" />

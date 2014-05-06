@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30324.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevUtils-net45", "..\DevUtils\DevUtils\DevUtils-net45.csproj", "{04B43929-6C2C-437E-9E6D-DE1521A72CA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevUtils.test-net45", "DevUtils.test\DevUtils.test-net45.csproj", "{CAF2905D-FA0F-4248-BDD1-349305C7173A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug 4.5|Any CPU = Debug 4.5|Any CPU
+		Release 4.5|Any CPU = Release 4.5|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04B43929-6C2C-437E-9E6D-DE1521A72CA0}.Debug 4.5|Any CPU.ActiveCfg = Debug 4.5|Any CPU
+		{04B43929-6C2C-437E-9E6D-DE1521A72CA0}.Debug 4.5|Any CPU.Build.0 = Debug 4.5|Any CPU
+		{04B43929-6C2C-437E-9E6D-DE1521A72CA0}.Release 4.5|Any CPU.ActiveCfg = Release 4.5|Any CPU
+		{04B43929-6C2C-437E-9E6D-DE1521A72CA0}.Release 4.5|Any CPU.Build.0 = Release 4.5|Any CPU
+		{CAF2905D-FA0F-4248-BDD1-349305C7173A}.Debug 4.5|Any CPU.ActiveCfg = Debug 4.5|Any CPU
+		{CAF2905D-FA0F-4248-BDD1-349305C7173A}.Debug 4.5|Any CPU.Build.0 = Debug 4.5|Any CPU
+		{CAF2905D-FA0F-4248-BDD1-349305C7173A}.Release 4.5|Any CPU.ActiveCfg = Release 4.5|Any CPU
+		{CAF2905D-FA0F-4248-BDD1-349305C7173A}.Release 4.5|Any CPU.Build.0 = Release 4.5|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
