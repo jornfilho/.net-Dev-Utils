@@ -12,7 +12,7 @@
     <description>.Net Dev Utils</description>
     <releaseNotes>.Net Dev Utils</releaseNotes>
     <copyright>Copyright 2014</copyright>
-    <tags>c# .net asp.net utils converter parse hash validate date datetime unix offset timezone timezoneinfo timezonename long int float double string short byte sha256 base64 md5 email random url uri unicode IO directory file xml proccess service services enum</tags>		
+    <tags>c# .net asp.net utils converter parse hash validate date datetime unix offset timezone timezoneinfo timezonename long int float double string short byte sha256 base64 md5 email random url uri unicode IO directory file xml proccess service services enum webconfig web.config appconfig app.config</tags>		
 	<language>en-US</language>
   </metadata>
   <files>
