@@ -2,21 +2,28 @@
 <package >
   <metadata>
     <id>DevUtils</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <authors>Jorn Filho</authors>
     <owners>Jorn Filho</owners>
     <licenseUrl>https://github.com/jornfilho/.net-Dev-Utils/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/jornfilho/.net-Dev-Utils</projectUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>.net Dev Utils</description>
-	<language>en-US</language>
-    <releaseNotes>.net Dev Utils</releaseNotes>
+	<iconUrl>https://cdn1.iconfinder.com/data/icons/sphericalcons/128/file_c.png</iconUrl>	
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>.Net Dev Utils</description>
+    <releaseNotes>.Net Dev Utils</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>c# .net asp.net utils converter parse hash validate date datetime unix offset timezone timezoneinfo timezonename long int float double string short byte sha256 base64 md5 email random url uri unicode IO directory file xml proccess service services enum</tags>		
+	<language>en-US</language>
   </metadata>
   <files>
-    <file src="bin\Release\*.dll" target="lib" />
-	<file src="bin\Release\*.pdb" target="lib" />
-	<file src="bin\Release\*.xml" target="lib" />
+    <file src="bin\Release\net40\*.dll" target="lib" />
+	<file src="bin\Release\net40\*.pdb" target="lib" />
+	<file src="bin\Release\net40\*.xml" target="lib" />
+	<file src="bin\Release\net45\*.dll" target="lib" />
+	<file src="bin\Release\net45\*.pdb" target="lib" />
+	<file src="bin\Release\net45\*.xml" target="lib" />
+	<file src="bin\Release\net451\*.dll" target="lib" />
+	<file src="bin\Release\net451\*.pdb" target="lib" />
+	<file src="bin\Release\net451\*.xml" target="lib" />
   </files>
 </package>

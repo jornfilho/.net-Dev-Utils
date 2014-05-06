@@ -38,10 +38,10 @@ namespace DevUtils.test.DateTimeExtensions
             LocalDate = DateTime.Now;
 
             UtcTimeZoneInfo = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo("UTC");
-            LocalTimeZoneInfo = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo(TimeZone.CurrentTimeZone.StandardName);
+            LocalTimeZoneInfo = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo(TimeZoneInfo.Local.Id);
 
             UtcTimeZoneName = "UTC";
-            LocalTimeZoneName = TimeZone.CurrentTimeZone.StandardName;
+            LocalTimeZoneName = TimeZoneInfo.Local.Id;
         } 
         #endregion
 

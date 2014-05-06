@@ -482,6 +482,10 @@ namespace DevUtils.DateTimeExtensions
                     {"UTC", "Coordinated Universal Time"},
                     {"Coordinated Universal Time", "UTC"}
                 };
+
+            foreach (var zone in TimeZoneInfo.GetSystemTimeZones())
+                if (Instance.TimezoneInfoDictionary.All(t => t.Key != zone.Id))
+                    Instance.TimezoneInfoDictionary.Add(zone.Id, zone.Id);
         }
 
         /// <summary>
@@ -539,7 +543,7 @@ namespace DevUtils.DateTimeExtensions
         /// </summary>
         private void SetDefaultTimezoneInfo()
         {
-            DefaultTimeZoneInfo = GetTimezoneInfo(TimeZone.CurrentTimeZone.StandardName);
+            DefaultTimeZoneInfo = GetTimezoneInfo(TimeZoneInfo.Local.Id);
         }
         #endregion
 

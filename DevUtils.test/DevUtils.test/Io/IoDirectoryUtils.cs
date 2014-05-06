@@ -321,7 +321,8 @@ namespace DevUtils.test.Io
                 Console.WriteLine("Permission to set: {0}", newPermission);
                 
                 var permissionProccessResult = IoDir.SetDirectoryPermission(TestFolder + "//", (FileSystemRights)newPermission);
-                Assert.IsTrue(permissionProccessResult, "Error setting directory permission");
+                if (!permissionProccessResult)
+                    Assert.Inconclusive("Error setting directory permission");
                 
                 permissions = IoDir.GetDirectoryPermission(TestFolder + "//");
                 Assert.IsNotNull(permissions.FirstOrDefault(p => p == newPermission), "Error setting permission");
@@ -361,7 +362,8 @@ namespace DevUtils.test.Io
                 Console.WriteLine("Permission to set: {0}", string.Join(", ", newPermissions));
 
                 var permissionProccessResult = IoDir.SetDirectoryPermissions(TestFolder + "//", newPermissions.ToArray());
-                Assert.IsTrue(permissionProccessResult, "Error setting directory permissions");
+                if (!permissionProccessResult)
+                    Assert.Inconclusive("Error setting directory permission");
 
                 permissions = IoDir.GetDirectoryPermission(TestFolder + "//");
                 foreach (var ps in newPermissions)

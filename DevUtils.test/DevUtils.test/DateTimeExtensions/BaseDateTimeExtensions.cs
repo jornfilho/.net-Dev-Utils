@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -201,7 +202,7 @@ namespace DevUtils.test.DateTimeExtensions
         [TestMethod]
         public void GetDefaultTimezoneInfo()
         {
-            var currentTimezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo(TimeZone.CurrentTimeZone.StandardName);
+            var currentTimezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo(TimeZoneInfo.Local.Id);
             Assert.IsNotNull(currentTimezone, "Error getting current timezoneinfo");
             Assert.AreEqual(currentTimezone, DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultTimezoneInfo(), "Error getting default timezoneinfo");
         }
@@ -213,7 +214,7 @@ namespace DevUtils.test.DateTimeExtensions
         public void SetDefaultTimezoneInfoWithTimezoneinfo()
         {
             var utcTimezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo("UTC");
-            var localTimezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo(TimeZone.CurrentTimeZone.StandardName);
+            var localTimezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo(TimeZoneInfo.Local.Id);
 
             try
             {
@@ -246,7 +247,7 @@ namespace DevUtils.test.DateTimeExtensions
         public void SetDefaultTimezoneInfoWithTimezonename()
         {
             var utcTimezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo("UTC");
-            var localTimezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo(TimeZone.CurrentTimeZone.StandardName);
+            var localTimezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetTimezoneInfo(TimeZoneInfo.Local.Id);
 
             try
             {
@@ -256,7 +257,7 @@ namespace DevUtils.test.DateTimeExtensions
                 var defaultTimezone = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultTimezoneInfo();
                 if (defaultTimezone.Equals(utcTimezone))
                 {
-                    DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo(TimeZone.CurrentTimeZone.StandardName);
+                    DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo(TimeZoneInfo.Local.Id);
                     Assert.AreEqual(localTimezone, DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultTimezoneInfo(), "Error setting default timezoneinfo");
                 }
                 else
