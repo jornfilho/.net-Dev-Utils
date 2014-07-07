@@ -84,6 +84,7 @@
     <Compile Include="Hash\Sha256.cs" />
     <Compile Include="Io\IoFileUtils.cs" />
     <Compile Include="Io\IoDirectoryUtils.cs" />
+    <Compile Include="ObjectExtensions\ObjectExtension.cs" />
     <Compile Include="PrimitivesExtensions\BoolExtensions.cs" />
     <Compile Include="PrimitivesExtensions\ByteExtensions.cs" />
     <Compile Include="PrimitivesExtensions\DecimalExtensions.cs" />
@@ -112,6 +113,7 @@
       <Name>DevUtils-net45</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
