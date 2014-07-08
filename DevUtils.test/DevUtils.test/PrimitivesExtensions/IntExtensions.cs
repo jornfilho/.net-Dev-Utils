@@ -505,14 +505,14 @@ namespace DevUtils.test.PrimitivesExtensions
                 BasePrimitivesExtensions.GetDefaultIntNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(falseConversions, "Error converting string to int array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to int array");
+            Assert.IsFalse(falseConversions.Any(a=>!a.Equals(BasePrimitivesExtensions.GetDefaultIntConversionValue())), "Error converting string to int array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseIntArray(null,
                 BasePrimitivesExtensions.GetDefaultIntNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(mixedConversions, "Error converting string to int array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to int array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to int array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultIntConversionValue())), "Error converting string to int array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to int array");
             #endregion
 
             #region simple method (with number format)
@@ -528,14 +528,14 @@ namespace DevUtils.test.PrimitivesExtensions
                 BasePrimitivesExtensions.GetDefaultIntNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(falseConversions, "Error converting string to int array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to int array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultIntConversionValue())), "Error converting string to int array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseIntArray(
                 BasePrimitivesExtensions.GetDefaultIntNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(mixedConversions, "Error converting string to int array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to int array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to int array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultIntConversionValue())), "Error converting string to int array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to int array");
             #endregion
 
             #region full method (without number format), without default, dont return defult conversion
@@ -547,12 +547,12 @@ namespace DevUtils.test.PrimitivesExtensions
 
             falseConversions = string.Join(",", errorValues).TryParseIntArray(null, false);
             Assert.IsNotNull(falseConversions, "Error converting string to int array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to int array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultIntConversionValue())), "Error converting string to int array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseIntArray(null, false);
             Assert.IsNotNull(mixedConversions, "Error converting string to int array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to int array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to int array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultIntConversionValue())), "Error converting string to int array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to int array");
             #endregion
 
             #region partial method (without number format), without default
@@ -564,12 +564,12 @@ namespace DevUtils.test.PrimitivesExtensions
 
             falseConversions = string.Join(",", errorValues).TryParseIntArray(null);
             Assert.IsNotNull(falseConversions, "Error converting string to int array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to int array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultIntConversionValue())), "Error converting string to int array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseIntArray(null);
             Assert.IsNotNull(mixedConversions, "Error converting string to int array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to int array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to int array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultIntConversionValue())), "Error converting string to int array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to int array");
             #endregion
 
             #region simple method (without number format)
@@ -581,12 +581,12 @@ namespace DevUtils.test.PrimitivesExtensions
 
             falseConversions = string.Join(",", errorValues).TryParseIntArray();
             Assert.IsNotNull(falseConversions, "Error converting string to int array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to int array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultIntConversionValue())), "Error converting string to int array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseIntArray();
             Assert.IsNotNull(mixedConversions, "Error converting string to int array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to int array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to int array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultIntConversionValue())), "Error converting string to int array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to int array");
             #endregion
         }
 
