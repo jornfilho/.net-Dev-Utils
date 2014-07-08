@@ -37,19 +37,19 @@ namespace DevUtils.PrimitivesExtensions
         private const bool DefaultLongArrayAllowDefaultConversion = false;
 
         //Decimal extensions
-        private const NumberStyles DefaultDecimalNumberStyle = NumberStyles.Float;
+        private const NumberStyles DefaultDecimalNumberStyle = NumberStyles.Any;
         private const decimal DefaultDecimalConversion = 0;
         private const bool DefaultDecimalAllowDefaultConversion = false;
         private const bool DefaultDecimalArrayAllowDefaultConversion = false;
 
         //Double extensions
-        private const NumberStyles DefaultDoubleNumberStyle = NumberStyles.Float;
+        private const NumberStyles DefaultDoubleNumberStyle = NumberStyles.Any;
         private const double DefaultDoubleConversion = 0;
         private const bool DefaultDoubleAllowDefaultConversion = false;
         private const bool DefaultDoubleArrayAllowDefaultConversion = false;
 
         //Float extensions
-        private const NumberStyles DefaultFloatNumberStyle = NumberStyles.Float;
+        private const NumberStyles DefaultFloatNumberStyle = NumberStyles.Any;
         private const float DefaultFloatConversion = 0;
         private const bool DefaultFloatAllowDefaultConversion = false;
         private const bool DefaultFloatArrayAllowDefaultConversion = false; 
