@@ -529,14 +529,14 @@ namespace DevUtils.test.PrimitivesExtensions
                 BasePrimitivesExtensions.GetDefaultShortNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(falseConversions, "Error converting string to short array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to short array");
+            Assert.IsFalse(falseConversions.Any(a=>!a.Equals(BasePrimitivesExtensions.GetDefaultShortConversionValue())), "Error converting string to short array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseShortArray(null,
                 BasePrimitivesExtensions.GetDefaultShortNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(mixedConversions, "Error converting string to short array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to short array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to short array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultShortConversionValue())), "Error converting string to short array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to short array");
             #endregion
 
             #region simple method (with number format)
@@ -552,14 +552,14 @@ namespace DevUtils.test.PrimitivesExtensions
                 BasePrimitivesExtensions.GetDefaultShortNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(falseConversions, "Error converting string to short array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to short array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultShortConversionValue())), "Error converting string to short array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseShortArray(
                 BasePrimitivesExtensions.GetDefaultShortNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(mixedConversions, "Error converting string to short array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to short array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to short array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultShortConversionValue())), "Error converting string to short array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to short array");
             #endregion
 
             #region full method (without number format), without default, dont return defult conversion
@@ -571,12 +571,12 @@ namespace DevUtils.test.PrimitivesExtensions
 
             falseConversions = string.Join(",", errorValues).TryParseShortArray(null, false);
             Assert.IsNotNull(falseConversions, "Error converting string to short array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to short array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultShortConversionValue())), "Error converting string to short array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseShortArray(null, false);
             Assert.IsNotNull(mixedConversions, "Error converting string to short array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to short array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to short array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultShortConversionValue())), "Error converting string to short array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to short array");
             #endregion
 
             #region partial method (without number format), without default
@@ -588,12 +588,12 @@ namespace DevUtils.test.PrimitivesExtensions
 
             falseConversions = string.Join(",", errorValues).TryParseShortArray(null);
             Assert.IsNotNull(falseConversions, "Error converting string to short array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to short array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultShortConversionValue())), "Error converting string to short array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseShortArray(null);
             Assert.IsNotNull(mixedConversions, "Error converting string to short array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to short array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to short array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultShortConversionValue())), "Error converting string to short array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to short array");
             #endregion
 
             #region simple method (without number format)
@@ -605,12 +605,12 @@ namespace DevUtils.test.PrimitivesExtensions
 
             falseConversions = string.Join(",", errorValues).TryParseShortArray();
             Assert.IsNotNull(falseConversions, "Error converting string to short array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to short array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultShortConversionValue())), "Error converting string to short array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseShortArray();
             Assert.IsNotNull(mixedConversions, "Error converting string to short array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to short array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to short array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultShortConversionValue())), "Error converting string to short array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to short array");
             #endregion
         }
 
