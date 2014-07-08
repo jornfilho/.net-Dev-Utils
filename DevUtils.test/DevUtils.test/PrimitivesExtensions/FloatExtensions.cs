@@ -456,14 +456,14 @@ namespace DevUtils.test.PrimitivesExtensions
                 BasePrimitivesExtensions.GetDefaultFloatNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(falseConversions, "Error converting string to float array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to float array");
+            Assert.IsFalse(falseConversions.Any(a=>!a.Equals(BasePrimitivesExtensions.GetDefaultFloatConversionValue())), "Error converting string to float array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseFloatArray(null,
                 BasePrimitivesExtensions.GetDefaultFloatNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(mixedConversions, "Error converting string to float array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to float array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to float array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultFloatConversionValue())), "Error converting string to float array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to float array");
             #endregion
 
             #region simple method (with number format)
@@ -479,14 +479,14 @@ namespace DevUtils.test.PrimitivesExtensions
                 BasePrimitivesExtensions.GetDefaultFloatNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(falseConversions, "Error converting string to float array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to float array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultFloatConversionValue())), "Error converting string to float array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseFloatArray(
                 BasePrimitivesExtensions.GetDefaultFloatNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(mixedConversions, "Error converting string to float array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to float array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to float array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultFloatConversionValue())), "Error converting string to float array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to float array");
             #endregion
 
             #region full method (without number format), without default, dont return defult conversion
@@ -498,12 +498,12 @@ namespace DevUtils.test.PrimitivesExtensions
 
             falseConversions = string.Join(",", errorValues).TryParseFloatArray(null, false);
             Assert.IsNotNull(falseConversions, "Error converting string to float array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to float array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultFloatConversionValue())), "Error converting string to float array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseFloatArray(null, false);
             Assert.IsNotNull(mixedConversions, "Error converting string to float array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to float array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to float array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultFloatConversionValue())), "Error converting string to float array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to float array");
             #endregion
 
             #region partial method (without number format), without default
@@ -515,12 +515,12 @@ namespace DevUtils.test.PrimitivesExtensions
 
             falseConversions = string.Join(",", errorValues).TryParseFloatArray(null);
             Assert.IsNotNull(falseConversions, "Error converting string to float array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to float array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultFloatConversionValue())), "Error converting string to float array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseFloatArray(null);
             Assert.IsNotNull(mixedConversions, "Error converting string to float array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to float array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to float array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultFloatConversionValue())), "Error converting string to float array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to float array");
             #endregion
 
             #region simple method (without number format)
@@ -532,12 +532,12 @@ namespace DevUtils.test.PrimitivesExtensions
 
             falseConversions = string.Join(",", errorValues).TryParseFloatArray();
             Assert.IsNotNull(falseConversions, "Error converting string to float array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to float array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultFloatConversionValue())), "Error converting string to float array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseFloatArray();
             Assert.IsNotNull(mixedConversions, "Error converting string to float array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to float array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to float array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultFloatConversionValue())), "Error converting string to float array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to float array");
             #endregion
         }
 
