@@ -438,14 +438,14 @@ namespace DevUtils.test.PrimitivesExtensions
                 BasePrimitivesExtensions.GetDefaultDoubleNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(falseConversions, "Error converting string to double array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to double array");
+            Assert.IsFalse(falseConversions.Any(a=>!a.Equals(BasePrimitivesExtensions.GetDefaultDoubleConversionValue())), "Error converting string to double array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseDoubleArray(null,
                 BasePrimitivesExtensions.GetDefaultDoubleNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(mixedConversions, "Error converting string to double array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to double array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to double array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultDoubleConversionValue())), "Error converting string to double array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to double array");
             #endregion
 
             #region simple method (with number format)
@@ -461,14 +461,14 @@ namespace DevUtils.test.PrimitivesExtensions
                 BasePrimitivesExtensions.GetDefaultDoubleNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(falseConversions, "Error converting string to double array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to double array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultDoubleConversionValue())), "Error converting string to double array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseDoubleArray(
                 BasePrimitivesExtensions.GetDefaultDoubleNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(mixedConversions, "Error converting string to double array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to double array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to double array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultDoubleConversionValue())), "Error converting string to double array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to double array");
             #endregion
 
             #region full method (without number format), without default, dont return defult conversion
@@ -480,12 +480,12 @@ namespace DevUtils.test.PrimitivesExtensions
 
             falseConversions = string.Join(",", errorValues).TryParseDoubleArray(null, false);
             Assert.IsNotNull(falseConversions, "Error converting string to double array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to double array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultDoubleConversionValue())), "Error converting string to double array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseDoubleArray(null, false);
             Assert.IsNotNull(mixedConversions, "Error converting string to double array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to double array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to double array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultDoubleConversionValue())), "Error converting string to double array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to double array");
             #endregion
 
             #region partial method (without number format), without default
@@ -497,12 +497,12 @@ namespace DevUtils.test.PrimitivesExtensions
 
             falseConversions = string.Join(",", errorValues).TryParseDoubleArray(null);
             Assert.IsNotNull(falseConversions, "Error converting string to double array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to double array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultDoubleConversionValue())), "Error converting string to double array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseDoubleArray(null);
             Assert.IsNotNull(mixedConversions, "Error converting string to double array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to double array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to double array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultDoubleConversionValue())), "Error converting string to double array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to double array");
             #endregion
 
             #region simple method (without number format)
@@ -514,12 +514,12 @@ namespace DevUtils.test.PrimitivesExtensions
 
             falseConversions = string.Join(",", errorValues).TryParseDoubleArray();
             Assert.IsNotNull(falseConversions, "Error converting string to double array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to double array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultDoubleConversionValue())), "Error converting string to double array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseDoubleArray();
             Assert.IsNotNull(mixedConversions, "Error converting string to double array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to double array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to double array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultDoubleConversionValue())), "Error converting string to double array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to double array");
             #endregion
         }
 
