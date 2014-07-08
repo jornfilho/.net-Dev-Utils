@@ -473,14 +473,14 @@ namespace DevUtils.test.PrimitivesExtensions
                 BasePrimitivesExtensions.GetDefaultDecimalNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(falseConversions, "Error converting string to decimal array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to decimal array");
+            Assert.IsFalse(falseConversions.Any(d=>!d.Equals(BasePrimitivesExtensions.GetDefaultDecimalConversionValue())), "Error converting string to decimal array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseDecimalArray(null,
                 BasePrimitivesExtensions.GetDefaultDecimalNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(mixedConversions, "Error converting string to decimal array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to decimal array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to decimal array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultDecimalConversionValue())), "Error converting string to decimal array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to decimal array");
             #endregion
 
             #region simple method (with number format)
@@ -496,14 +496,14 @@ namespace DevUtils.test.PrimitivesExtensions
                 BasePrimitivesExtensions.GetDefaultDecimalNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(falseConversions, "Error converting string to decimal array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to decimal array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultDecimalConversionValue())), "Error converting string to decimal array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseDecimalArray(
                 BasePrimitivesExtensions.GetDefaultDecimalNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(mixedConversions, "Error converting string to decimal array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to decimal array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to decimal array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultDecimalConversionValue())), "Error converting string to decimal array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to decimal array");
             #endregion
 
             #region full method (without number format), without default, dont return defult conversion
@@ -532,12 +532,12 @@ namespace DevUtils.test.PrimitivesExtensions
 
             falseConversions = string.Join(",", errorValues).TryParseDecimalArray(null);
             Assert.IsNotNull(falseConversions, "Error converting string to decimal array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to decimal array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultDecimalConversionValue())), "Error converting string to decimal array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseDecimalArray(null);
             Assert.IsNotNull(mixedConversions, "Error converting string to decimal array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to decimal array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to decimal array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultDecimalConversionValue())), "Error converting string to decimal array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to decimal array");
             #endregion
 
             #region simple method (without number format)
@@ -549,12 +549,12 @@ namespace DevUtils.test.PrimitivesExtensions
 
             falseConversions = string.Join(",", errorValues).TryParseDecimalArray();
             Assert.IsNotNull(falseConversions, "Error converting string to decimal array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to decimal array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultDecimalConversionValue())), "Error converting string to decimal array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseDecimalArray();
             Assert.IsNotNull(mixedConversions, "Error converting string to decimal array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to decimal array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to decimal array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultDecimalConversionValue())), "Error converting string to decimal array");
+            Assert.IsTrue((mixedConversions.Count()-falseConversions.Count()) == successByteValues.Count(), "Error converting string to decimal array");
             #endregion
         }
 
