@@ -481,14 +481,14 @@ namespace DevUtils.test.PrimitivesExtensions
                 BasePrimitivesExtensions.GetDefaultIntNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(falseConversions, "Error converting string to long array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to long array");
+            Assert.IsFalse(falseConversions.Any(a=>!a.Equals(BasePrimitivesExtensions.GetDefaultLongConversionValue())), "Error converting string to long array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseLongArray(null,
                 BasePrimitivesExtensions.GetDefaultIntNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(mixedConversions, "Error converting string to long array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to long array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to long array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultLongConversionValue())), "Error converting string to long array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to long array");
             #endregion
 
             #region simple method (with number format)
@@ -504,14 +504,14 @@ namespace DevUtils.test.PrimitivesExtensions
                 BasePrimitivesExtensions.GetDefaultIntNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(falseConversions, "Error converting string to long array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to long array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultLongConversionValue())), "Error converting string to long array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseLongArray(
                 BasePrimitivesExtensions.GetDefaultIntNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(mixedConversions, "Error converting string to long array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to long array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to long array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultLongConversionValue())), "Error converting string to long array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to long array");
             #endregion
 
             #region full method (without number format), without default, dont return defult conversion
@@ -523,12 +523,12 @@ namespace DevUtils.test.PrimitivesExtensions
 
             falseConversions = string.Join(",", errorValues).TryParseLongArray(null, false);
             Assert.IsNotNull(falseConversions, "Error converting string to long array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to long array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultLongConversionValue())), "Error converting string to long array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseLongArray(null, false);
             Assert.IsNotNull(mixedConversions, "Error converting string to long array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to long array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to long array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultLongConversionValue())), "Error converting string to long array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to long array");
             #endregion
 
             #region partial method (without number format), without default
@@ -540,12 +540,12 @@ namespace DevUtils.test.PrimitivesExtensions
 
             falseConversions = string.Join(",", errorValues).TryParseLongArray(null);
             Assert.IsNotNull(falseConversions, "Error converting string to long array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to long array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultLongConversionValue())), "Error converting string to long array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseLongArray(null);
             Assert.IsNotNull(mixedConversions, "Error converting string to long array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to long array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to long array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultLongConversionValue())), "Error converting string to long array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to long array");
             #endregion
 
             #region simple method (without number format)
@@ -557,12 +557,12 @@ namespace DevUtils.test.PrimitivesExtensions
 
             falseConversions = string.Join(",", errorValues).TryParseLongArray();
             Assert.IsNotNull(falseConversions, "Error converting string to long array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to long array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultLongConversionValue())), "Error converting string to long array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseLongArray();
             Assert.IsNotNull(mixedConversions, "Error converting string to long array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to long array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to long array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultLongConversionValue())), "Error converting string to long array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to long array");
             #endregion
         }
 
