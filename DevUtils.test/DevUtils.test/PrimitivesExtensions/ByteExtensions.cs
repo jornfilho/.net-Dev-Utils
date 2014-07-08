@@ -553,14 +553,14 @@ namespace DevUtils.test.PrimitivesExtensions
                 BasePrimitivesExtensions.GetDefaultByteNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(falseConversions, "Error converting string to byte array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to byte array");
+            Assert.IsFalse(falseConversions.Any(f => !f.Equals(BasePrimitivesExtensions.GetDefaultByteConversionValue())), "Error converting string to byte array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseByteArray(null,
                 BasePrimitivesExtensions.GetDefaultByteNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(mixedConversions, "Error converting string to byte array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to byte array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to byte array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultByteConversionValue())), "Error converting string to byte array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to byte array");
             #endregion
 
             #region simple method (with number format)
@@ -576,14 +576,14 @@ namespace DevUtils.test.PrimitivesExtensions
                 BasePrimitivesExtensions.GetDefaultByteNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(falseConversions, "Error converting string to byte array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to byte array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultByteConversionValue())), "Error converting string to byte array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseByteArray(
                 BasePrimitivesExtensions.GetDefaultByteNumberStyle(),
                 BasePrimitivesExtensions.GetCurrentCulture());
             Assert.IsNotNull(mixedConversions, "Error converting string to byte array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to byte array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to byte array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultByteConversionValue())), "Error converting string to byte array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to byte array");
             #endregion
 
             #region full method (without number format), without default, dont return defult conversion
@@ -612,12 +612,12 @@ namespace DevUtils.test.PrimitivesExtensions
 
             falseConversions = string.Join(",", errorValues).TryParseByteArray(null);
             Assert.IsNotNull(falseConversions, "Error converting string to byte array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to byte array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultByteConversionValue())), "Error converting string to byte array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseByteArray(null);
             Assert.IsNotNull(mixedConversions, "Error converting string to byte array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to byte array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to byte array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultByteConversionValue())), "Error converting string to byte array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to byte array");
             #endregion
 
             #region simple method (without number format)
@@ -629,12 +629,12 @@ namespace DevUtils.test.PrimitivesExtensions
 
             falseConversions = string.Join(",", errorValues).TryParseByteArray();
             Assert.IsNotNull(falseConversions, "Error converting string to byte array");
-            Assert.IsFalse(falseConversions.Any(), "Error converting string to byte array");
+            Assert.IsFalse(falseConversions.Any(a => !a.Equals(BasePrimitivesExtensions.GetDefaultByteConversionValue())), "Error converting string to byte array");
 
             mixedConversions = string.Join(",", mixedValues).TryParseByteArray();
             Assert.IsNotNull(mixedConversions, "Error converting string to byte array");
-            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a)), "Error converting string to byte array");
-            Assert.IsTrue(mixedConversions.Count() == successByteValues.Count(), "Error converting string to byte array");
+            Assert.IsFalse(mixedConversions.Any(a => !successByteValues.Contains(a) && !a.Equals(BasePrimitivesExtensions.GetDefaultByteConversionValue())), "Error converting string to byte array");
+            Assert.IsTrue((mixedConversions.Count() - falseConversions.Count()) == successByteValues.Count(), "Error converting string to byte array");
             #endregion
         }
 

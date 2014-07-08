@@ -8,51 +8,51 @@ namespace DevUtils.PrimitivesExtensions
     public class BasePrimitivesExtensions
     {
         #region params
-        //Bit extensions
+        //Boolean extensions
         private const bool DefaultBoolConversion = false;
         private const bool DefaultBoolArrayAllowDefaultConversion = false;
 
         //Byte extensions
         private const NumberStyles DefaultByteNumberStyle = NumberStyles.None;
         private const byte DefaultByteConversion = 0;
-        private const bool DefaultByteAllowDefaultConversion = false;
-        private const bool DefaultByteArrayAllowDefaultConversion = false;
+        private const bool DefaultByteAllowDefaultConversion = true;
+        private const bool DefaultByteArrayAllowDefaultConversion = true;
 
         //Int16 extensions
         private const NumberStyles DefaultShortNumberStyle = NumberStyles.Integer;
         private const short DefaultShortConversion = 0;
-        private const bool DefaultShortAllowDefaultConversion = false;
-        private const bool DefaultShortArrayAllowDefaultConversion = false;
+        private const bool DefaultShortAllowDefaultConversion = true;
+        private const bool DefaultShortArrayAllowDefaultConversion = true;
 
         //Int32 extensions
         private const NumberStyles DefaultIntNumberStyle = NumberStyles.Integer;
         private const int DefaultIntConversion = 0;
-        private const bool DefaultIntAllowDefaultConversion = false;
-        private const bool DefaultIntArrayAllowDefaultConversion = false;
+        private const bool DefaultIntAllowDefaultConversion = true;
+        private const bool DefaultIntArrayAllowDefaultConversion = true;
 
         //Int64 extensions
         private const NumberStyles DefaultLongNumberStyle = NumberStyles.Integer;
         private const long DefaultLongConversion = 0;
-        private const bool DefaultLongAllowDefaultConversion = false;
-        private const bool DefaultLongArrayAllowDefaultConversion = false;
+        private const bool DefaultLongAllowDefaultConversion = true;
+        private const bool DefaultLongArrayAllowDefaultConversion = true;
 
         //Decimal extensions
         private const NumberStyles DefaultDecimalNumberStyle = NumberStyles.Any;
         private const decimal DefaultDecimalConversion = 0;
-        private const bool DefaultDecimalAllowDefaultConversion = false;
-        private const bool DefaultDecimalArrayAllowDefaultConversion = false;
+        private const bool DefaultDecimalAllowDefaultConversion = true;
+        private const bool DefaultDecimalArrayAllowDefaultConversion = true;
 
         //Double extensions
         private const NumberStyles DefaultDoubleNumberStyle = NumberStyles.Any;
         private const double DefaultDoubleConversion = 0;
-        private const bool DefaultDoubleAllowDefaultConversion = false;
-        private const bool DefaultDoubleArrayAllowDefaultConversion = false;
+        private const bool DefaultDoubleAllowDefaultConversion = true;
+        private const bool DefaultDoubleArrayAllowDefaultConversion = true;
 
         //Float extensions
         private const NumberStyles DefaultFloatNumberStyle = NumberStyles.Any;
         private const float DefaultFloatConversion = 0;
-        private const bool DefaultFloatAllowDefaultConversion = false;
-        private const bool DefaultFloatArrayAllowDefaultConversion = false; 
+        private const bool DefaultFloatAllowDefaultConversion = true;
+        private const bool DefaultFloatArrayAllowDefaultConversion = true; 
         #endregion
 
         #region TryParseBool and TryParseBoolArray
