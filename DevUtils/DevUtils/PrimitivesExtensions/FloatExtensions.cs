@@ -27,7 +27,7 @@ namespace DevUtils.PrimitivesExtensions
             var converted = float.TryParse(strValue, numberStyle, culture, out floatValue);
 
             return converted
-                ? floatValue == 0 && !allowZero
+                ? floatValue.Equals(0) && !allowZero
                     ? defaultValue
                     : floatValue
                 : defaultValue;
@@ -506,6 +506,44 @@ namespace DevUtils.PrimitivesExtensions
         }
         #endregion
 
+        #region object
+        /// <summary>
+        /// <para>Try parse object float to float value</para>
+        /// </summary>
+        /// <param name="objValue">object to convert</param>
+        /// <param name="defaultValue">default return value</param>
+        /// <returns>float result</returns>
+        public static float TryParseFloat(this object objValue, float defaultValue)
+        {
+            if (objValue == null)
+                return defaultValue;
+
+            try
+            {
+                return objValue.ToString().TryParseFloat(defaultValue,
+                BasePrimitivesExtensions.GetDefaultFloatAllowDefaultConversion(),
+                BasePrimitivesExtensions.GetDefaultFloatNumberStyle(),
+                BasePrimitivesExtensions.GetCurrentCulture());
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return defaultValue;
+            }
+        }
+
+        /// <summary>
+        /// <para>Try parse float to float value</para>
+        /// <para>Default value is BasePrimitivesExtensions.GetDefaultFloatConversionValue() value</para>
+        /// </summary>
+        /// <param name="objValue">object to convert</param>
+        /// <returns>float result</returns>
+        public static float TryParseFloat(this object objValue)
+        {
+            return objValue.TryParseFloat(BasePrimitivesExtensions.GetDefaultFloatConversionValue());
+        }
+        #endregion
+
         #region string to float array
         /// <summary>
         /// Parse string array in float array
@@ -636,7 +674,7 @@ namespace DevUtils.PrimitivesExtensions
             {
                 var baseValue = (float)(strValue == "1" ? 2 : 1);
                 var convertedValue = strValue.TryParseFloat(baseValue, true, numberStyle, culture);
-                return convertedValue != baseValue;
+                return !convertedValue.Equals(baseValue);
             }
             catch (Exception e)
             {

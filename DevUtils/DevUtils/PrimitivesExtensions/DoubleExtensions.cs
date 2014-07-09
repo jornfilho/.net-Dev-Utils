@@ -27,7 +27,7 @@ namespace DevUtils.PrimitivesExtensions
             var converted = double.TryParse(strValue, numberStyle, culture, out doubleValue);
 
             return converted
-                ? doubleValue == 0 && !allowZero
+                ? doubleValue.Equals(0) && !allowZero
                     ? defaultValue
                     : doubleValue
                 : defaultValue;
@@ -468,6 +468,44 @@ namespace DevUtils.PrimitivesExtensions
         }
         #endregion
 
+        #region object
+        /// <summary>
+        /// <para>Try parse object double to double value</para>
+        /// </summary>
+        /// <param name="objValue">object to convert</param>
+        /// <param name="defaultValue">default return value</param>
+        /// <returns>double result</returns>
+        public static double TryParseDouble(this object objValue, double defaultValue)
+        {
+            if (objValue == null)
+                return defaultValue;
+
+            try
+            {
+                return objValue.ToString().TryParseDouble(defaultValue,
+                BasePrimitivesExtensions.GetDefaultDoubleAllowDefaultConversion(),
+                BasePrimitivesExtensions.GetDefaultDoubleNumberStyle(),
+                BasePrimitivesExtensions.GetCurrentCulture());
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return defaultValue;
+            }
+        }
+
+        /// <summary>
+        /// <para>Try parse double to double value</para>
+        /// <para>Default value is BasePrimitivesExtensions.GetDefaultDoubleConversionValue() value</para>
+        /// </summary>
+        /// <param name="objValue">object to convert</param>
+        /// <returns>double result</returns>
+        public static double TryParseDouble(this object objValue)
+        {
+            return objValue.TryParseDouble(BasePrimitivesExtensions.GetDefaultDoubleConversionValue());
+        }
+        #endregion
+
         #region string to double array
         /// <summary>
         /// Parse string array in double array
@@ -598,7 +636,7 @@ namespace DevUtils.PrimitivesExtensions
             {
                 var baseValue = (double)(strValue == "1" ? 2 : 1);
                 var convertedValue = strValue.TryParseDouble(baseValue, true, numberStyle, culture);
-                return convertedValue != baseValue;
+                return !convertedValue.Equals(baseValue);
             }
             catch (Exception e)
             {

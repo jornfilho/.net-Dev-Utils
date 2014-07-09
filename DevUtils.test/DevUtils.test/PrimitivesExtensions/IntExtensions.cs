@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Linq;
 using DevUtils.PrimitivesExtensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -451,6 +452,22 @@ namespace DevUtils.test.PrimitivesExtensions
             Assert.AreEqual(invalid2, BasePrimitivesExtensions.GetDefaultIntConversionValue(), "Error converting float? to int");
             #endregion
 
+        }
+
+        /// <summary>
+        /// Teste method TryParseInt from object value
+        /// </summary>
+        [TestMethod]
+        public void TryParseInt_FromObject()
+        {
+            var objectValid = (object)1;
+            var objectInvalid = (object)"a";
+
+            Assert.AreEqual(objectValid.TryParseInt(), Int32.Parse(objectValid.ToString()), "Error converting object value to int32");
+            Assert.AreEqual(objectInvalid.TryParseInt(), BasePrimitivesExtensions.GetDefaultIntConversionValue(), "Error converting object value to int32");
+
+            Assert.AreEqual(objectValid.TryParseInt(2), Int32.Parse(objectValid.ToString()), "Error converting object value to int32");
+            Assert.AreEqual(objectInvalid.TryParseInt(2), 2, "Error converting object value to int32");
         }
 
         /// <summary>

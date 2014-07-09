@@ -42,6 +42,22 @@ namespace DevUtils.test.PrimitivesExtensions
         }
 
         /// <summary>
+        /// Teste method TryParseBool from object value
+        /// </summary>
+        [TestMethod]
+        public void TryParseBool_FromObject()
+        {
+            var objectValid = (object)true;
+            var objectInvalid = (object)10;
+
+            Assert.AreEqual(objectValid.TryParseBool(), true, "Error converting object value to bool");
+            Assert.AreEqual(objectInvalid.TryParseBool(), BasePrimitivesExtensions.GetDefaultBoolConversionValue(), "Error converting object value to bool");
+
+            Assert.AreEqual(objectValid.TryParseBool(true), true, "Error converting object value to bool");
+            Assert.AreEqual(objectInvalid.TryParseBool(true), true, "Error converting object value to bool");
+        }
+
+        /// <summary>
         /// Teste method TryParseBoolArray and overload
         /// </summary>
         [TestMethod]

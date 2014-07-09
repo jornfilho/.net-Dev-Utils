@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Linq;
 using DevUtils.PrimitivesExtensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -499,6 +500,22 @@ namespace DevUtils.test.PrimitivesExtensions
             Assert.AreEqual(invalid2, BasePrimitivesExtensions.GetDefaultByteConversionValue(), "Error converting float? to byte");
             #endregion
 
+        }
+
+        /// <summary>
+        /// Teste method TryParseByte from object value
+        /// </summary>
+        [TestMethod]
+        public void TryParseByte_FromObject()
+        {
+            var objectValid = (object)1;
+            var objectInvalid = (object)"a";
+
+            Assert.AreEqual(objectValid.TryParseByte(), Byte.Parse(objectValid.ToString()), "Error converting object value to byte");
+            Assert.AreEqual(objectInvalid.TryParseByte(), BasePrimitivesExtensions.GetDefaultByteConversionValue(), "Error converting object value to byte");
+
+            Assert.AreEqual(objectValid.TryParseByte(2), Byte.Parse(objectValid.ToString()), "Error converting object value to byte");
+            Assert.AreEqual(objectInvalid.TryParseByte(2), 2, "Error converting object value to byte");
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Linq;
 using DevUtils.PrimitivesExtensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -402,6 +403,22 @@ namespace DevUtils.test.PrimitivesExtensions
             Assert.AreEqual(invalid1, BasePrimitivesExtensions.GetDefaultFloatConversionValue(), "Error converting decimal? to float");
             #endregion
 
+        }
+
+        /// <summary>
+        /// Teste method TryParseFloat from object value
+        /// </summary>
+        [TestMethod]
+        public void TryParseFloat_FromObject()
+        {
+            var objectValid = (object)1;
+            var objectInvalid = (object)"a";
+
+            Assert.AreEqual(objectValid.TryParseFloat(), Double.Parse(objectValid.ToString()), "Error converting object value to float");
+            Assert.AreEqual(objectInvalid.TryParseFloat(), BasePrimitivesExtensions.GetDefaultFloatConversionValue(), "Error converting object value to float");
+
+            Assert.AreEqual(objectValid.TryParseFloat(2), Double.Parse(objectValid.ToString()), "Error converting object value to float");
+            Assert.AreEqual(objectInvalid.TryParseFloat(2), 2, "Error converting object value to float");
         }
 
         /// <summary>

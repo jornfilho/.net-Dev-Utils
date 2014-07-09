@@ -555,6 +555,44 @@ namespace DevUtils.PrimitivesExtensions
         }
         #endregion
 
+        #region object
+        /// <summary>
+        /// <para>Try parse object short to short value</para>
+        /// </summary>
+        /// <param name="objValue">object to convert</param>
+        /// <param name="defaultValue">default return value</param>
+        /// <returns>short result</returns>
+        public static short TryParseShort(this object objValue, short defaultValue)
+        {
+            if (objValue == null)
+                return defaultValue;
+
+            try
+            {
+                return objValue.ToString().TryParseShort(defaultValue,
+                BasePrimitivesExtensions.GetDefaultShortAllowDefaultConversion(),
+                BasePrimitivesExtensions.GetDefaultShortNumberStyle(),
+                BasePrimitivesExtensions.GetCurrentCulture());
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return defaultValue;
+            }
+        }
+
+        /// <summary>
+        /// <para>Try parse short to short value</para>
+        /// <para>Default value is BasePrimitivesExtensions.GetDefaultShortConversionValue() value</para>
+        /// </summary>
+        /// <param name="objValue">object to convert</param>
+        /// <returns>short result</returns>
+        public static short TryParseShort(this object objValue)
+        {
+            return objValue.TryParseShort(BasePrimitivesExtensions.GetDefaultShortConversionValue());
+        }
+        #endregion
+
         #region string to short array
         /// <summary>
         /// Parse string array in short array

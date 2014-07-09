@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Linq;
 using DevUtils.PrimitivesExtensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -475,6 +476,22 @@ namespace DevUtils.test.PrimitivesExtensions
             Assert.AreEqual(invalid2, BasePrimitivesExtensions.GetDefaultShortConversionValue(), "Error converting float? to short");
             #endregion
 
+        }
+
+        /// <summary>
+        /// Teste method TryParseShort from object value
+        /// </summary>
+        [TestMethod]
+        public void TryParseShort_FromObject()
+        {
+            var objectValid = (object)1;
+            var objectInvalid = (object)"a";
+
+            Assert.AreEqual(objectValid.TryParseShort(), Int16.Parse(objectValid.ToString()), "Error converting object value to int16");
+            Assert.AreEqual(objectInvalid.TryParseShort(), BasePrimitivesExtensions.GetDefaultShortConversionValue(), "Error converting object value to int16");
+
+            Assert.AreEqual(objectValid.TryParseShort(2), Int16.Parse(objectValid.ToString()), "Error converting object value to int16");
+            Assert.AreEqual(objectInvalid.TryParseShort(2), 2, "Error converting object value to int16");
         }
 
         /// <summary>

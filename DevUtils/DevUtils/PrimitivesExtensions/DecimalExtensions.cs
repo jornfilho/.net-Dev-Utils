@@ -506,6 +506,44 @@ namespace DevUtils.PrimitivesExtensions
         }
         #endregion
 
+        #region object
+        /// <summary>
+        /// <para>Try parse object decimal to decimal value</para>
+        /// </summary>
+        /// <param name="objValue">object to convert</param>
+        /// <param name="defaultValue">default return value</param>
+        /// <returns>decimal result</returns>
+        public static decimal TryParseDecimal(this object objValue, decimal defaultValue)
+        {
+            if (objValue == null)
+                return defaultValue;
+
+            try
+            {
+                return objValue.ToString().TryParseDecimal(defaultValue,
+                BasePrimitivesExtensions.GetDefaultDecimalAllowDefaultConversion(),
+                BasePrimitivesExtensions.GetDefaultDecimalNumberStyle(),
+                BasePrimitivesExtensions.GetCurrentCulture());
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return defaultValue;
+            }
+        }
+
+        /// <summary>
+        /// <para>Try parse decimal to decimal value</para>
+        /// <para>Default value is BasePrimitivesExtensions.GetDefaultDecimalConversionValue() value</para>
+        /// </summary>
+        /// <param name="objValue">object to convert</param>
+        /// <returns>decimal result</returns>
+        public static decimal TryParseDecimal(this object objValue)
+        {
+            return objValue.TryParseDecimal(BasePrimitivesExtensions.GetDefaultDecimalConversionValue());
+        }
+        #endregion
+
         #region string to decimal array
         /// <summary>
         /// Parse string array in decimal array

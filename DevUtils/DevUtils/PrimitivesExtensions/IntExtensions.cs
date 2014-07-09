@@ -511,6 +511,44 @@ namespace DevUtils.PrimitivesExtensions
         }
         #endregion
 
+        #region object
+        /// <summary>
+        /// <para>Try parse object int to int value</para>
+        /// </summary>
+        /// <param name="objValue">object to convert</param>
+        /// <param name="defaultValue">default return value</param>
+        /// <returns>int result</returns>
+        public static int TryParseInt(this object objValue, int defaultValue)
+        {
+            if (objValue == null)
+                return defaultValue;
+
+            try
+            {
+                return objValue.ToString().TryParseInt(defaultValue,
+                BasePrimitivesExtensions.GetDefaultIntAllowDefaultConversion(),
+                BasePrimitivesExtensions.GetDefaultIntNumberStyle(),
+                BasePrimitivesExtensions.GetCurrentCulture());
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return defaultValue;
+            }
+        }
+
+        /// <summary>
+        /// <para>Try parse int to int value</para>
+        /// <para>Default value is BasePrimitivesExtensions.GetDefaultIntConversionValue() value</para>
+        /// </summary>
+        /// <param name="objValue">object to convert</param>
+        /// <returns>int result</returns>
+        public static int TryParseInt(this object objValue)
+        {
+            return objValue.TryParseInt(BasePrimitivesExtensions.GetDefaultIntConversionValue());
+        }
+        #endregion
+
         #region string to int array
         /// <summary>
         /// Parse string array in int array

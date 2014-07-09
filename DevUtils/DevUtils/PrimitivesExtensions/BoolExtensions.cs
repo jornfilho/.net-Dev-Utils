@@ -43,6 +43,44 @@ namespace DevUtils.PrimitivesExtensions
         }
         #endregion
 
+        #region object
+        /// <summary>
+        /// <para>Try parse object bool to boolean value</para>
+        /// </summary>
+        /// <param name="objValue">object to convert</param>
+        /// <param name="defaultValue">default return value</param>
+        /// <returns>bool result</returns>
+        public static bool TryParseBool(this object objValue, bool defaultValue)
+        {
+            if (objValue == null)
+                return defaultValue;
+
+            try
+            {
+                bool boolValue;
+                return bool.TryParse(objValue.ToString(), out boolValue)
+                    ? boolValue
+                    : defaultValue;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return defaultValue;
+            }
+        }
+
+        /// <summary>
+        /// <para>Try parse object to boolean value</para>
+        /// <para>Default value is false</para>
+        /// </summary>
+        /// <param name="objValue">object to convert</param>
+        /// <returns>bool result</returns>
+        public static bool TryParseBool(this object objValue)
+        {
+            return objValue.TryParseBool(BasePrimitivesExtensions.GetDefaultBoolConversionValue());
+        }
+        #endregion
+
         #region string to bool array
         /// <summary>
         /// Parse string array in bool array

@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Linq;
 using DevUtils.PrimitivesExtensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -427,6 +428,22 @@ namespace DevUtils.test.PrimitivesExtensions
             Assert.AreEqual(invalid2, BasePrimitivesExtensions.GetDefaultLongConversionValue(), "Error converting float? to long");
             #endregion
 
+        }
+
+        /// <summary>
+        /// Teste method TryParseLong from object value
+        /// </summary>
+        [TestMethod]
+        public void TryParseLong_FromObject()
+        {
+            var objectValid = (object)1;
+            var objectInvalid = (object)"a";
+
+            Assert.AreEqual(objectValid.TryParseLong(), Int64.Parse(objectValid.ToString()), "Error converting object value to int64");
+            Assert.AreEqual(objectInvalid.TryParseLong(), BasePrimitivesExtensions.GetDefaultLongConversionValue(), "Error converting object value to int64");
+
+            Assert.AreEqual(objectValid.TryParseLong(2), Int64.Parse(objectValid.ToString()), "Error converting object value to int64");
+            Assert.AreEqual(objectInvalid.TryParseLong(2), 2, "Error converting object value to int64");
         }
 
         /// <summary>

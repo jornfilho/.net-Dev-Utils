@@ -591,6 +591,44 @@ namespace DevUtils.PrimitivesExtensions
         }
         #endregion
 
+        #region object
+        /// <summary>
+        /// <para>Try parse object byte to byte value</para>
+        /// </summary>
+        /// <param name="objValue">object to convert</param>
+        /// <param name="defaultValue">default return value</param>
+        /// <returns>byte result</returns>
+        public static byte TryParseByte(this object objValue, byte defaultValue)
+        {
+            if (objValue == null)
+                return defaultValue;
+
+            try
+            {
+                return objValue.ToString().TryParseByte(defaultValue,
+                    BasePrimitivesExtensions.GetDefaultByteAllowDefaultConversion(),
+                    BasePrimitivesExtensions.GetDefaultByteNumberStyle(),
+                    BasePrimitivesExtensions.GetCurrentCulture());
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return defaultValue;
+            }
+        }
+
+        /// <summary>
+        /// <para>Try parse byte to byte value</para>
+        /// <para>Default value is BasePrimitivesExtensions.GetDefaultByteConversionValue() value</para>
+        /// </summary>
+        /// <param name="objValue">object to convert</param>
+        /// <returns>byte result</returns>
+        public static byte TryParseByte(this object objValue)
+        {
+            return objValue.TryParseByte(BasePrimitivesExtensions.GetDefaultByteConversionValue());
+        }
+        #endregion
+
         #region string to byte array
         /// <summary>
         /// Parse string array in byte array

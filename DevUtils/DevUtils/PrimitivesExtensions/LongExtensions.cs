@@ -471,6 +471,44 @@ namespace DevUtils.PrimitivesExtensions
         }
         #endregion
 
+        #region object
+        /// <summary>
+        /// <para>Try parse object long to long value</para>
+        /// </summary>
+        /// <param name="objValue">object to convert</param>
+        /// <param name="defaultValue">default return value</param>
+        /// <returns>long result</returns>
+        public static long TryParseLong(this object objValue, long defaultValue)
+        {
+            if (objValue == null)
+                return defaultValue;
+
+            try
+            {
+                return objValue.ToString().TryParseLong(defaultValue,
+                BasePrimitivesExtensions.GetDefaultLongAllowDefaultConversion(),
+                BasePrimitivesExtensions.GetDefaultLongNumberStyle(),
+                BasePrimitivesExtensions.GetCurrentCulture());
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return defaultValue;
+            }
+        }
+
+        /// <summary>
+        /// <para>Try parse long to long value</para>
+        /// <para>Default value is BasePrimitivesExtensions.GetDefaultlongConversionValue() value</para>
+        /// </summary>
+        /// <param name="objValue">object to convert</param>
+        /// <returns>long result</returns>
+        public static long TryParseLong(this object objValue)
+        {
+            return objValue.TryParseLong(BasePrimitivesExtensions.GetDefaultLongConversionValue());
+        }
+        #endregion
+
         #region string to long array
         /// <summary>
         /// Parse string array in long array
