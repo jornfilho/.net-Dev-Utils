@@ -22,7 +22,7 @@ namespace DevUtils.Hash
                 if (data == null)
                     return null;
 
-                var md5 = MD5.Create().ComputeHash(Encoding.Default.GetBytes(data));
+                var md5 = MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(data));
                 var sbString = new StringBuilder();
                 foreach (var t in md5)
                     sbString.Append(t.ToString("x2"));
