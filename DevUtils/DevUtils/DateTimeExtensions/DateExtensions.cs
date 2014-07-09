@@ -405,5 +405,18 @@ namespace DevUtils.DateTimeExtensions
                 BaseDateTimeExtensions.GetDefaultFirstWeekDay());
         } 
         #endregion
+
+        #region SetAsUtc
+        /// <summary>
+        /// <para>Convert date local to utc</para>
+        /// <para>Only change date local, don`t convert date and time</para>
+        /// </summary>
+        /// <param name="date">Date to set local</param>
+        /// <returns>Date as UTC</returns>
+        public static DateTime SetAsUtc(this DateTime date)
+        {
+            return new DateTime(date.Year, date.Month, date.Day, date.Hour, date.Minute, date.Second, date.Millisecond, DateTimeKind.Utc);
+        } 
+        #endregion
     }
 }

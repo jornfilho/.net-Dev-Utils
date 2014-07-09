@@ -248,5 +248,28 @@ namespace DevUtils.test.DateTimeExtensions
             }
         } 
         #endregion
+
+        #region SetAsUtc
+        /// <summary>
+        /// Test method SetAsUtc
+        /// </summary>
+        [TestMethod]
+        public void SetAsUtc()
+        {
+            var localDate = DateTime.UtcNow;
+            localDate = new DateTime(localDate.Year, localDate.Month, localDate.Day, localDate.Hour, localDate.Minute, localDate.Second, localDate.Millisecond, DateTimeKind.Local);
+
+            var unspecifiedDate = DateTime.UtcNow;
+            unspecifiedDate = new DateTime(unspecifiedDate.Year, unspecifiedDate.Month, unspecifiedDate.Day, unspecifiedDate.Hour, unspecifiedDate.Minute, unspecifiedDate.Second, unspecifiedDate.Millisecond, DateTimeKind.Unspecified);
+
+            var utcDate = localDate.SetAsUtc();
+            Assert.AreEqual(utcDate.Kind, DateTimeKind.Utc, "Error setting date local");
+            Assert.AreEqual(localDate.ToString("s"), utcDate.ToString("s"), "Error setting date local");
+
+            utcDate = unspecifiedDate.SetAsUtc();
+            Assert.AreEqual(utcDate.Kind, DateTimeKind.Utc, "Error setting date local");
+            Assert.AreEqual(unspecifiedDate.ToString("s"), utcDate.ToString("s"), "Error setting date local");
+        } 
+        #endregion
     }
 }
