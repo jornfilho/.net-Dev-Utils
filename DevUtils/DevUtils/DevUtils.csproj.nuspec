@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DevUtils</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <authors>Jorn Filho</authors>
     <owners>Jorn Filho</owners>
     <licenseUrl>https://github.com/jornfilho/.net-Dev-Utils/blob/master/LICENSE</licenseUrl>
