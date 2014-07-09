@@ -14,6 +14,25 @@ namespace DevUtils.PrimitivesExtensions
     public static class StringExtensions
     {
         /// <summary>
+        /// Get only number characters
+        /// </summary>
+        /// <param name="text">strign to get numbers</param>
+        /// <returns>Numbers as string</returns>
+        public static string GetDigits(this string text)
+        {
+            try
+            {
+                var rgx = new Regex("[^0-9]");
+                return rgx.Replace(text, "");
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return text;
+            }
+        }
+
+        /// <summary>
         /// <para>Normalize string to unicode</para>
         /// <para>Remove special characters</para>
         /// </summary>

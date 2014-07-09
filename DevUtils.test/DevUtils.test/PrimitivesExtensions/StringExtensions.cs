@@ -12,6 +12,22 @@ namespace DevUtils.test.PrimitivesExtensions
     public class StringExtensions
     {
         /// <summary>
+        /// Test method GetDigits
+        /// </summary>
+        [TestMethod]
+        public void GetDigits()
+        {
+            const string str1 = "a1b2 c3d4";
+            const string str2 = "abcd 1234";
+            const string str3 = "1234 abcd";
+            const string strNumbers = "1234";
+
+            Assert.AreEqual(str1.GetDigits(), strNumbers, "Error getting only digits");
+            Assert.AreEqual(str2.GetDigits(), strNumbers, "Error getting only digits");
+            Assert.AreEqual(str3.GetDigits(), strNumbers, "Error getting only digits");
+        }
+        
+        /// <summary>
         /// Test method ToUnicode
         /// </summary>
         [TestMethod]
