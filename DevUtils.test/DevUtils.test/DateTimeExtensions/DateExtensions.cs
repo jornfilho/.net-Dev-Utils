@@ -210,5 +210,43 @@ namespace DevUtils.test.DateTimeExtensions
             Assert.AreEqual(LocalDate.ToString("g"), UtcDate.ToTimezoneDate(UtcTimeZoneInfo, LocalTimeZoneInfo).ToString("g"));
         } 
         #endregion
+
+        #region GetWeekNumber
+        /// <summary>
+        /// Test method GetWeekNumber and overloads
+        /// </summary>
+        [TestMethod]
+        public void GetWeekNumberAndOverloads()
+        {
+            var week1 = DateTime.UtcNow.SetMonth(1).SetDay(1).SetTime(0, 0, 0, 0);
+            var systemFirstWeekDay = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultFirstWeekDay();
+            var systemWeekRules = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultCalendarRule();
+            var startYear = week1.Year;
+            var endYear = (week1.Year - 100);
+
+            for (var i = startYear; i > endYear; i--)
+            {
+                week1 = week1.SetYear(i);
+                Console.WriteLine("{0} - {1}", week1, week1.GetWeekNumber());
+
+                var weekNumber = week1.GetWeekNumber();
+                if (!weekNumber.Equals(1) && !weekNumber.Equals(52) && !weekNumber.Equals(53))
+                    Assert.Fail("Error getting week number.\nWeek number {0}", weekNumber);
+
+                weekNumber = week1.GetWeekNumber(systemFirstWeekDay);
+                if (!weekNumber.Equals(1) && !weekNumber.Equals(52) && !weekNumber.Equals(53))
+                    Assert.Fail("Error getting week number.\nWeek number {0}", weekNumber);
+
+                weekNumber = week1.GetWeekNumber(systemWeekRules);
+                if (!weekNumber.Equals(1) && !weekNumber.Equals(52) && !weekNumber.Equals(53))
+                    Assert.Fail("Error getting week number.\nWeek number {0}", weekNumber);
+
+                weekNumber = week1.GetWeekNumber(systemWeekRules, systemFirstWeekDay);
+                if (!weekNumber.Equals(1) && !weekNumber.Equals(52) && !weekNumber.Equals(53))
+                    Assert.Fail("Error getting week number.\nWeek number {0}", weekNumber);
+                
+            }
+        } 
+        #endregion
     }
 }

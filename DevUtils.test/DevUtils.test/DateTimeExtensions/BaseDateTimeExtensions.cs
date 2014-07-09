@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -195,7 +196,7 @@ namespace DevUtils.test.DateTimeExtensions
                 Assert.Inconclusive("Cant test all methods:\nlastDayTested: {0}\nlastBusinessDayTested: {1}", lastDayTested, lastBusinessDayTested);
 
         }
-
+        
         /// <summary>
         /// Test method GetDefaultTimezoneInfo
         /// </summary>
@@ -271,6 +272,27 @@ namespace DevUtils.test.DateTimeExtensions
                 if (utcTimezone != null)
                     DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultTimezoneInfo(localTimezone);
             }
+        }
+
+        /// <summary>
+        /// Test methods GetDefaultCalendarRule and SetDefaultCalendarRule
+        /// </summary>
+        [TestMethod]
+        public void GetAndSet_Calendar()
+        {
+            var startCaledarValue = DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultCalendarRule();
+            Assert.IsNotNull(startCaledarValue, "Error getting default calendar rule");
+
+            var valueToChange = startCaledarValue == CalendarWeekRule.FirstFourDayWeek
+                ? CalendarWeekRule.FirstDay
+                : CalendarWeekRule.FirstFourDayWeek;
+
+            DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultCalendarRule(valueToChange);
+            Assert.AreEqual(valueToChange, DevUtils.DateTimeExtensions.BaseDateTimeExtensions.GetDefaultCalendarRule(),
+                "Erro ao alterar regra padrão do calendário");
+
+            DevUtils.DateTimeExtensions.BaseDateTimeExtensions.SetDefaultCalendarRule(startCaledarValue);
+
         }
     }
 }

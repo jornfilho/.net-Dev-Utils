@@ -239,7 +239,6 @@ namespace DevUtils.DateTimeExtensions
         /// Convert unix timestamp to date
         /// </summary>
         /// <param name="unixTimestap">unix to convert</param>
-        /// <param name="timezoneInfo">date timezone info for result date</param>
         /// <returns>datetime</returns>
         public static DateTime FromUnixTimestamp(this long unixTimestap)
         {
@@ -338,6 +337,73 @@ namespace DevUtils.DateTimeExtensions
             var destinationTimezone = BaseDateTimeExtensions.GetTimezoneInfo(destinationTimeZoneName);
             return date.ToTimezoneDate(BaseDateTimeExtensions.GetDefaultTimezoneInfo(), destinationTimezone);
         }
+        #endregion
+
+        #region GetWeekNumber
+        /// <summary>
+        /// Get the week number of a date
+        /// </summary>
+        /// <param name="date">Date to get week number</param>
+        /// <param name="weekRule">Rule to calculate week number</param>
+        /// <param name="firstWeekDay">First day of week</param>
+        /// <returns>Week number or -1 when error</returns>
+        public static int GetWeekNumber(this DateTime date, CalendarWeekRule weekRule, DayOfWeek firstWeekDay)
+        {
+            try
+            {
+                // Seriously cheat.  If its Monday, Tuesday or Wednesday, then it'll 
+                // be the same week# as whatever Thursday, Friday or Saturday are,
+                // and we always get those right
+                var day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(date);
+                if (day >= DayOfWeek.Monday && day <= DayOfWeek.Wednesday)
+                    date = date.AddDays(3);
+
+                // Return the week of our adjusted day
+                return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(date, weekRule, firstWeekDay);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return -1;
+            }
+        }
+
+        /// <summary>
+        /// <para>Get the week number of a date</para>
+        /// <para>Use BaseDateTimeExtensions.GetDefaultFirstWeekDay() as  first week day</para>
+        /// </summary>
+        /// <param name="date">Date to get week number</param>
+        /// <param name="weekRule">Rule to calculate week number</param>
+        /// <returns>Week number or -1 when error</returns>
+        public static int GetWeekNumber(this DateTime date, CalendarWeekRule weekRule)
+        {
+            return date.GetWeekNumber(weekRule, BaseDateTimeExtensions.GetDefaultFirstWeekDay());
+        }
+
+        /// <summary>
+        /// <para>Get the week number of a date</para>
+        /// <para>Use BaseDateTimeExtensions.GetDefaultCalendarRule() as default calendar rule</para>
+        /// </summary>
+        /// <param name="date">Date to get week number</param>
+        /// <param name="firstWeekDay">First day of week</param>
+        /// <returns>Week number or -1 when error</returns>
+        public static int GetWeekNumber(this DateTime date, DayOfWeek firstWeekDay)
+        {
+            return date.GetWeekNumber(BaseDateTimeExtensions.GetDefaultCalendarRule(), firstWeekDay);
+        }
+
+        /// <summary>
+        /// <para>Get the week number of a date</para>
+        /// <para>Use BaseDateTimeExtensions.GetDefaultCalendarRule() as default calendar rule</para>
+        /// <para>Use BaseDateTimeExtensions.GetDefaultFirstWeekDay() as first week day</para>
+        /// </summary>
+        /// <param name="date">Date to get week number</param>
+        /// <returns>Week number or -1 when error</returns>
+        public static int GetWeekNumber(this DateTime date)
+        {
+            return date.GetWeekNumber(BaseDateTimeExtensions.GetDefaultCalendarRule(),
+                BaseDateTimeExtensions.GetDefaultFirstWeekDay());
+        } 
         #endregion
     }
 }

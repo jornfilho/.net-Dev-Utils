@@ -24,6 +24,8 @@ namespace DevUtils.DateTimeExtensions
                 _instance.SetTimezoneInfoDictionary();
                 _instance.SetDefaultTimezoneInfo();
                 _instance.SetDefaultDays();
+                _instance.SetDefaultCalendarConfigurations();
+
                 return _instance;
             }
         }
@@ -36,7 +38,7 @@ namespace DevUtils.DateTimeExtensions
         private DayOfWeek FirstBusinessWeekDay { get; set; }
         private DayOfWeek LastWeekDay { get; set; }
         private DayOfWeek LastBusinessWeekDay { get; set; }
-
+        private CalendarWeekRule DefaultCalendarRule { get; set; }
 
         private const DateTimeStyles DefaultToDateDateTimeStyle = DateTimeStyles.AssumeUniversal;
         #endregion
@@ -545,6 +547,14 @@ namespace DevUtils.DateTimeExtensions
         {
             DefaultTimeZoneInfo = GetTimezoneInfo(TimeZoneInfo.Local.Id);
         }
+
+        /// <summary>
+        /// Set default Calendar configurations
+        /// </summary>
+        private void SetDefaultCalendarConfigurations()
+        {
+            DefaultCalendarRule = CalendarWeekRule.FirstFourDayWeek;
+        }
         #endregion
 
 
@@ -696,6 +706,24 @@ namespace DevUtils.DateTimeExtensions
         public static DayOfWeek GetDefaultLastWeekBusinessDay()
         {
             return Instance.LastBusinessWeekDay;
+        }
+
+        /// <summary>
+        /// Set default calendar rule
+        /// </summary>
+        /// <param name="calendarRule">Default calendar rule</param>
+        public static void SetDefaultCalendarRule(CalendarWeekRule calendarRule)
+        {
+            Instance.DefaultCalendarRule = calendarRule;
+        }
+
+        /// <summary>
+        /// Get default value for Calendar Rule
+        /// </summary>
+        /// <returns>Default calendar rule</returns>
+        public static CalendarWeekRule GetDefaultCalendarRule()
+        {
+            return Instance.DefaultCalendarRule;
         } 
         #endregion
 
