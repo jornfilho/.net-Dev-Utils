@@ -1,4 +1,7 @@
-﻿namespace DevUtils.ObjectExtensions
+﻿using System;
+using System.Diagnostics;
+
+namespace DevUtils.ObjectExtensions
 {
     /// <summary>
     ///     Object extension
@@ -12,7 +15,15 @@
         /// <returns> Flag indicating whether the object is null </returns>
         public static bool IsNull(this object obj)
         {
-            return obj == null;
+            try
+            {
+                return obj == null;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return false;
+            }
         }
     }
 }

@@ -64,6 +64,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Database\SqlServer\Utils.cs" />
     <Compile Include="DateTimeExtensions\BaseDateTimeExtensions.cs" />
     <Compile Include="DateTimeExtensions\DateExtensions.cs" />
     <Compile Include="DateTimeExtensions\Offset.cs" />

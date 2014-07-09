@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\SqlServer\Utils.cs" />
     <Compile Include="DateTimeExtensions\BaseDateTimeExtensions.cs" />
     <Compile Include="DateTimeExtensions\MonthEnum.cs" />
     <Compile Include="DateTimeExtensions\Offset.cs" />

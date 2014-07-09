@@ -4,23 +4,29 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DevUtils.test.ObjectExtensions
 {
+    /// <summary>
+    /// Test class for ObjectExtension methods
+    /// </summary>
     [TestClass]
     public class ObjectExtension
     {
+        /// <summary>
+        /// Test method IsNull
+        /// </summary>
         [TestMethod]
         public void TestVerifyObjectNull()
         {
             Object objectDefaultNull = null;
-            Object objectDefaultNotNull = new Object();
+            var objectDefaultNotNull = new Object();
             Foo objectFooNull = null;
-            Foo objectFooNotNull = new Foo();
-            Foo objectFooWithNameNotNull = new Foo { Name = "test" };
+            var objectFooNotNull = new Foo();
+            var objectFooWithNameNotNull = new Foo { Name = "test" };
             EnumTest? enumNull = null;
             EnumTest? enumNotNull = EnumTest.First;
             int? variableIntNull = null;
-            int variableIntNotNull = 10;
+            const int variableIntNotNull = 10;
             string stringNull = null;
-            string stringNotNull = string.Empty;
+            var stringNotNull = string.Empty;
             bool? booleanNull = null;
             bool? booleanNotNull = false;
             byte? byteNull = null;
