@@ -192,7 +192,7 @@ namespace DevUtils.DateTimeExtensions
 
         #region ToUnixTimestamp
         /// <summary>
-        /// Convert date to unix timestamp
+        /// Convert date to unix timestamp based in secods
         /// </summary>
         /// <param name="date">date to convert</param>
         /// <param name="timezoneInfo">current date timezone info</param>
@@ -211,7 +211,7 @@ namespace DevUtils.DateTimeExtensions
         }
 
         /// <summary>
-        /// Convert date to unix timestamp
+        /// Convert date to unix timestamp based in secods
         /// </summary>
         /// <param name="date">date to convert</param>
         /// <param name="timezoneName">current date timezone name</param>
@@ -223,7 +223,7 @@ namespace DevUtils.DateTimeExtensions
         }
 
         /// <summary>
-        /// Convert date to unix timestamp
+        /// Convert date to unix timestamp based in secods
         /// </summary>
         /// <param name="date">date to convert</param>
         /// <returns>unix timestamp</returns>
@@ -232,6 +232,49 @@ namespace DevUtils.DateTimeExtensions
             var timezoneInfo = BaseDateTimeExtensions.GetDefaultTimezoneInfo();
             return date.ToUnixTimestamp(timezoneInfo);
         }
+
+        /// <summary>
+        /// Convert date to unix timestamp based in milisecods
+        /// </summary>
+        /// <param name="date">date to convert</param>
+        /// <param name="timezoneInfo">current date timezone info</param>
+        /// <returns>unix timestamp</returns>
+        public static long ToUnixTimestampMilisecondsBased(this DateTime date, TimeZoneInfo timezoneInfo)
+        {
+            try
+            {
+                return (date.ToUtc(timezoneInfo) - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds.TryParseLong();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Convert date to unix timestamp based in milisecods
+        /// </summary>
+        /// <param name="date">date to convert</param>
+        /// <param name="timezoneName">current date timezone name</param>
+        /// <returns>unix timestamp</returns>
+        public static long ToUnixTimestampMilisecondsBased(this DateTime date, string timezoneName)
+        {
+            var timezoneInfo = BaseDateTimeExtensions.GetTimezoneInfo(timezoneName);
+            return date.ToUnixTimestampMilisecondsBased(timezoneInfo);
+        }
+
+        /// <summary>
+        /// Convert date to unix timestamp based in milisecods
+        /// </summary>
+        /// <param name="date">date to convert</param>
+        /// <returns>unix timestamp</returns>
+        public static long ToUnixTimestampMilisecondsBased(this DateTime date)
+        {
+            var timezoneInfo = BaseDateTimeExtensions.GetDefaultTimezoneInfo();
+            return date.ToUnixTimestampMilisecondsBased(timezoneInfo);
+        }
+
         #endregion
 
         #region FromUnixTimestamp

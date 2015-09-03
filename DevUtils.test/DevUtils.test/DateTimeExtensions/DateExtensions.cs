@@ -161,10 +161,10 @@ namespace DevUtils.test.DateTimeExtensions
 
         #region ToUnixTimestamp
         /// <summary>
-        /// Test method ToUnixTimestamp and overloads
+        /// Test method ToUnixTimestamp and overloads based in secods
         /// </summary>
         [TestMethod]
-        public void ToUnixTimestampAndOverloads()
+        public void ToUnixTimestampAndOverloadsBasedInSeconds()
         {
             var unix1 = (UtcDate - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds.TryParseLong();
             var unix2 = (LocalDate.ToUtc(LocalTimeZoneInfo) - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds.TryParseLong();
@@ -177,6 +177,25 @@ namespace DevUtils.test.DateTimeExtensions
             Assert.AreEqual(unix2, LocalDate.ToUnixTimestamp(UtcTimeZoneInfo));
             Assert.AreEqual(unix2, LocalDate.ToUnixTimestamp(UtcTimeZoneName));
         }
+
+        /// <summary>
+        /// Test method ToUnixTimestamp and overloads based in milisecods
+        /// </summary>
+        [TestMethod]
+        public void ToUnixTimestampAndOverloadsBasedInMiliseconds()
+        {
+            var unix1 = (UtcDate - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds.TryParseLong();
+            var unix2 = (LocalDate.ToUtc(LocalTimeZoneInfo) - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds.TryParseLong();
+
+            Assert.AreEqual(unix1, UtcDate.ToUnixTimestampMilisecondsBased());
+            Assert.AreEqual(unix1, UtcDate.ToUnixTimestampMilisecondsBased(UtcTimeZoneInfo));
+            Assert.AreEqual(unix1, UtcDate.ToUnixTimestampMilisecondsBased(UtcTimeZoneName));
+
+            Assert.AreEqual(unix2, LocalDate.ToUnixTimestampMilisecondsBased());
+            Assert.AreEqual(unix2, LocalDate.ToUnixTimestampMilisecondsBased(UtcTimeZoneInfo));
+            Assert.AreEqual(unix2, LocalDate.ToUnixTimestampMilisecondsBased(UtcTimeZoneName));
+        }
+
         #endregion
 
         #region FromUnixTimestamp
